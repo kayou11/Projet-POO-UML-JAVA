@@ -1,26 +1,29 @@
 package elements;
 
-import java.util.logging.Level;
+import model.Level;
+import model.Entity;
 
-public abstract class Elements {
-	private ISprite sprite;
+public abstract class Elements extends Entity{
+	
+	private Sprite sprite;
 	private Permeability permeability;
 	private Level level;
-	private Position position;
+	private static Position position;
 
-	public void Elements(Position position, ISprite sprite, Permeability permeability) {
+	public Elements(Position position, Sprite sprite, Permeability permeability) {
 		setSprite(this.sprite);
 		setPermeability(this.permeability);
+		setPosition(this.position);
 	}
 
-	public ISprite getSprite() {
+	public Sprite getSprite() {
 		return this.sprite;
 	}
 
 	public void loadSprite(int idElement) {
 	}
 
-	public void setSprite(ISprite sprite) {
+	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
 	}
 
@@ -40,8 +43,8 @@ public abstract class Elements {
 		this.level = level;
 	}
 
-	public Position getPosition() {
-		return this.position;
+	public static Position getPosition() {
+		return position;
 	}
 
 	public void setPosition(Position position) {

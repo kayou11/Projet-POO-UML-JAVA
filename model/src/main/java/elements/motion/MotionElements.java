@@ -3,6 +3,8 @@ package elements.motion;
 import java.util.logging.Level;
 
 import elements.Elements;
+import elements.Permeability;
+import elements.Position;
 import elements.Sprite;
 
 public class MotionElements extends Elements{
@@ -11,8 +13,8 @@ public class MotionElements extends Elements{
 	private int x;
 	private int y;
 
-	public MotionElements(Sprite sprite){
-		
+	public MotionElements(Position position, Sprite sprite){
+		super(position, sprite, Permeability.BLOCKING);
 	}
 	
 	public int getX(){
@@ -35,7 +37,7 @@ public class MotionElements extends Elements{
 		
 	}
 	
-	protected void isMovePossible(int x, int y){
+	protected void isMovePossible(Position position){
 		
 	}
 	

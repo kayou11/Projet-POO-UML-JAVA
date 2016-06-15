@@ -1,12 +1,13 @@
 package elements.motionless;
 
 import elements.Elements;
-import elements.ISprite;
+import elements.Sprite;
 import elements.Permeability;
+import elements.Position;
 
 public abstract class MotionlessElement extends Elements {
 
-	public MotionlessElement(final ISprite sprite, final Permeability permeability, final char fileSymbol) {
-		super(sprite, permeability);
+	public MotionlessElement(final Position position,final Sprite sprite, final Permeability permeability) {
+		super(position, sprite, permeability);
 	}
-}
+} 
