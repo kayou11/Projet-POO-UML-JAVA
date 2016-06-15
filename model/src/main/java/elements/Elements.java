@@ -8,7 +8,7 @@ public abstract class Elements {
 	private Level level;
 	private Position position;
 
-	public void Elements(Position position) {
+	public void Elements(Position position, ISprite sprite, Permeability permeability) {
 		setSprite(this.sprite);
 		setPermeability(this.permeability);
 	}
