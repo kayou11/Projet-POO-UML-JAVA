@@ -8,5 +8,15 @@ public abstract class MotionlessElements {
 	public static final MotionlessElement ENERGYBALL = new EnergyBall();
 	public static final MotionlessElement KNEECAP = new Kneecap();
 	public static final MotionlessElement PURSE = new Purse();
-
+	
+	public static MotionlessElement motionlessElements [] = {BONEH, BONEV, DEATHFACE,DOOR,ENERGYBALL,KNEECAP,PURSE};
+	
+	public static MotionlessElement getFromName(final String name) {
+		for (final MotionlessElement motionlessElement : motionlessElements) {
+			if (motionlessElement.toString().equals(name)) {
+				return motionlessElement;
+			}
+		}
+		return null;
+	}
 }

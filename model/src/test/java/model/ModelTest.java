@@ -71,7 +71,7 @@ public class ModelTest {
 	/**
 	 * Test method for {@link model.Model#loadLevel(int)}.
 	 */
-	/*@Test
+	@Test
 	public void testGetLevelBDD() {
 		this.model.loadLevel(1);
 		Assert.assertEquals(1, this.model.getLevel());
@@ -80,9 +80,9 @@ public class ModelTest {
 		this.model.loadLevel(3);
 		Assert.assertEquals(3, this.model.getLevel());
 		this.model.loadLevel(4);
-		Assert.assertEquals(1, this.model.getLevel());
+		Assert.assertEquals(4, this.model.getLevel());
 		
-	}*/
+	}
 	
 	@Test
 	public void testOpenDatabase(){
