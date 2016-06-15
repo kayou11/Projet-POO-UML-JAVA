@@ -1,5 +1,11 @@
 package elements.motion;
 
-public class Lorann extends MotionElements {
+import elements.Sprite;
+
+public class Lorann extends MotionElements{
+
+	public Lorann(Sprite sprite) {
+		super(sprite);
+	}
 
 }
