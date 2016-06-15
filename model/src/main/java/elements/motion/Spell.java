@@ -2,10 +2,9 @@ package elements.motion;
 
 import elements.Sprite;
 
-public class Lorann extends MotionElements{
+public class Spell extends MotionElements{
 
-	public Lorann(Sprite sprite) {
+	public Spell(Sprite sprite) {
 		super(sprite);
 	}
-
 }
