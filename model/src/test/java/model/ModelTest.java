@@ -17,7 +17,7 @@ import org.junit.Test;
  */
 public class ModelTest {
 	private Model model;
-
+	private DBConnection dBConnection;
 	/**
 	 * Sets the up before class.
 	 *
@@ -47,6 +47,7 @@ public class ModelTest {
 	@Before
 	public void setUp() throws Exception {
 		this.model = new Model();
+		this.dBConnection = DBConnection.getInstance();
 	}
 
 	/**
@@ -60,26 +61,34 @@ public class ModelTest {
 	}
 
 	/**
-	 * Test method for {@link model.Model#getMessage()}.
+	 * Test method for {@link model.Model#getLevel()}.
 	 */
 	@Test
-	public void testGetMessage() {
-		Assert.assertEquals("", this.model.getMessage());
+	public void testGetLevel() {
+		Assert.assertEquals(0, this.model.getLevel());
 	}
 
 	/**
-	 * Test method for {@link model.Model#loadMessage(java.lang.String)}.
+	 * Test method for {@link model.Model#loadLevel(int)}.
 	 */
+	/*@Test
+	public void testGetLevelBDD() {
+		this.model.loadLevel(1);
+		Assert.assertEquals(1, this.model.getLevel());
+		this.model.loadLevel(2);
+		Assert.assertEquals(2, this.model.getLevel());
+		this.model.loadLevel(3);
+		Assert.assertEquals(3, this.model.getLevel());
+		this.model.loadLevel(4);
+		Assert.assertEquals(1, this.model.getLevel());
+		
+	}*/
+	
 	@Test
-	public void testGetMessageString() {
-		this.model.loadMessage("GB");
-		Assert.assertEquals("Hello world", this.model.getMessage());
-		this.model.loadMessage("FR");
-		Assert.assertEquals("Bonjour le monde", this.model.getMessage());
-		this.model.loadMessage("DE");
-		Assert.assertEquals("Hallo Welt", this.model.getMessage());
-		this.model.loadMessage("ID");
-		Assert.assertEquals("Salamat pagi dunia", this.model.getMessage());
+	public void testOpenDatabase(){
+		
+		Assert.assertEquals(true, this.dBConnection.open());
+		
 	}
 
 }

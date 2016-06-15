@@ -4,6 +4,7 @@ import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
+import contract.LevelChoose;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -66,17 +67,40 @@ public class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
-			case English:
-				this.model.loadMessage("GB");
+			case UP:
+			
 				break;
-			case Francais:
-				this.model.loadMessage("FR");
+			case DOWN:
+			
 				break;
-			case Deutsch:
-				this.model.loadMessage("DE");
+			case LEFT:
+			
 				break;
-			case Indonesia:
-				this.model.loadMessage("ID");
+			case RIGHT:
+		
+				break;
+			default:
+				break;
+		}
+	}
+	
+	public void orderPerform(final LevelChoose levelChoose) {
+		switch (levelChoose) {
+			case Level1:
+				this.model.loadLevel(1);
+				break;
+			case Level2:
+				this.model.loadLevel(2);
+				break;
+			case Level3:
+				this.model.loadLevel(3);
+				break;
+			case Level4:
+				this.model.loadLevel(4);
+				break;
+				
+			case Level5:
+				this.model.loadLevel(5);
 				break;
 
 			default:

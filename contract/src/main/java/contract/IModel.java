@@ -14,7 +14,7 @@ public interface IModel {
 	 *
 	 * @return the message
 	 */
-	String getMessage();
+	int getLevel();
 
 	/**
 	 * Load the message.
@@ -22,7 +22,7 @@ public interface IModel {
 	 * @param key
 	 *          the key
 	 */
-	void loadMessage(String key);
+	void loadLevel(int level);
 
 	/**
 	 * Gets the observable.
@@ -30,4 +30,6 @@ public interface IModel {
 	 * @return the observable
 	 */
 	Observable getObservable();
+
+	void setMobileHasChanged();
 }

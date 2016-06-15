@@ -3,6 +3,8 @@ package model;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import elements.Elements;
+
 /**
  * The Class DAOEntity.
  *
@@ -71,15 +73,6 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the id
 	 * @return the e
 	 */
-	public abstract E find(int id);
-
-	/**
-	 * Find.
-	 *
-	 * @param key
-	 *          the key
-	 * @return the e
-	 */
-	public abstract E find(String key);
-
+	public abstract E find(int map);
+	
 }
