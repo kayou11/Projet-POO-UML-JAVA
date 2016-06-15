@@ -16,19 +16,19 @@ public class MotionElements extends Elements{
 	}
 	
 	public int getX(){
-		return 0;
+		return this.x;
 	}
 	
 	protected void setX(int x){
-		
+		this.x = x;
 	}
 	
 	public int getY(){
-		return 0;
+		return this.y;
 	}
 	
 	protected void setY(int y){
-		
+		this.y = y;
 	}
 	
 	public void setLevel(Level level, int x, int y){

@@ -6,7 +6,6 @@ public class Lorann extends MotionElements{
 
 	public Lorann(Sprite sprite) {
 		super(sprite);
-
 	}
 
 }
