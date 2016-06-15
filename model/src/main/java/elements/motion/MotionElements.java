@@ -1,10 +1,13 @@
 package elements.motion;
 
 import java.util.logging.Level;
+
+import elements.Elements;
 import elements.Sprite;
 
-public class MotionElements {
+public class MotionElements extends Elements{
 	
+	private Direction direction;
 	private int x;
 	private int y;
 
