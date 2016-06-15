@@ -3,7 +3,13 @@ package model;
 import java.sql.SQLException;
 import java.util.Observable;
 
+import javax.swing.text.Position;
+
 import contract.IModel;
+import elements.motion.IMonster;
+import elements.motion.Lorann;
+import elements.motion.MotionElements;
+import elements.motionless.MotionlessElements;
 
 /**
  * The Class Model.
@@ -13,45 +19,51 @@ import contract.IModel;
 public class Model extends Observable implements IModel {
 
 	/** The message. */
-	private String message;
+	private int level;
+	private Lorann lorann;
+	private IMonster monster;
+	private MotionlessElements elements[][];
 
 	/**
 	 * Instantiates a new model.
 	 */
 	public Model() {
-		this.message = "";
+		this.level = 0;
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage()
+	 * @see contract.IModel#getLevel()
 	 */
-	public String getMessage() {
-		return this.message;
+	
+	public int getLevel() {
+		return level;
 	}
-
+	
 	/**
-	 * Sets the message.
+	 * Sets the level.
 	 *
 	 * @param message
-	 *          the new message
+	 *          the new level
 	 */
-	private void setMessage(final String message) {
-		this.message = message;
-		this.setChanged();
-		this.notifyObservers();
+	
+	public void setLevel(int level) {
+		this.level = level;
+		
 	}
+
 
 	/*
 	 * (non-Javadoc)
 	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
+	 * @see contract.IModel#loadLevel(java.lang.String)
 	 */
-	public void loadMessage(final String key) {
+	public void loadLevel(final int level) {
+		
 		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setMessage(daoHelloWorld.find(key).getMessage());
+			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(daoLevel.find(level).getLevel());
 		} catch (final SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +74,52 @@ public class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
+	
 	public Observable getObservable() {
 		return this;
+	}
+	
+	public void addElements(MotionElements elements, int x, int y) {
+		// TODO Auto-generated method stub
+	}
+
+	public void addElements(MotionlessElements elements, int x, int y) {
+		// TODO Auto-generated method stub
+	}
+	
+	public void addLorann(Lorann lorann, int x, int y) {
+		// TODO Auto-generated method stub
+
+	}
+	
+	//public void addMonster(Monster monster, int x, int y) {
+		// TODO Auto-generated method stub
+
+	//}
+	
+	public MotionlessElements getMotionlessElements(Position position) {
+		return null;
+	}
+	
+
+	public void setHero(final Lorann lorann) {
+		this.lorann = lorann;
+		this.setChanged();
+	}
+
+	public void setMonster(final IMonster monster){
+		this.monster = monster;
+		this.setChanged();
+
+	}
+	
+	public void setMobileHasChanged() {
+		this.setChanged();
+		this.notifyObservers();
+	}
+
+	@Override
+	public void notifyObservers() {
+		super.notifyObservers();
 	}
 }
