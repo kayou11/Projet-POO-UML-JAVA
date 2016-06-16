@@ -11,6 +11,7 @@ public class MotionElements extends Elements {
 
 	private int x;
 	private int y;
+	protected static int sens;
 
 	public MotionElements(Position position, Sprite sprite) {
 		super(position, sprite, Permeability.BLOCKING);
@@ -44,24 +45,28 @@ public class MotionElements extends Elements {
 		if (isMovePossible(getX(), getY() - 1)) {
 			setY(getY() - 1);
 		}
+		sens = 7;
 	}
 
 	public void moveLeft() {
 		if (isMovePossible(getX() - 1, getY())) {
 			setX(getX() - 1);
 		}
+		sens = 5;
 	}
 
 	public void moveDown() {
 		if (isMovePossible(getX(), getY() + 1)) {
 			setY(getY() + 1);
 		}
+		sens = 3;
 	}
 
 	public void moveRight() {
 		if (isMovePossible(getX() + 1, getY())) {
 			setX(getX() + 1);
 		}
+		sens = 1;
 	}
 
 	public void moveUpRight() {
@@ -69,6 +74,7 @@ public class MotionElements extends Elements {
 			setX(getX() + 1);
 			setY(getY() - 1);
 		}
+		sens = 8;
 	}
 
 	public void moveUpLeft() {
@@ -76,6 +82,7 @@ public class MotionElements extends Elements {
 			setX(getX() - 1);
 			setY(getY() - 1);
 		}
+		sens = 6;
 	}
 
 	public void moveDownRight() {
@@ -83,6 +90,7 @@ public class MotionElements extends Elements {
 			setX(getX() + 1);
 			setY(getY() + 1);
 		}
+		sens = 2;
 	}
 
 	public void moveDownLeft() {
@@ -90,6 +98,7 @@ public class MotionElements extends Elements {
 			setX(getX() - 1);
 			setY(getY() + 1);
 		}
+		sens = 4;
 	}
 
 }
