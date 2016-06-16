@@ -9,12 +9,11 @@ import elements.Sprite;
 
 public class MotionElements extends Elements{
 	
-	private Direction direction;
 	private int x;
 	private int y;
 
-	public MotionElements(Position position, Sprite sprite){
-		super(position, sprite, Permeability.BLOCKING);
+	public MotionElements(Position position, String pathElement){
+		super(position, pathElement, Permeability.BLOCKING);
 	}
 	
 	public int getX(){
@@ -37,26 +36,36 @@ public class MotionElements extends Elements{
 		
 	}
 	
-	protected void isMovePossible(Position position){
-		
+	protected boolean isMovePossible(int x, int y){
+		return (this.getModel().getMotionlessElements(getX(), getY()).getPermeability() != Permeability.BLOCKING);
+	}
+	
+	public void moveUp() {
+		if (this.isMovePossible(this.getX(), this.getY() - 1)) {
+			this.setY(this.getY() - 1);
+		}
+	}
+
+	public void moveLeft() {
+		if (this.isMovePossible(this.getX() - 1, this.getY())) {
+			this.setX(this.getX() - 1);
+		}
+	}
+
+	public void moveDown() {
+		if (this.isMovePossible(this.getX(), this.getY() + 1)) {
+			this.setY(this.getY() + 1);
+		}
+	}
+
+	public void moveRight() {
+		if (this.isMovePossible(this.getX() + 1, this.getY())) {
+			this.setX(this.getX() + 1);
+		}
 	}
 	
 
-	private void moveUp(){
-		
-	}
-	
-	private void moveDown(){
-		
-	}
-	
-	private void moveRight(){
-		
-	}
-	
-	private void moveLeft(){
-		
-	}
+
 }
 
 

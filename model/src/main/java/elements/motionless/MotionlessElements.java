@@ -1,5 +1,7 @@
 package elements.motionless;
 
+import elements.Permeability;
+
 public abstract class MotionlessElements {
 	public static final MotionlessElement BONEH = new BoneH();
 	public static final MotionlessElement BONEV = new BoneV();
@@ -19,4 +21,5 @@ public abstract class MotionlessElements {
 		}
 		return null;
 	}
+
 }

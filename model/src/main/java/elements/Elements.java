@@ -1,26 +1,53 @@
 package elements;
 
 import model.Level;
+import model.Model;
+
+import java.sql.SQLException;
+
+import model.DAOElements;
+import model.DBConnection;
 import model.Entity;
 
-public abstract class Elements extends Entity{
+public class Elements extends Entity{
 	
 	private Sprite sprite;
 	private Permeability permeability;
-	private Level level;
+	private Model model;
 	private static Position position;
+	private int idElement;
+	private String name;
+	private String pathElement;
 
-	public Elements(Position position, Sprite sprite, Permeability permeability) {
-		setSprite(this.sprite);
-		setPermeability(this.permeability);
-		setPosition(this.position);
+	public Elements(Position position, String pathElement, Permeability permeability) {
+		this.setPathElement(this.pathElement);
+		this.setPermeability(this.permeability);
+		this.setPosition(this.position);
+	}
+	
+	public Elements(final int idElement, final String Name,final String pathElement){
+		this.setIdElement(idElement);
+		this.setName(Name);
+		this.setPathElement(pathElement);
+	}
+	
+	public Elements(){
+		this(0, "", "");
 	}
 
 	public Sprite getSprite() {
 		return this.sprite;
 	}
 
-	public void loadSprite(int idElement) {
+	public static String loadSprite(int idElement) {
+		String sprite = "";
+		try {
+			final DAOElements daoElements = new DAOElements(DBConnection.getInstance().getConnection());
+			sprite = daoElements.find(idElement).getPathElement();
+		} catch (final SQLException e) {
+			e.printStackTrace();
+		}
+		return sprite;
 	}
 
 	public void setSprite(Sprite sprite) {
@@ -35,19 +62,43 @@ public abstract class Elements extends Entity{
 		this.permeability = permeability;
 	}
 
-	public Level getLevel() {
-		return this.level;
-	}
-
-	public void setLevel(Level level) {
-		this.level = level;
-	}
-
 	public static Position getPosition() {
 		return position;
 	}
 
 	public void setPosition(Position position) {
 		this.position = position;
+	}
+
+	public int getIdElement() {
+		return idElement;
+	}
+
+	public void setIdElement(int idElement) {
+		this.idElement = idElement;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPathElement() {
+		return pathElement;
+	}
+
+	public void setPathElement(String pathElement) {
+		this.pathElement = pathElement;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
 }

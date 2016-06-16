@@ -8,8 +8,9 @@ import javax.swing.text.Position;
 import contract.IModel;
 import elements.motion.IMonster;
 import elements.motion.Lorann;
+import elements.motion.Monster;
 import elements.motion.MotionElements;
-import elements.motionless.MotionlessElements;
+import elements.motionless.MotionlessElement;
 
 /**
  * The Class Model.
@@ -20,9 +21,10 @@ public class Model extends Observable implements IModel {
 
 	/** The message. */
 	private int level;
+	private Level map;
 	private Lorann lorann;
 	private IMonster monster;
-	private MotionlessElements elements[][];
+	private MotionlessElement elements[][];
 
 	/**
 	 * Instantiates a new model.
@@ -83,7 +85,7 @@ public class Model extends Observable implements IModel {
 		// TODO Auto-generated method stub
 	}
 
-	public void addElements(MotionlessElements elements, int x, int y) {
+	public void addElements(MotionlessElement elements, int x, int y) {
 		// TODO Auto-generated method stub
 	}
 	
@@ -92,16 +94,18 @@ public class Model extends Observable implements IModel {
 
 	}
 	
-	//public void addMonster(Monster monster, int x, int y) {
+	public void addMonster(Monster monster, int x, int y) {
 		// TODO Auto-generated method stub
 
-	//}
-	
-	public MotionlessElements getMotionlessElements(Position position) {
-		return null;
 	}
 	
-
+	public MotionlessElement getMotionlessElements(int x, int y) {
+		if ((x < 0) || (y < 0) || (x >= this.getMap().getDimension().getWidth()) || (y >= this.getMap().getDimension().getHeight())) {
+			return null;
+		}
+		return this.elements[x][y];
+	}
+	
 	public void setHero(final Lorann lorann) {
 		this.lorann = lorann;
 		this.setChanged();
@@ -121,5 +125,13 @@ public class Model extends Observable implements IModel {
 	@Override
 	public void notifyObservers() {
 		super.notifyObservers();
+	}
+
+	public Level getMap() {
+		return this.map;
+	}
+
+	public void setMap(Level map) {
+		this.map = map;
 	}
 }

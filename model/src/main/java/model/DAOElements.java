@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import elements.Elements;
 import elements.Position;
+import elements.Sprite;
 
 /**
  * The Class DAOHelloWorld.
@@ -51,9 +52,26 @@ public class DAOElements extends DAOEntity<Elements> {
 	 * @see model.DAOEntity#find(int)
 	 */
 	@Override
-	public Elements find(final int map) {
-		return null;
-	}
+	public Elements find(final int idElement) {
+
+		Elements elements = new Elements();
+
+			try {
+				final String sql = "{call SpriteLinkByIdElements(?)}";
+				final CallableStatement call = this.getConnection().prepareCall(sql);
+				call.setInt(1, idElement);
+				call.execute();
+				final ResultSet resultSet = call.getResultSet();
+				if (resultSet.first()) {
+					elements = new Elements(idElement,resultSet.getString("NameSprite"), resultSet.getString("SpriteLink"));
+				}
+				return elements;
+			} catch (final SQLException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+		
 	
 	
 	/*

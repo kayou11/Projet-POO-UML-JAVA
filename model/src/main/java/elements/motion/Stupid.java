@@ -1,6 +1,6 @@
 package elements.motion;
 
-public class Stupid {
+public class Stupid implements BehaviorAnimate{
 
 	public void animate(){
 		

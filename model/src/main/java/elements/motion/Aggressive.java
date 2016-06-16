@@ -1,6 +1,6 @@
 package elements.motion;
 
-public class Aggressive {
+public class Aggressive implements BehaviorAnimate{
 
 	public void animate(){
 		

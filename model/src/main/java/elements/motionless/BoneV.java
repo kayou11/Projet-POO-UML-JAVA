@@ -8,7 +8,7 @@ public class BoneV extends MotionlessElement {
 	
 	public BoneV(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(18), Permeability.BLOCKING);
 	}
 
 }

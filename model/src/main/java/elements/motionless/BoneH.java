@@ -8,6 +8,6 @@ public class BoneH extends MotionlessElement {
 	
 	public BoneH(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(19), Permeability.BLOCKING);
 	}
 }

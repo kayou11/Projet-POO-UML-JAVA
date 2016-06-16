@@ -10,6 +10,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import elements.Elements;
+
 /**
  * The Class ModelTest.
  *
@@ -18,6 +20,7 @@ import org.junit.Test;
 public class ModelTest {
 	private Model model;
 	private DBConnection dBConnection;
+	private Elements elements;
 	/**
 	 * Sets the up before class.
 	 *
@@ -48,6 +51,8 @@ public class ModelTest {
 	public void setUp() throws Exception {
 		this.model = new Model();
 		this.dBConnection = DBConnection.getInstance();
+		this.elements = new Elements();
+		
 	}
 
 	/**
@@ -89,6 +94,22 @@ public class ModelTest {
 		
 		Assert.assertEquals(true, this.dBConnection.open());
 		
+	}
+	
+	/**
+	 * Test method for {@link model.Model#loadSprite(int)}.
+	 */
+	@Test
+	public void testGetSprite() {
+		this.elements.loadSprite(1);
+		Assert.assertEquals("/model/src/main/resources/sprites/lorann_u.png", this.elements.getPathElement());
+		/*this.elements.loadSprite(2);
+		Assert.assertEquals(2, this.elements.getSprite());
+		this.elements.loadSprite(3);
+		Assert.assertEquals(3, this.elements.getSprite());
+		this.elements.loadSprite(4);
+		Assert.assertEquals(4, this.elements.getSprite());
+		*/
 	}
 
 }

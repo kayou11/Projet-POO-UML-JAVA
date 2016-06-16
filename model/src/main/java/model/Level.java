@@ -13,6 +13,7 @@ public class Level extends Entity implements ILevel {
 
 	/** The level. */
 	private int	level;
+	private Dimension dimension;
 
 	/**
 	 * Instantiates a new Level
@@ -76,6 +77,10 @@ public class Level extends Entity implements ILevel {
 
 	public Dimension getDimension() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.dimension;
+	}
+
+	public void setDimension(Dimension dimension) {
+		this.dimension = dimension;
 	}
 }

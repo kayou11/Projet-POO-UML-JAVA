@@ -57,32 +57,7 @@ class DAOLevel extends DAOEntity<Level> {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int)
-	 */
-	/*
-	@Override
-	public Level find(final int id) {
-		Level level = new Level();
 
-		try {
-			final String sql = "{call helloworldById(?)}";
-			final CallableStatement call = this.getConnection().prepareCall(sql);
-			call.setInt(1, id);
-			call.execute();
-			final ResultSet resultSet = call.getResultSet();
-			if (resultSet.first()) {
-				level = new Level(id, resultSet.getString("key"), resultSet.getString("message"));
-			}
-			return level;
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}*/
-	
 	
 	/*
 	 * (non-Javadoc)
@@ -94,13 +69,13 @@ class DAOLevel extends DAOEntity<Level> {
 		Level level = new Level();
 
 		try {
-			final String sql = "{call IDMapByLevel(?)}";
+			final String sql = "{call LevelByIDMap(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setInt(1, map);
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			if (resultSet.first()) {
-				level = new Level(resultSet.getInt("IDMap"), map);
+				level = new Level(map,resultSet.getInt("Level"));
 			}
 			return level;
 		} catch (final SQLException e) {

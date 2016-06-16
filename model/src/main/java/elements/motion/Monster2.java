@@ -6,8 +6,9 @@ import elements.Sprite;
 
 public class Monster2 extends Monster{
 
-	public Monster2(Position position,Sprite sprite) {
-		super(position,sprite);
+	public Monster2() {
+		super(new Position(getPosition().getX(), getPosition().getY()),loadSprite(21));
 	}
+	
 
 }

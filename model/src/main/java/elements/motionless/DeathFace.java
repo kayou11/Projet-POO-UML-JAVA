@@ -9,6 +9,6 @@ public class DeathFace extends MotionlessElement {
 	
 	public DeathFace(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(16), Permeability.BLOCKING);
 	}
 }
