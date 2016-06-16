@@ -39,8 +39,6 @@ public class Elements extends Entity{
 		return this.sprite;
 	}
 
-
-
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
 	}
