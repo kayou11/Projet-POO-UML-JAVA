@@ -12,8 +12,8 @@ public class MotionElements extends Elements{
 	private int x;
 	private int y;
 
-	public MotionElements(Position position, String pathElement){
-		super(position, pathElement, Permeability.BLOCKING);
+	public MotionElements(Position position, Sprite sprite){
+		super(position, sprite, Permeability.BLOCKING);
 	}
 	
 	public int getX(){

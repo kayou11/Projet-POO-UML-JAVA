@@ -10,6 +10,6 @@ public class EnergyBall extends MotionlessElement {
 	
 	public EnergyBall(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(14), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(14), Permeability.BLOCKING);
 	}
 }

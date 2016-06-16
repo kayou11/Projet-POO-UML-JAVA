@@ -8,6 +8,6 @@ public class Kneecap extends MotionlessElement {
 
 	public Kneecap(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()),new Sprite(getModel().get), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()),new Sprite(17), Permeability.BLOCKING);
 	}
 }

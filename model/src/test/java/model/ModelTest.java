@@ -3,6 +3,7 @@
  */
 package model;
 
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -11,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import elements.Elements;
+import elements.Sprite;
 
 /**
  * The Class ModelTest.
@@ -20,6 +22,7 @@ import elements.Elements;
 public class ModelTest {
 	private Model model;
 	private DBConnection dBConnection;
+	private Sprite sprite;
 	private Elements elements;
 	/**
 	 * Sets the up before class.
@@ -51,7 +54,7 @@ public class ModelTest {
 	public void setUp() throws Exception {
 		this.model = new Model();
 		this.dBConnection = DBConnection.getInstance();
-		this.elements = new Elements();
+		this.sprite = new Sprite();
 		
 	}
 
@@ -101,8 +104,8 @@ public class ModelTest {
 	 */
 	@Test
 	public void testGetSprite() {
-		this.elements.loadSprite(1);
-		Assert.assertEquals("/model/src/main/resources/sprites/lorann_u.png", this.elements.getPathElement());
+		
+		Assert.assertEquals("/model/src/main/resources/sprites/lorann_u.png", this.sprite.loadSprite(1));
 		/*this.elements.loadSprite(2);
 		Assert.assertEquals(2, this.elements.getSprite());
 		this.elements.loadSprite(3);

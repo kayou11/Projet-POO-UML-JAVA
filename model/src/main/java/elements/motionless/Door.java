@@ -9,6 +9,6 @@ public class Door extends MotionlessElement {
 	
 	public Door(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(15), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(15), Permeability.BLOCKING);
 	}
 }

@@ -5,8 +5,8 @@ import elements.Sprite;
 
 public class Lorann extends MotionElements{
 
-	public Lorann(Position position, String pathElement) {
-		super(position,pathElement);
+	public Lorann(Position position, Sprite sprite) {
+		super(position,sprite);
 	}
 
 }

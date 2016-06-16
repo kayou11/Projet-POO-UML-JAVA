@@ -5,7 +5,7 @@ import elements.Sprite;
 
 public class Spell extends MotionElements{
 
-	public Spell(Position position, String pathElement) {
-		super(position,pathElement);
+	public Spell(Position position, Sprite sprite) {
+		super(position,sprite);
 	}
 }

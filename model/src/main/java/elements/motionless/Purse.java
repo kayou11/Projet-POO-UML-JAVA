@@ -8,6 +8,6 @@ public class Purse extends MotionlessElement {
 	
 	public Purse(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), loadSprite(24), Permeability.BLOCKING);
+		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(24), Permeability.BLOCKING);
 	}
 }

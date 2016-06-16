@@ -39,16 +39,7 @@ public class Elements extends Entity{
 		return this.sprite;
 	}
 
-	public String loadSprite(int idElement) {
-		String sprite = "";
-		try {
-			final DAOElements daoElements = new DAOElements(DBConnection.getInstance().getConnection());
-			sprite = daoElements.find(idElement).getPathElement();
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return sprite;
-	}
+
 
 	public void setSprite(Sprite sprite) {
 		this.sprite = sprite;
