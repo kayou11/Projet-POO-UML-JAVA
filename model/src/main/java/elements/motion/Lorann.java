@@ -4,9 +4,27 @@ import elements.Position;
 import elements.Sprite;
 
 public class Lorann extends MotionElements{
-
-	public Lorann(Position position, Sprite sprite) {
-		super(position,sprite);
+	
+	static Sprite lorannUp = new Sprite(1);
+	static Sprite lorannDown = new Sprite(2);
+	static Sprite lorannRight= new Sprite(3);
+	static Sprite lorannLeft = new Sprite(4);
+	static Sprite lorannUpRight = new Sprite(5);
+	static Sprite lorannUpLeft = new Sprite(7);
+	static Sprite lorannDownRight = new Sprite(6);
+	static Sprite lorannDownLeft = new Sprite(8);
+	
+	static Sprite sprite [] = {lorannRight,lorannDownRight, lorannDown,lorannDownLeft,lorannLeft,lorannUpLeft,lorannUp,lorannUpRight};
+	
+	public Lorann() {
+		super(new Position(getPosition().getX(), getPosition().getY()),changeLorann());
 	}
+	
+	public static Sprite changeLorann() {
 
+		for(int i = 0 ; i < sprite.length ;i++){
+			return sprite[i];
+		}
+		return null;
+	}
 }
