@@ -19,7 +19,7 @@ public class Elements extends Entity{
 	private String name;
 	private String pathElement;
 
-	public Elements(Position position, String pathElement, Permeability permeability) {
+	public Elements(Position position, Sprite sprite, Permeability permeability) {
 		this.setPathElement(this.pathElement);
 		this.setPermeability(this.permeability);
 		this.setPosition(this.position);
@@ -39,7 +39,7 @@ public class Elements extends Entity{
 		return this.sprite;
 	}
 
-	public static String loadSprite(int idElement) {
+	public String loadSprite(int idElement) {
 		String sprite = "";
 		try {
 			final DAOElements daoElements = new DAOElements(DBConnection.getInstance().getConnection());

@@ -1,7 +1,7 @@
 package elements;
 
 public class Sprite {
-	public void Sprite(String nomSprite,String pathSprite) {
+	public Sprite(String pathSprite) {
 
 	}
 }
