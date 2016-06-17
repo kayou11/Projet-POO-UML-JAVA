@@ -20,10 +20,10 @@ public class Lorann extends MotionElements{
 	static Sprite sprite [] = {lorannRight,lorannDownRight, lorannDown,lorannDownLeft,lorannLeft,lorannUpLeft,lorannUp,lorannUpRight};
 	
 	public Lorann() {
-		super(new Position(getPosition().getX(), getPosition().getY()),changeLorann(sens));
+		super(new Position(getPosition().getX(), getPosition().getY()),changeLorann(sens, 0));
 	}
 	
-	public static Sprite changeLorann(int sens) {
+	public static Sprite changeLorann(int sens, int keyCode) {
 
 		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_LEFT){
 			switch (sens) {
@@ -50,7 +50,7 @@ public class Lorann extends MotionElements{
 				
 				case 8:
 					return sprite[8];
-				
+			
 				default:
 				;
 			}
