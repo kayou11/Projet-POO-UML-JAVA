@@ -1,4 +1,4 @@
-package elements;
+package contract;
 
 public enum Permeability {
 	BLOCKING, PENETRABLE, MEETING

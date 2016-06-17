@@ -1,6 +1,7 @@
 package elements;
 
 import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -12,19 +13,17 @@ import model.DBConnection;
 public class Sprite {
 	private Image image;
 	
-	public Sprite(final int idElement) {
+	public Sprite(final String sprites) {
 	
 		try {
-			this.image = (ImageIO.read((getClass().getResource(loadSprite(idElement)))));
+			this.image = ImageIO.read(new File("sprites/" + sprites));
 			
 		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public Sprite() {
-		this(0);
-	}
+	
 	
 	
 	public String loadSprite(int idElement) {
@@ -39,11 +38,7 @@ public class Sprite {
 	}
 	
 	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
+		return this.image;
 	}
 
 }

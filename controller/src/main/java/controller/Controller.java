@@ -83,29 +83,4 @@ public class Controller implements IController {
 				break;
 		}
 	}
-	
-	public void orderPerform(final LevelChoose levelChoose) {
-		switch (levelChoose) {
-			case Level1:
-				this.model.loadLevel(1);
-				break;
-			case Level2:
-				this.model.loadLevel(2);
-				break;
-			case Level3:
-				this.model.loadLevel(3);
-				break;
-			case Level4:
-				this.model.loadLevel(4);
-				break;
-				
-			case Level5:
-				this.model.loadLevel(5);
-				break;
-
-			default:
-				break;
-		}
-	}
-
 }

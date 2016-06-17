@@ -7,7 +7,7 @@ import elements.Sprite;
 public class Monster4 extends Monster{
 
 	public Monster4() {
-		super(new Position(getPosition().getX(), getPosition().getY()),new Sprite(21));
+		super("Monster4",new Sprite("monster_1.png"));
 	}
 	
 

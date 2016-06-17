@@ -4,25 +4,32 @@ import model.Level;
 import model.Model;
 
 import java.sql.SQLException;
+import java.util.Observable;
 
+import contract.IElement;
+import contract.ILorannWorld;
+import contract.IModel;
+import contract.ISprite;
+import contract.Permeability;
 import model.DAOElements;
 import model.DBConnection;
 import model.Entity;
 
-public class Elements extends Entity{
+public class Elements extends Observable implements IElement{
 	
-	private Sprite sprite;
+	private ILorannWorld lorannWorld;
+	private ISprite sprite;
 	private Permeability permeability;
-	private Model model;
 	private static Position position;
 	private int idElement;
 	private String name;
 	private String pathElement;
 
-	public Elements(Position position, Sprite sprite, Permeability permeability) {
+	public Elements(String name, Sprite sprite, Permeability permeability) {
 		this.setPathElement(this.pathElement);
 		this.setPermeability(this.permeability);
-		this.setPosition(this.position);
+		this.setName(name);
+		
 	}
 	
 	public Elements(final int idElement, final String Name,final String pathElement){
@@ -35,11 +42,11 @@ public class Elements extends Entity{
 		this(0, "", "");
 	}
 
-	public Sprite getSprite() {
+	public ISprite getSprite() {
 		return this.sprite;
 	}
 
-	public void setSprite(Sprite sprite) {
+	public void setSprite(ISprite sprite) {
 		this.sprite = sprite;
 	}
 
@@ -83,11 +90,11 @@ public class Elements extends Entity{
 		this.pathElement = pathElement;
 	}
 
-	public Model getModel() {
-		return model;
+	public ILorannWorld getLorannWorld() {
+		return lorannWorld;
 	}
 
-	public void setModel(Model model) {
-		this.model = model;
+	public void setLorannWorld(ILorannWorld lorannWorld) {
+		this.lorannWorld = lorannWorld;
 	}
 }

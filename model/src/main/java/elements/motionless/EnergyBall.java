@@ -1,6 +1,6 @@
 package elements.motionless;
 
-import elements.Permeability;
+import contract.Permeability;
 import elements.Position;
 import elements.Sprite;
 
@@ -10,6 +10,6 @@ public class EnergyBall extends MotionlessElement {
 	
 	public EnergyBall(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(14), Permeability.BLOCKING);
+		super("EnergyBall", new Sprite("crystall_ball.png"), Permeability.BLOCKING);
 	}
 }

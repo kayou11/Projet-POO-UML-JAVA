@@ -7,20 +7,20 @@ import elements.Sprite;
 
 public class Lorann extends MotionElements{
 	
-	static Sprite lorannUp = new Sprite(1);
-	static Sprite lorannDown = new Sprite(2);
-	static Sprite lorannRight= new Sprite(3);
-	static Sprite lorannLeft = new Sprite(4);
-	static Sprite lorannUpRight = new Sprite(5);
-	static Sprite lorannUpLeft = new Sprite(7);
-	static Sprite lorannDownRight = new Sprite(6);
-	static Sprite lorannDownLeft = new Sprite(8);
+	static Sprite lorannUp = new Sprite("lorann_u.png");
+	static Sprite lorannDown = new Sprite("lorann_b.png");
+	static Sprite lorannRight= new Sprite("lorann_r.png");
+	static Sprite lorannLeft = new Sprite("lorann_l.png");
+	static Sprite lorannUpRight = new Sprite("lorann_ur.png");
+	static Sprite lorannUpLeft = new Sprite("lorann_ul.png");
+	static Sprite lorannDownRight = new Sprite("lorann_br.png");
+	static Sprite lorannDownLeft = new Sprite("lorann_bl.png");
 	private static int key;
 	
 	static Sprite sprite [] = {lorannRight,lorannDownRight, lorannDown,lorannDownLeft,lorannLeft,lorannUpLeft,lorannUp,lorannUpRight};
 	
 	public Lorann() {
-		super(new Position(getPosition().getX(), getPosition().getY()),changeLorann(sens));
+		super("LorannRight",changeLorann(sens));
 	}
 	
 	public static Sprite changeLorann(int sens) {

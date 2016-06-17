@@ -1,7 +1,7 @@
 package elements.motionless;
 
 import elements.Sprite;
-import elements.Permeability;
+import contract.Permeability;
 import elements.Position;
 
 public class DeathFace extends MotionlessElement {
@@ -9,6 +9,6 @@ public class DeathFace extends MotionlessElement {
 	
 	public DeathFace(){
 		
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(15), Permeability.BLOCKING);
+		super("ClosedDoor", new Sprite("gate_closed.png"), Permeability.BLOCKING);
 	}
 }

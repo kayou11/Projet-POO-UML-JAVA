@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import javax.swing.text.Position;
 
+import contract.ILorannWorld;
 import contract.IModel;
 import elements.motion.IMonster;
 import elements.motion.Lorann;
@@ -19,59 +20,20 @@ import elements.motionless.MotionlessElement;
  */
 public class Model extends Observable implements IModel {
 
-	/** The message. */
-	private int level;
-	private Level map;
-	private Lorann lorann;
-	private IMonster monster;
-	private MotionlessElement elements[][];
+	final DAOLorannWorld daoLorannWorld;
+	private final ILorannWorld lorannWorld;
 
 	/**
 	 * Instantiates a new model.
+	 * @throws SQLException 
 	 */
-	public Model() {
-		this.level = 0;
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getLevel()
-	 */
-	
-	public int getLevel() {
-		return level;
-	}
-	
-	/**
-	 * Sets the level.
-	 *
-	 * @param message
-	 *          the new level
-	 */
-	
-	public void setLevel(int level) {
-		this.level = level;
-		
-	}
-
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#loadLevel(java.lang.String)
-	 */
-	public void loadLevel(final int level) {
-		
-		try {
-			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
-			this.setLevel(daoLevel.find(level).getLevel());
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
+	public Model() throws SQLException {
+		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
+		this.lorannWorld = this.daoLorannWorld.find(1);
 	}
 
 	/*
+	 * 
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IModel#getObservable()
@@ -80,58 +42,8 @@ public class Model extends Observable implements IModel {
 	public Observable getObservable() {
 		return this;
 	}
-	
-	public void addElements(MotionElements elements, int x, int y) {
-		// TODO Auto-generated method stub
-	}
 
-	public void addElements(MotionlessElement elements, int x, int y) {
-		// TODO Auto-generated method stub
-	}
-	
-	public void addLorann(Lorann lorann, int x, int y) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	public void addMonster(Monster monster, int x, int y) {
-		// TODO Auto-generated method stub
-
-	}
-	
-	public MotionlessElement getMotionlessElements(int x, int y) {
-		if ((x < 0) || (y < 0) || (x >= this.getMap().getDimension().getWidth()) || (y >= this.getMap().getDimension().getHeight())) {
-			return null;
-		}
-		return this.elements[x][y];
-	}
-	
-	public void setHero(final Lorann lorann) {
-		this.lorann = lorann;
-		this.setChanged();
-	}
-
-	public void setMonster(final IMonster monster){
-		this.monster = monster;
-		this.setChanged();
-
-	}
-	
-	public void setMobileHasChanged() {
-		this.setChanged();
-		this.notifyObservers();
-	}
-
-	@Override
-	public void notifyObservers() {
-		super.notifyObservers();
-	}
-
-	public Level getMap() {
-		return this.map;
-	}
-
-	public void setMap(Level map) {
-		this.map = map;
+	public ILorannWorld getLorannWorld() {
+		return this.lorannWorld;
 	}
 }

@@ -1,5 +1,6 @@
 package elements.motionless;
 
+import contract.IElement;
 
 public abstract class MotionlessElements {
 	public static final MotionlessElement BONEH = new BoneH();
@@ -12,7 +13,7 @@ public abstract class MotionlessElements {
 	
 	public static MotionlessElement motionlessElements [] = {BONEH, BONEV, DEATHFACE,DOOR,ENERGYBALL,KNEECAP,PURSE};
 	
-	public static MotionlessElement getFromName(final String name) {
+	public static IElement getFromName(final String name) {
 		for (final MotionlessElement motionlessElement : motionlessElements) {
 			if (motionlessElement.toString().equals(name)) {
 				return motionlessElement;
