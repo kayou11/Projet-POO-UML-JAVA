@@ -1,6 +1,6 @@
 package contract;
 
-public interface IMonster {
+public interface IMonster extends IMotionElement{
 
 	public void getAnimate();
 	

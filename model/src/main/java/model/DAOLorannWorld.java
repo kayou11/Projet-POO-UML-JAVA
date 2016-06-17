@@ -46,8 +46,8 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			while (resultSet.next()) {
-				
-				lorannWorld.addElements((IMotionElement) MotionlessElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+				System.out.print(resultSet.getString("NameSprite"));
+				lorannWorld.addElements(MotionlessElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 			}
 			return lorannWorld;
 		} catch (final SQLException e) {

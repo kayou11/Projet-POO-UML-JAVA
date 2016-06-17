@@ -10,6 +10,6 @@ public class EnergyBall extends MotionlessElement {
 	
 	public EnergyBall(){
 		
-		super("EnergyBall", new Sprite("crystall_ball.png"), Permeability.BLOCKING);
+		super("EnergyBall", new Sprite("crystal_ball.png"), Permeability.BLOCKING);
 	}
 }

@@ -1,5 +1,5 @@
 package contract;
 
-public interface ILorann {
+public interface ILorann extends IMotionElement{
 
 }

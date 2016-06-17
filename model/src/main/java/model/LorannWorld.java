@@ -47,12 +47,12 @@ public class LorannWorld extends Observable implements ILorannWorld{
 
 	public void addLorann(ILorann lorann, int x, int y) {
 		setLorann(lorann);
-		this.addElements((IMotionElement) lorann, x, y);
+		this.addElements(lorann, x, y);
 	}
 
 	public void addMonster(IMonster monster, int x, int y) {
 		this.setMonster(monster);
-		this.addElements((IMotionElement) monster, x, y);
+		this.addElements(monster, x, y);
 		
 	}
 
