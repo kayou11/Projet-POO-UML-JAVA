@@ -7,8 +7,9 @@ import elements.Sprite;
 
 public class Monster1 extends Monster {
 
-	public Monster1(Point pos) {
-		super(new Position(getPosition().getX(), getPosition().getY()), new Sprite(20));
+	
+	public Monster1() {
+		super("Monster1",new Sprite("monster_1.png"));
 	}
 
 	public Direction getDirection(Point heroPos) {

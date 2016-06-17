@@ -1,5 +1,6 @@
 package elements.motionless;
 
+import contract.IElement;
 
 public abstract class MotionlessElements {
 	public static final MotionlessElement BONEH = new BoneH();

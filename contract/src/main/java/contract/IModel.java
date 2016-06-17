@@ -9,20 +9,6 @@ import java.util.Observable;
  */
 public interface IModel {
 
-	/**
-	 * Gets the message.
-	 *
-	 * @return the message
-	 */
-	int getLevel();
-
-	/**
-	 * Load the message.
-	 *
-	 * @param key
-	 *          the key
-	 */
-	void loadLevel(int level);
 
 	/**
 	 * Gets the observable.
@@ -31,5 +17,6 @@ public interface IModel {
 	 */
 	Observable getObservable();
 
-	void setMobileHasChanged();
+
+	public ILorannWorld getLorannWorld();
 }

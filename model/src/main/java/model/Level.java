@@ -1,11 +1,14 @@
 package model;
 
+import java.sql.SQLException;
+import java.util.Observable;
+
 /**
  * The Class Level.
  *
  * @author Pierre Kerebel Omer
  */
-public class Level extends Entity implements ILevel {
+public class Level extends Observable implements ILevel {
 
 	/** The id. */
 	private int			id;
@@ -75,6 +78,21 @@ public class Level extends Entity implements ILevel {
 		this.level = level;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see contract.IModel#loadLevel(java.lang.String)
+	 */
+	public void loadLevel(final int level) {
+		
+		try {
+			final DAOLevel daoLevel = new DAOLevel(DBConnection.getInstance().getConnection());
+			this.setLevel(daoLevel.find(level).getLevel());
+		} catch (final SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Dimension getDimension() {
 		// TODO Auto-generated method stub
 		return this.dimension;

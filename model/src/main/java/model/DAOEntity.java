@@ -2,6 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Observable;
 
 import elements.Elements;
 import elements.Sprite;
@@ -14,7 +15,7 @@ import elements.Sprite;
  * @param <E>
  *          the element type
  */
-abstract class DAOEntity<E extends Entity> {
+abstract class DAOEntity<E extends Observable> {
 
 	/** The connection. */
 	private final Connection connection;

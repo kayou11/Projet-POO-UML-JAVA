@@ -11,6 +11,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import contract.ILorannWorld;
 import contract.IModel;
 
 
@@ -42,6 +44,11 @@ public class ViewFrameTest {
 			public int getLevel() {
 				// TODO Auto-generated method stub
 				return 0;
+			}
+
+			public ILorannWorld getLorannWorld() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		});
 		e = new KeyEvent(testFrame,KeyEvent.KEY_PRESSED,System.currentTimeMillis(),0,KeyEvent.VK_E,'e');

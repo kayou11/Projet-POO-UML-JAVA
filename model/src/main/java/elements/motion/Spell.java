@@ -15,8 +15,8 @@ public class Spell extends MotionElements{
 	static Sprite spell [] = {spellGreen, spellBlue, spellPurple, spellRed, spellYellow};
 
 	
-	public Spell(Position position, Sprite sprite) {
-		super(Lorann.position,changeSprite());
+	public Spell() {
+		super("SpellBlue",new Sprite("fireball_1"));
 	}
 	
 	public static Sprite changeSprite(){
@@ -26,7 +26,7 @@ public class Spell extends MotionElements{
 		}
 		return null;
 		
-	}
+
 	
 
 }

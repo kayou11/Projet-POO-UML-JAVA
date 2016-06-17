@@ -3,8 +3,8 @@ package elements.motion;
 import java.awt.Point;
 import java.util.logging.Level;
 
+import contract.Permeability;
 import elements.Elements;
-import elements.Permeability;
 import elements.Position;
 import elements.Sprite;
 
@@ -14,8 +14,8 @@ public class MotionElements extends Elements {
 	private int y;
 	protected static int sens;
 
-	public MotionElements(Position position, Sprite sprite) {
-		super(position, sprite, Permeability.BLOCKING);
+	public MotionElements(String name, Sprite sprite) {
+		super(name, sprite, Permeability.BLOCKING);
 	}
 
 	public Point getPos() {
@@ -45,7 +45,7 @@ public class MotionElements extends Elements {
 	}
 
 	protected boolean isMovePossible(int x, int y) {
-		return getModel().getMotionlessElements(getX(), getY()).getPermeability() != Permeability.BLOCKING;
+		return getLorannWorld().getMotionlessElements(getX(), getY()).getPermeability() != Permeability.BLOCKING;
 	}
 
 	public void moveUp() {
