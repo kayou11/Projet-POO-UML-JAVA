@@ -11,10 +11,10 @@ import model.Entity;
 
 public class Elements extends Entity{
 	
-	private Sprite sprite;
+	protected static Sprite sprite;
 	private Permeability permeability;
 	private Model model;
-	private static Position position;
+	protected static Position position;
 	private int idElement;
 	private String name;
 	private String pathElement;
