@@ -1,5 +1,6 @@
 package elements.motion;
 
+import java.awt.Point;
 import java.util.logging.Level;
 
 import elements.Elements;
@@ -16,6 +17,12 @@ public class MotionElements extends Elements {
 	public MotionElements(Position position, Sprite sprite) {
 		super(position, sprite, Permeability.BLOCKING);
 	}
+
+	public Point getPos() {
+		return this.pos.getLocation();
+	}
+
+	protected Point pos = new Point();
 
 	public int getX() {
 		return this.x;
