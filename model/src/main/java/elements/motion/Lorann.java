@@ -22,7 +22,7 @@ public class Lorann extends MotionElements {
 			lorannUp, lorannUpRight };
 
 	public Lorann() {
-	super("LorannRight",changeLorann(sens));	}
+	super("LorannRight",changeLorann(sens,key));	}
 
 	public void setWin(boolean win) {
 		this.win = win;
