@@ -74,7 +74,8 @@ abstract class DAOEntity<E extends Observable> {
 	 * @param id
 	 *          the id
 	 * @return the e
+	 * @throws Exception 
 	 */
-	public abstract E find(int idElement);
+	public abstract E find(int idElement) throws Exception;
 	
 }

@@ -1,4 +1,4 @@
-package elements;
+package model;
 
 import static org.junit.Assert.*;
 
@@ -8,18 +8,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import contract.IElement;
-import contract.Permeability;
-import elements.motionless.Door;
-import elements.motionless.MotionlessElement;
-
-public class ElementsTest {
-
-	private static IElement elements;
-
+public class DBConnectionTest {
+	private static DBConnection testDB;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		elements = new Door();
 	}
 
 	@AfterClass
@@ -36,7 +28,7 @@ public class ElementsTest {
 
 	@SuppressWarnings("static-access")
 	@Test
-	public void testGetSprite() {
-		assertNotNull(this.elements.getSprite());
+	public void testGetInstance() {
+		assertNotNull(testDB.getInstance());
 	}
 }

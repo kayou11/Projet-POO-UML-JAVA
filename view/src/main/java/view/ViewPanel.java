@@ -83,6 +83,7 @@ class ViewPanel extends JPanel implements Observer {
 			for(int x = 0; x < 22; x++)
 			{
 				if(this.motionlessElements[x][y]!=null) {
+				
 					graphics.drawImage(this.motionlessElements[x][y].getSprite().getImage(), x*32, y*32, null);
 				} else {
 					graphics.setColor(new Color(0,0,0));

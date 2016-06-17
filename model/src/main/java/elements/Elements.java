@@ -1,19 +1,11 @@
 package elements;
 
-import model.Level;
-import model.Model;
-
-import java.sql.SQLException;
 import java.util.Observable;
 
 import contract.IElement;
 import contract.ILorannWorld;
-import contract.IModel;
 import contract.ISprite;
 import contract.Permeability;
-import model.DAOElements;
-import model.DBConnection;
-import model.Entity;
 
 public class Elements extends Observable implements IElement{
 	
@@ -25,22 +17,13 @@ public class Elements extends Observable implements IElement{
 	private String name;
 	private String pathElement;
 
-	public Elements(String name, Sprite sprite, Permeability permeability) {
-		this.setPathElement(this.pathElement);
-		this.setPermeability(this.permeability);
-		this.setName(name);
+	public Elements(String name, ISprite sprite, Permeability permeability) {
+		this.sprite = sprite;
+		this.permeability = permeability;
+		this.name = name;
 		
-	}
-	
-	public Elements(final int idElement, final String Name,final String pathElement){
-		this.setIdElement(idElement);
-		this.setName(Name);
-		this.setPathElement(pathElement);
-	}
-	
-	public Elements(){
-		this(0, "", "");
-	}
+	}	
+
 
 	public ISprite getSprite() {
 		return this.sprite;

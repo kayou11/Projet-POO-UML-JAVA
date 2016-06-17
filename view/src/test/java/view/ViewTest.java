@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import contract.ControllerOrder;
 
-
 public class ViewTest {
 	private View testView;
 	private int key;
@@ -33,11 +32,12 @@ public class ViewTest {
 	public void tearDown() throws Exception {
 	}
 
+	@SuppressWarnings("static-access")
 	@Test
 	public void testKeyCodeToControllerOrder() {
 		
 		key = KeyEvent.VK_UP;
-		assertEquals(ControllerOrder.UP, this.testView.keyCodeToControllerOrder(key).ordinal());
+		assertEquals(ControllerOrder.UP, this.testView.keyCodeToControllerOrder(key));
 	}
 
 }

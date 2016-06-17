@@ -16,19 +16,19 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	private final int height;
 	private Level map;
 	private ILorann lorann;
-	private IElement element[][];
+	private IMotionlessElement element[][];
 	public ArrayList<IMotionElement> motionElements;
 	/**
 	 * Instantiates a new model.
 	 */
-	public LorannWorld(final int width, final int height) {
-		this.element = new IElement[width][height];
+	public LorannWorld(final int width, final int height) throws Exception{
+		this.element = new IMotionlessElement[width][height];
 		this.motionElements = new ArrayList<IMotionElement>();
 		this.width = width;
 		this.height = height;
 	}
 	
-	public LorannWorld () {
+	public LorannWorld ()  throws Exception{
 		this(22, 14);
 	}
 
@@ -41,6 +41,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 	public void addElements(IMotionlessElement motionlessElements, int x, int y) {
+		System.out.println(motionlessElements.getName());
 		this.element[x][y] = motionlessElements;
 		this.setChanged();
 	}
@@ -127,11 +128,11 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		}		
 	}
 
-	public IElement getElement(final int x,final int y) {
+	public IMotionlessElement getElement(final int x,final int y) {
 		return this.element[x][y];
 	}
 
-	public void setElement(IElement element[][]) {
+	public void setElement(IMotionlessElement element[][]) {
 		this.element = element;
 	}
 

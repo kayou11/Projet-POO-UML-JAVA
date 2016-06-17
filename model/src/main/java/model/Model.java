@@ -27,9 +27,10 @@ public class Model extends Observable implements IModel {
 	 * Instantiates a new model.
 	 * @throws SQLException 
 	 */
-	public Model() throws SQLException {
+	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
 		this.lorannWorld = this.daoLorannWorld.find(1);
+
 	}
 
 	/*

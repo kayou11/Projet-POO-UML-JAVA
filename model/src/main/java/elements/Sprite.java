@@ -7,10 +7,11 @@ import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
+import contract.ISprite;
 import model.DAOElements;
 import model.DBConnection;
 
-public class Sprite {
+public class Sprite implements ISprite {
 	private Image image;
 	
 	public Sprite(final String sprites) {

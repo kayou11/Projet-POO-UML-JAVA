@@ -45,7 +45,7 @@ public class DAOElements extends DAOEntity<Elements> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+	/*
 	/*
 	 * (non-Javadoc)
 	 *
@@ -53,8 +53,9 @@ public class DAOElements extends DAOEntity<Elements> {
 	 */
 	@Override
 	public Elements find(final int idElement) {
+		return null;
 
-		Elements elements = new Elements();
+		/*Elements elements = new Elements();
 
 			try {
 				final String sql = "{call SpriteLinkByIdElements(?)}";
@@ -69,7 +70,7 @@ public class DAOElements extends DAOEntity<Elements> {
 			} catch (final SQLException e) {
 				e.printStackTrace();
 			}
-			return null;
+			return null;*/
 		}
 		
 	

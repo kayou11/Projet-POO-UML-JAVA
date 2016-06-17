@@ -1,6 +1,6 @@
-package elements;
+package elements.motionless;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,18 +8,14 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import contract.IElement;
 import contract.Permeability;
-import elements.motionless.Door;
-import elements.motionless.MotionlessElement;
 
-public class ElementsTest {
 
-	private static IElement elements;
-
+public class MotionlessElementTest {
+	private static MotionlessElement testmotionlessElement;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		elements = new Door();
+		testmotionlessElement = new MotionlessElement("",null, Permeability.BLOCKING);
 	}
 
 	@AfterClass
@@ -34,9 +30,9 @@ public class ElementsTest {
 	public void tearDown() throws Exception {
 	}
 
-	@SuppressWarnings("static-access")
 	@Test
-	public void testGetSprite() {
-		assertNotNull(this.elements.getSprite());
+	public void testGetPermeability() {
+		assertEquals(Permeability.BLOCKING, testmotionlessElement.getPermeability());
 	}
+
 }
