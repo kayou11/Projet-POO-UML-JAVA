@@ -18,7 +18,7 @@ import elements.motionless.MotionlessElement;
  *
  * @author Jean-Aymeric Diet
  */
-public class Model extends Observable implements IModel {
+public class Model implements IModel {
 
 	final DAOLorannWorld daoLorannWorld;
 	private final ILorannWorld lorannWorld;
@@ -29,7 +29,7 @@ public class Model extends Observable implements IModel {
 	 */
 	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
-		this.lorannWorld = this.daoLorannWorld.find(4);
+		this.lorannWorld = this.daoLorannWorld.find(1);
 
 	}
 
@@ -39,10 +39,6 @@ public class Model extends Observable implements IModel {
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
-	
-	public Observable getObservable() {
-		return this;
-	}
 
 	public ILorannWorld getLorannWorld() {
 		return this.lorannWorld;

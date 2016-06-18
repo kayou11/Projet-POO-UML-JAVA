@@ -12,8 +12,7 @@ import elements.Sprite;
 
 public class MotionElements extends Elements implements IMotionElement{
 
-	protected int x;
-	protected int y;
+	protected Point position;
 	private Direction direction;
 	private ILorannWorld lorannWorld;
 	protected int saveX;
@@ -23,33 +22,49 @@ public class MotionElements extends Elements implements IMotionElement{
 		super(name, sprite, Permeability.BLOCKING);
 		this.lorannWorld = lorannWorld;
 		this.direction = Direction.NONE;
+		this.position = new Point();
 	}
 
 	public int getX() {
-		return this.x;
+		return this.position.x;
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		if ((x >= 0) && (x < this.getLorannWorld().getWidth())) {
+			this.position.x = x;
+			this.getLorannWorld().setMobileHasChanged();
+		}
 	}
 
+	public Point getPosition() {
+		return this.position;
+	}
+	
 	public int getY() {
-		return this.y;
+		return this.position.y;
 	}
 
 	public void setY(int y) {
-		this.y = y;
+		if ((y >= 0) && (y < this.getLorannWorld().getHeight())) {
+			this.position.y = y;
+			this.getLorannWorld().setMobileHasChanged();
+		}
 	}
 
-	public void setNettleWorld(final ILorannWorld lorannWorld, final int x, final int y) {
+	public void setLorannWorld(final ILorannWorld lorannWorld, final int x, final int y) {
 		super.setLorannWorld(lorannWorld);
 		this.setX(x);
 		this.setY(y);
 	}
 	protected boolean isMovePossible(int x, int y) {
-		//System.out.println(getLorannWorld().getMotionlessElements(getX(), getY()));
-		return this.getLorannWorld().getMotionlessElements(x, y).getPermeability() != Permeability.BLOCKING;
-
+		if (this.lorannWorld.getMotionlessElements(x, y) == null)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public Direction getDirection() {
@@ -75,64 +90,63 @@ public class MotionElements extends Elements implements IMotionElement{
 	public void setSaveY(int saveY) {
 		this.saveY = saveY;
 	}
+	public void moveUp(){
+		System.out.println("moveispossible : " +this.isMovePossible(this.getX(), this.getY()-1));
+
+		if (this.isMovePossible(this.getX(), this.getY()-1)) {
+			this.setY(this.getY() - 1);
+		}
+	}
 	
-	public boolean moveDown(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y++;
-		return this.isMovePossible(this.x, this.y);
+	public void moveRight(){
+		if (this.isMovePossible(this.getX() + 1, this.getY())) {
+			this.setX(this.getX() + 1);
+		}
+	}
+	
+	public void moveDown(){
+		if (this.isMovePossible(this.getX(), this.getY()+1)) {
+			this.setY(this.getY() + 1);
+		}
 	}
 
-	public boolean moveLeft(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.x--;
-		return this.isMovePossible(this.x, this.y);
+	public void moveLeft(){
+		if (this.isMovePossible(this.getX() - 1, this.getY())) {
+			this.setX(this.getX() - 1);
+		}
+	}
+	
+
+	public void moveLeftDown(){
+
+		if (this.isMovePossible(this.getX() - 1, this.getY()+1)) {
+			this.setX(this.getX() - 1);
+			this.setY(this.getY() + 1);
+		}
+	}
+	public void moveLeftUp(){
+
+		if (this.isMovePossible(this.getX() - 1, this.getY() - 1)) {
+			this.setX(this.getX() - 1);
+			this.setY(this.getY() - 1);
+		}
 	}
 
-	public boolean moveLeftDown(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y++;
-		this.x--;
-		return this.isMovePossible(this.x, this.y);
-	}
-	public boolean moveLeftUp(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y--;
-		this.x--;
-		return this.isMovePossible(this.x, this.y);
+
+	public void moveRightDown(){
+
+		if (this.isMovePossible(this.getX() + 1, this.getY()+1)) {
+			this.setX(this.getX() + 1);
+			this.setY(this.getY() + 1);
+		}
 	}
 
-	public boolean moveRight(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.x++;
-		return this.isMovePossible(this.x, this.y);
-	}
+	public void moveRightUp(){
 
-	public boolean moveRightDown(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y++;
-		this.x++;
-		return this.isMovePossible(this.x, this.y);
-	}
-
-	public boolean moveRightUp(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y--;
-		this.x++;
-		return this.isMovePossible(this.x, this.y);
-	}
-
-	public boolean moveUp(){
-		this.saveX = this.x;
-		this.saveY =this.y;
-		this.y--;
-		return this.isMovePossible(this.x, this.y);
+		if (this.isMovePossible(this.getX() + 1, this.getY()-1)) {
+			this.setX(this.getX() + 1);
+			this.setY(this.getY() - 1);
+		}
 	}
 	
 }

@@ -14,7 +14,6 @@ public class Elements extends Observable implements IElement{
 	private Permeability permeability;
 	private int idElement;
 	private String name;
-	private String pathElement;
 
 	public Elements(String name, ISprite sprite, Permeability permeability) {
 		this.sprite = sprite;
@@ -55,14 +54,6 @@ public class Elements extends Observable implements IElement{
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getPathElement() {
-		return pathElement;
-	}
-
-	public void setPathElement(String pathElement) {
-		this.pathElement = pathElement;
 	}
 
 	public ILorannWorld getLorannWorld() {

@@ -24,6 +24,11 @@ public interface ILorannWorld {
 	
 	public ArrayList<IMotionElement> getMotionElements();
 
+	/**
+	 * Gets the observable.
+	 *
+	 * @return the observable
+	 */
 	Observable getObservable();
 
 	public int getWidth();
