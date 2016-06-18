@@ -2,18 +2,20 @@ package elements.motion;
 
 import java.awt.Point;
 
+import contract.ILorannWorld;
 import elements.Position;
 import elements.Sprite;
 
 public class Monster1 extends Monster {
 
 	
-	public Monster1() {
+	public Monster1(ILorannWorld lorannWorld) {
 		super("Monster1",new Sprite("monster_1.png"));
+		setLorannWorld(lorannWorld);
 	}
 
 	public Direction getDirection(Point heroPos) {
-		final Point pos = getPos().getLocation();
+		final Point pos = getPosition().getLocation();
 
 		Direction direction = getDirection(heroPos);
 
@@ -37,5 +39,10 @@ public class Monster1 extends Monster {
 			}
 		}
 		return direction;
+	}
+
+	private Point getPosition() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

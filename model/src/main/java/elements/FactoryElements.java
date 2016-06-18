@@ -1,8 +1,15 @@
 package elements;
 
 import contract.ILorann;
+import contract.ILorannWorld;
+import contract.IMotionElement;
 import contract.IMotionlessElement;
 import elements.motion.Lorann;
+import elements.motion.Monster1;
+import elements.motion.Monster2;
+import elements.motion.Monster3;
+import elements.motion.Monster4;
+import elements.motion.MotionElements;
 import elements.motionless.BoneH;
 import elements.motionless.BoneV;
 import elements.motionless.DeathFace;
@@ -14,6 +21,7 @@ import elements.motionless.Purse;
 import model.LorannWorld;
 
 public abstract class FactoryElements {
+	static ILorannWorld lorannWorld;
 	public static final MotionlessElement BONEH = new BoneH();
 	public static final MotionlessElement BONEV = new BoneV();
 	public static final MotionlessElement DEATHFACE = new DeathFace();
@@ -24,8 +32,13 @@ public abstract class FactoryElements {
 	
 	public static MotionlessElement motionlessElements [] = {BONEH, BONEV, DEATHFACE,DOOR,ENERGYBALL,KNEECAP,PURSE};
 	
-	
-	
+	public static final MotionElements MONSTER1 = new Monster1(lorannWorld);
+	public static final MotionElements MONSTER2 = new Monster2(lorannWorld);
+	public static final MotionElements MONSTER3 = new Monster3(lorannWorld);
+	public static final MotionElements MONSTER4 = new Monster4(lorannWorld);
+
+	public static MotionElements motionElements [] = {MONSTER1, MONSTER2, MONSTER3,MONSTER4};
+
 	public static IMotionlessElement getFromName(final String name) {
 		for (MotionlessElement motionlessElement : motionlessElements) {
 			if (motionlessElement.getName().equals(name)) {
@@ -41,6 +54,17 @@ public abstract class FactoryElements {
 		ILorann lorann = new Lorann(lorannWorld);
 		if(lorann.getName().equals(name)) {
 			return lorann;
+		}
+		return null;
+	}
+	
+	
+	
+	public static IMotionElement getFromNameMotion(final String name) {
+		for (MotionElements motionElement : motionElements) {
+			if (motionElement.getName().equals(name)) {
+				return motionElement;
+			}
 		}
 		return null;
 	}

@@ -3,6 +3,7 @@ package elements.motion;
 import java.awt.Point;
 import java.util.logging.Level;
 
+import contract.ILorannWorld;
 import contract.IMotionElement;
 import contract.Permeability;
 import elements.Elements;
@@ -13,16 +14,10 @@ public class MotionElements extends Elements implements IMotionElement{
 	private int x;
 	private int y;
 	protected static int sens;
-
+	
 	public MotionElements(String name, Sprite sprite) {
 		super(name, sprite, Permeability.BLOCKING);
 	}
-
-	public Point getPos() {
-		return this.pos.getLocation();
-	}
-
-	protected Point pos = new Point();
 
 	public int getX() {
 		return this.x;
@@ -40,13 +35,14 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.y = y;
 	}
 
-	public void setLevel(Level level, int x, int y) {
-
+	public void setNettleWorld(final ILorannWorld lorannWorld, final int x, final int y) {
+		super.setLorannWorld(lorannWorld);
+		this.setX(x);
+		this.setY(y);
 	}
-
 	protected boolean isMovePossible(int x, int y) {
-		System.out.println(getLorannWorld());
-		return getLorannWorld().getMotionlessElements(getX(), getY()).getPermeability() != Permeability.BLOCKING;
+		System.out.println(getLorannWorld().getMotionlessElements(getX(), getY()));
+		return this.getLorannWorld().getMotionlessElements(x, y).getPermeability() != Permeability.BLOCKING;
 	}
 
 	public void moveUp() {

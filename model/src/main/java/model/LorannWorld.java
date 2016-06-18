@@ -42,8 +42,12 @@ public class LorannWorld extends Observable implements ILorannWorld{
 
 	public void addElements(IMotionlessElement motionlessElements, int x, int y) {
 		this.element[x][y] = motionlessElements;
+		if(motionlessElements != null){
+			motionlessElements.setLorannWorld(this);
+		}
 		this.setChanged();
 	}
+
 
 	public void addLorann(ILorann lorann, int x, int y) {
 		setLorann(lorann);
