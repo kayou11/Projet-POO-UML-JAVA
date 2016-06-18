@@ -41,7 +41,7 @@ public class Monster1 extends Monster {
 		return direction;
 	}
 
-	private Point getPosition() {
+	public Point getPosition() {
 		// TODO Auto-generated method stub
 		return null;
 	}

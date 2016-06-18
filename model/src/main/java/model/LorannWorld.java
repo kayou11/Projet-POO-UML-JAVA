@@ -11,15 +11,16 @@ import contract.IMotionElement;
 import contract.IMotionlessElement;
 
 public class LorannWorld extends Observable implements ILorannWorld{
-	/** The message. */
+	
 	private final int width;
 	private final int height;
 	private Level map;
 	private ILorann lorann;
 	private IMotionlessElement element[][];
 	public ArrayList<IMotionElement> motionElements;
+	
 	/**
-	 * Instantiates a new model.
+	 * Instantiates a new LorannWorld.
 	 */
 	public LorannWorld(final int width, final int height) {
 		this.element = new IMotionlessElement[width][height];
@@ -34,10 +35,10 @@ public class LorannWorld extends Observable implements ILorannWorld{
 
 
 	public void addElements(IMotionElement motionElements, int x, int y) {
-		motionElements.setX(x);
-		motionElements.setY(y);
 		this.motionElements.add(motionElements);
-		this.setChanged();		
+		motionElements.setLorannWorld(this, x, y);
+		this.setChanged();
+		this.notifyObservers();
 	}
 
 	public void addElements(IMotionlessElement motionlessElements, int x, int y) {
@@ -107,6 +108,21 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.map = map;
 	}
 
+	public IMotionlessElement getMotionlessElements(int x, int y) {
+		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
+			return null;
+		}
+		return this.element[x][y];
+	}
+
+	public int getWidth() {
+		return this.width;
+	}
+
+	public int getHeight() {
+		return this.height;
+	}
+
 	public void play() {
 		for(;;)
 		{
@@ -123,30 +139,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			}*/
 		}
 
-	}
-
-	public IMotionlessElement getElement(final int x,final int y) {
-		return this.element[x][y];
-	}
-
-	public void setElement(IMotionlessElement element[][]) {
-		this.element = element;
-	}
-
-
-	public IMotionlessElement getMotionlessElements(int x, int y) {
-		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
-			return null;
-		}
-		return this.element[x][y];
-	}
-
-	public int getWidth() {
-		return this.width;
-	}
-
-	public int getHeight() {
-		return this.height;
 	}
 
 }

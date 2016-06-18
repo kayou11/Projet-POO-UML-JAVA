@@ -24,18 +24,6 @@ public class Sprite implements ISprite {
 		}
 	}
 	
-	
-	public String loadSprite(int idElement) {
-		String sprite = "";
-		try {
-			final DAOElements daoElements = new DAOElements(DBConnection.getInstance().getConnection());
-			sprite = daoElements.find(idElement).getPathElement();
-		} catch (final SQLException e) {
-			e.printStackTrace();
-		}
-		return sprite;
-	}
-	
 	public Image getImage() {
 		return this.image;
 	}

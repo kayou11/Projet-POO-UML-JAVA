@@ -9,12 +9,5 @@ import java.util.Observable;
  */
 public interface IModel {
 
-
-	/**
-	 * Gets the observable.
-	 *
-	 * @return the observable
-	 */
-	Observable getObservable();
 	public ILorannWorld getLorannWorld();
 }

@@ -20,10 +20,11 @@ class ViewPanel extends JPanel implements Observer {
 
 	/** The view frame. */
 	private ViewFrame					viewFrame;
-	private final ArrayList<? extends IMotionElement> motionElements;
-	private final IElement motionlessElements[][];
-	private final int width;
-	private final int height;
+	private final ArrayList<? extends 	IMotionElement> motionElements;
+	private final IElement 				motionlessElements[][];
+	private final int 					width;
+	private final int 					height;
+	
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -998294702363713521L;
 
@@ -37,7 +38,7 @@ class ViewPanel extends JPanel implements Observer {
 		this.setViewFrame(viewFrame);
 		this.motionElements = motionElements;
 		this.motionlessElements = motionlessElements;
-		viewFrame.getModel().getObservable().addObserver(this);
+		viewFrame.getModel().getLorannWorld().getObservable().addObserver(this);
 		this.width = width;
 		this.height = height;
 	}
@@ -91,9 +92,9 @@ class ViewPanel extends JPanel implements Observer {
 				}
 			}
 		}
-		for(final IMotionElement h : this.motionElements)
+		for(final IMotionElement motionElement : this.motionElements)
 		{
-			graphics.drawImage(h.getSprite().getImage(), h.getX()*32, h.getY()*32, null);
+			graphics.drawImage(motionElement.getSprite().getImage(), motionElement.getX()*32, motionElement.getY()*32, null);
 		}
 	}
 }
