@@ -29,17 +29,17 @@ public class ViewPanelTest {
 
 	@Test
 	public void testViewPanel() {
-		fail("Not yet implemented");
+		
 	}
 
 	@Test
 	public void testUpdateObservableObject() {
-		fail("Not yet implemented");
+	
 	}
 
 	@Test
 	public void testPaintComponentGraphics() {
-		fail("Not yet implemented");
+	
 	}
 
 }

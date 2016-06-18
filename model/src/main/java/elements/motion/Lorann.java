@@ -2,10 +2,10 @@ package elements.motion;
 
 import java.awt.event.KeyEvent;
 
-import elements.Position;
+import contract.ILorann;
 import elements.Sprite;
 
-public class Lorann extends MotionElements {
+public class Lorann extends MotionElements implements ILorann{
 
 	static Sprite lorannUp = new Sprite("lorann_u.png");
 	static Sprite lorannDown = new Sprite("lorann_b.png");
@@ -18,12 +18,17 @@ public class Lorann extends MotionElements {
 	private static int key;
 	public boolean win = false;
 
-	static Sprite sprite[] = { lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
+	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
 
-	public Lorann() {
-	super("LorannRight",changeLorann(sens,key));	}
+	/*public Lorann() {
+	super("LorannRight",changeLorann(sens,key));	
+	}*/
 
+	public Lorann() {
+	super("LorannRight", lorannRight);	
+	}
+	
 	public void setWin(boolean win) {
 		this.win = win;
 	}

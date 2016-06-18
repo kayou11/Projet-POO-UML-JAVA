@@ -17,7 +17,6 @@ public class Sprite implements ISprite {
 	public Sprite(final String sprites) {
 	
 		try {
-			System.out.println("sprites/" + sprites);
 			this.image = ImageIO.read(new File("sprites/" + sprites));
 			
 		} catch (final IOException e) {

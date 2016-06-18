@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import elements.FactoryElements;
 
 import java.sql.CallableStatement;
-
-import elements.motionless.MotionlessElements;
 
 public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 
@@ -35,7 +34,7 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 	}
 
 	@Override
-	public LorannWorld find(int level) throws Exception{
+	public LorannWorld find(int level){
 		
 		final LorannWorld lorannWorld = new LorannWorld();
 		try {
@@ -45,9 +44,16 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			while (resultSet.next()) {
-				if(MotionlessElements.getFromName(resultSet.getString("NameSprite")) != null) {
-					lorannWorld.addElements(MotionlessElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+				//System.out.println(resultSet.getString("NameSprite") +" : "+ resultSet.getInt("PositionX") +" : "+resultSet.getInt("PositionY"));
+				if(FactoryElements.getFromName(resultSet.getString("NameSprite")) != null) {
+					
+					lorannWorld.addElements(FactoryElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 				}
+				else if(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite")) != null) {
+					
+					lorannWorld.addElements(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+				}
+				
 			}
 			return lorannWorld;
 		} catch (final SQLException e) {
@@ -55,5 +61,6 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 		}
 		return null;
 	}
+	
 
 }

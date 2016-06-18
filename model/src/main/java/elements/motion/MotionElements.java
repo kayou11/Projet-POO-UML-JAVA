@@ -3,12 +3,12 @@ package elements.motion;
 import java.awt.Point;
 import java.util.logging.Level;
 
+import contract.IMotionElement;
 import contract.Permeability;
 import elements.Elements;
-import elements.Position;
 import elements.Sprite;
 
-public class MotionElements extends Elements {
+public class MotionElements extends Elements implements IMotionElement{
 
 	private int x;
 	private int y;
@@ -28,7 +28,7 @@ public class MotionElements extends Elements {
 		return this.x;
 	}
 
-	protected void setX(int x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
@@ -36,7 +36,7 @@ public class MotionElements extends Elements {
 		return this.y;
 	}
 
-	protected void setY(int y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 

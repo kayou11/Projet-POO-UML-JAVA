@@ -21,14 +21,14 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	/**
 	 * Instantiates a new model.
 	 */
-	public LorannWorld(final int width, final int height) throws Exception{
+	public LorannWorld(final int width, final int height) {
 		this.element = new IMotionlessElement[width][height];
 		this.motionElements = new ArrayList<IMotionElement>();
 		this.width = width;
 		this.height = height;
 	}
 	
-	public LorannWorld ()  throws Exception{
+	public LorannWorld () {
 		this(22, 14);
 	}
 

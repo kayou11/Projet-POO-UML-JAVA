@@ -12,7 +12,6 @@ public class Elements extends Observable implements IElement{
 	private ILorannWorld lorannWorld;
 	private ISprite sprite;
 	private Permeability permeability;
-	protected static Position position;
 	private int idElement;
 	private String name;
 	private String pathElement;
@@ -41,13 +40,6 @@ public class Elements extends Observable implements IElement{
 		this.permeability = permeability;
 	}
 
-	public static Position getPosition() {
-		return position;
-	}
-
-	public void setPosition(Position position) {
-		this.position = position;
-	}
 
 	public int getIdElement() {
 		return idElement;
