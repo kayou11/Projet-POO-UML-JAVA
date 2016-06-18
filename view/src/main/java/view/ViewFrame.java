@@ -20,7 +20,7 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The model. */
 	private IModel						model;
-
+	
 	/** The controller. */
 	private IController				controller;
 	/** The Constant serialVersionUID. */
@@ -37,8 +37,9 @@ class ViewFrame extends JFrame implements KeyListener {
 	 * @throws HeadlessException
 	 *           the headless exception
 	 */
-	public ViewFrame(final IModel model) throws HeadlessException {
+	public ViewFrame(final IModel model,final IController controller) throws HeadlessException {
 		this.buildViewFrame(model);
+		this.controller = controller;
 	}
 
 	/**

@@ -32,4 +32,6 @@ public interface ILorannWorld {
 	public int getHeight();
 
 	public IElement getMotionlessElements(int x, int y);
+	
+	public ILorann getLorann();
 }

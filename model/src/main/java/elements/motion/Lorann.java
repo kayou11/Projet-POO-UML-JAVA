@@ -2,6 +2,7 @@ package elements.motion;
 
 import java.awt.event.KeyEvent;
 
+import contract.ControllerOrder;
 import contract.ILorann;
 import elements.Sprite;
 
@@ -15,7 +16,7 @@ public class Lorann extends MotionElements implements ILorann{
 	static Sprite lorannUpLeft = new Sprite("lorann_ul.png");
 	static Sprite lorannDownRight = new Sprite("lorann_br.png");
 	static Sprite lorannDownLeft = new Sprite("lorann_bl.png");
-	private static int key;
+	private int keyCode;
 	public boolean win = false;
 
 	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
@@ -40,7 +41,7 @@ public class Lorann extends MotionElements implements ILorann{
 
 	public static Sprite changeLorann(int sens, int keyCode) {
 
-		if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN || key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_LEFT) {
+		if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
 			switch (sens) {
 			case 1:
 				return sprite[1];
@@ -75,5 +76,79 @@ public class Lorann extends MotionElements implements ILorann{
 			}
 		}
 		return null;
+	}
+	
+
+	public void moveUp() {
+		if (isMovePossible(getX(), getY() - 1)) {
+			setY(getY() - 1);
+		}
+		sens = 7;
+	}
+
+	public void moveLeft() {
+		if (isMovePossible(getX() - 1, getY())) {
+			setX(getX() - 1);
+		}
+		sens = 5;
+	}
+
+	public void moveDown() {
+		if (isMovePossible(getX(), getY() + 1)) {
+			setY(getY() + 1);
+		}
+		sens = 3;
+	}
+
+	public void moveRight() {
+		if (isMovePossible(getX() + 1, getY())) {
+			setX(getX() + 1);
+		}
+		sens = 1;
+	}
+
+	public void moveUpRight() {
+		if (isMovePossible(getX() + 1, getY() - 1)) {
+			setX(getX() + 1);
+			setY(getY() - 1);
+		}
+		sens = 8;
+	}
+
+	public void moveUpLeft() {
+		if (isMovePossible(getX() - 1, getY() - 1)) {
+			setX(getX() - 1);
+			setY(getY() - 1);
+		}
+		sens = 6;
+	}
+
+	public void moveDownRight() {
+		if (isMovePossible(getX() + 1, getY() + 1)) {
+			setX(getX() + 1);
+			setY(getY() + 1);
+		}
+		sens = 2;
+	}
+
+	public void moveDownLeft() {
+		if (isMovePossible(getX() - 1, getY() + 1)) {
+			setX(getX() - 1);
+			setY(getY() + 1);
+		}
+		sens = 4;
+	}
+
+
+
+
+	public void setKeyCode(final int keyCode){
+		this.keyCode = keyCode;
+	}
+
+	public void animate() {
+		if((this.keyCode == KeyEvent.VK_UP) || (this.keyCode == KeyEvent.VK_DOWN) || (this.keyCode == KeyEvent.VK_RIGHT) || (this.keyCode == KeyEvent.VK_LEFT)){
+
+		}		
 	}
 }

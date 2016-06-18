@@ -112,20 +112,21 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 	public void play() {
-		try {
-			Thread.sleep(1000);
-		} catch (final InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.element[0][3] = null;
-		this.setChanged();
-		this.notifyObservers();
 		for(;;)
 		{
-			//
-			//
-		}		
+			this.setChanged();
+			this.notifyObservers();
+			try {
+				Thread.sleep(125);
+			} catch (final InterruptedException e) {
+				e.printStackTrace();
+			}
+			/*for(final IMobile mobile : this.motionElements)
+			{
+				mobile.getStrategy().animate(mobile, this);
+			}*/
+		}
+
 	}
 
 	public IMotionlessElement getElement(final int x,final int y) {

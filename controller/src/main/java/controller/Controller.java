@@ -29,6 +29,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
+		this.model.getLorannWorld().play();
 	}
 
 	/*
@@ -68,16 +69,16 @@ public class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case UP:
-			
+				this.model.getLorannWorld().getLorann().moveUp();
 				break;
 			case DOWN:
-			
+				this.model.getLorannWorld().getLorann().moveDown();
 				break;
 			case LEFT:
-			
+				this.model.getLorannWorld().getLorann().moveRight();
 				break;
 			case RIGHT:
-		
+				this.model.getLorannWorld().getLorann().moveLeft();
 				break;
 			default:
 				break;
