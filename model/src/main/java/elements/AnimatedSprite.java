@@ -2,13 +2,10 @@ package elements;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 
-/**
- *@author Marie
- * 
- * switch sprites to make an animation
- */
+
 public class AnimatedSprite extends Sprite {
 	/**
 	 * make a list of sprite for an object that will appear on screen
@@ -29,12 +26,13 @@ public class AnimatedSprite extends Sprite {
         super(defaultImage);
         this.images = new Image[images.length];
         for(int i = 0; i<images.length; i++){
-            try {
-                this.images[i] = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(images[i]));
-            } catch (IOException e) {
-                System.err.println("Can't load "+images[i]);
-                e.printStackTrace();
-            }
+    		try {
+    			this.images[i] = ImageIO.read(new File("sprites/" + images));
+    			
+    		} catch (final IOException e) {
+                System.err.println("Can't load " + images[i]);
+    			e.printStackTrace();
+    		}
         }
         this.step = 0;
     }

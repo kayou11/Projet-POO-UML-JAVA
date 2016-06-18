@@ -1,10 +1,8 @@
 package elements;
 
 import contract.ILorann;
-import contract.ILorannWorld;
 import contract.IMotionlessElement;
 import elements.motion.Lorann;
-import elements.motion.MotionElements;
 import elements.motionless.BoneH;
 import elements.motionless.BoneV;
 import elements.motionless.DeathFace;

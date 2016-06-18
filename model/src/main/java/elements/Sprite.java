@@ -25,8 +25,6 @@ public class Sprite implements ISprite {
 	}
 	
 	
-	
-	
 	public String loadSprite(int idElement) {
 		String sprite = "";
 		try {
