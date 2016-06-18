@@ -24,7 +24,7 @@ public abstract class FactoryElements {
 	public static final MotionlessElement PURSE = new Purse();
 	
 	public static MotionlessElement motionlessElements [] = {BONEH, BONEV, DEATHFACE,DOOR,ENERGYBALL,KNEECAP,PURSE};
-	public static ILorann lorann;
+	
 	
 	
 	public static IMotionlessElement getFromName(final String name) {
@@ -39,9 +39,9 @@ public abstract class FactoryElements {
 	
 	public static ILorann getfromNameLorann(final String name)
 	{
-		System.out.println(lorann.getName());
+		ILorann lorann = new Lorann();
 		if(lorann.getName().equals(name)) {
-			return new Lorann();
+			return lorann;
 		}
 		return null;
 	}

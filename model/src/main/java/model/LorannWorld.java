@@ -29,7 +29,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 	
 	public LorannWorld () {
-		this(22, 14);
+		this(22, 16);
 	}
 
 
