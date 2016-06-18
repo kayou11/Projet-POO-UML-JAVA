@@ -66,7 +66,7 @@ public class Elements extends Observable implements IElement{
 	}
 
 	public ILorannWorld getLorannWorld() {
-		return lorannWorld;
+		return this.lorannWorld;
 	}
 
 	public void setLorannWorld(ILorannWorld lorannWorld) {

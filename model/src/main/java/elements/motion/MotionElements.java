@@ -45,6 +45,7 @@ public class MotionElements extends Elements implements IMotionElement{
 	}
 
 	protected boolean isMovePossible(int x, int y) {
+		System.out.println(getLorannWorld());
 		return getLorannWorld().getMotionlessElements(getX(), getY()).getPermeability() != Permeability.BLOCKING;
 	}
 

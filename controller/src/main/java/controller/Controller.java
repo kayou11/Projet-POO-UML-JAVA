@@ -4,7 +4,6 @@ import contract.ControllerOrder;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
-import contract.LevelChoose;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -29,7 +28,6 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		this.model.getLorannWorld().play();
 	}
 
 	/*
@@ -38,7 +36,7 @@ public class Controller implements IController {
 	 * @see contract.IController#control()
 	 */
 	public void control() {
-		this.view.printMessage("Appuyer sur les touches 'E', 'F', 'D' ou 'I', pour afficher Hello world dans la langue d votre choix.");
+		this.model.getLorannWorld().play();
 	}
 
 	/**
@@ -80,6 +78,7 @@ public class Controller implements IController {
 			case RIGHT:
 				this.model.getLorannWorld().getLorann().moveLeft();
 				break;
+			case STAY:
 			default:
 				break;
 		}

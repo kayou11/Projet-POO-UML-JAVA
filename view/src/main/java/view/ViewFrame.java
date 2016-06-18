@@ -4,6 +4,7 @@ import java.awt.GraphicsConfiguration;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.Console;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,7 +21,6 @@ class ViewFrame extends JFrame implements KeyListener {
 
 	/** The model. */
 	private IModel						model;
-	
 	/** The controller. */
 	private IController				controller;
 	/** The Constant serialVersionUID. */
@@ -134,6 +134,7 @@ class ViewFrame extends JFrame implements KeyListener {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.addKeyListener(this);
+		this.setController(this.controller);
 		this.setContentPane(new ViewPanel(this, model.getLorannWorld().getMotionElements(), model.getLorannWorld().getMotionlessElements(), model.getLorannWorld().getWidth()*32, model.getLorannWorld().getHeight()*32));		
 		this.setSize(model.getLorannWorld().getWidth()*32, (model.getLorannWorld().getHeight())*32);
 		this.setLocationRelativeTo(null);
@@ -164,8 +165,9 @@ class ViewFrame extends JFrame implements KeyListener {
 	 *
 	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
 	 */
-	public void keyPressed(final KeyEvent e) {
-		this.getController().orderPerform(View.keyCodeToControllerOrder(e.getKeyCode()));
+	public void keyPressed(final KeyEvent keyEvent) {
+
+		this.getController().orderPerform(View.keyCodeToControllerOrder(keyEvent.getKeyCode()));
 	}
 
 	/*
@@ -176,4 +178,5 @@ class ViewFrame extends JFrame implements KeyListener {
 	public void keyReleased(final KeyEvent e) {
 
 	}
+
 }

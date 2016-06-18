@@ -2,9 +2,10 @@ package elements.motion;
 
 import java.awt.event.KeyEvent;
 
-import contract.ControllerOrder;
 import contract.ILorann;
+import elements.AnimatedSprite;
 import elements.Sprite;
+import model.LorannWorld;
 
 public class Lorann extends MotionElements implements ILorann{
 
@@ -21,14 +22,15 @@ public class Lorann extends MotionElements implements ILorann{
 
 	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
+	
+	public Lorann(LorannWorld lorannWorld) {
+	super("LorannRight",lorannRight);
+	this.setLorannWorld(lorannWorld);
+	}
 
 	/*public Lorann() {
-	super("LorannRight",changeLorann(sens,key));	
+	super("LorannRight", new AnimatedSprite("lorann_r.png", sprite));	
 	}*/
-
-	public Lorann() {
-	super("LorannRight", lorannRight);	
-	}
 	
 	public void setWin(boolean win) {
 		this.win = win;
@@ -39,45 +41,6 @@ public class Lorann extends MotionElements implements ILorann{
 		
 	}
 
-	public static Sprite changeLorann(int sens, int keyCode) {
-
-		if (keyCode == KeyEvent.VK_UP || keyCode == KeyEvent.VK_DOWN || keyCode == KeyEvent.VK_RIGHT || keyCode == KeyEvent.VK_LEFT) {
-			switch (sens) {
-			case 1:
-				return sprite[1];
-
-			case 2:
-				return sprite[2];
-
-			case 3:
-				return sprite[3];
-
-			case 4:
-				return sprite[4];
-
-			case 5:
-				return sprite[5];
-
-			case 6:
-				return sprite[6];
-
-			case 7:
-				return sprite[7];
-
-			case 8:
-				return sprite[8];
-
-			default:
-				;
-			}
-		} else {
-			for (int i = 0; i < sprite.length; i++) {
-				return sprite[i];
-			}
-		}
-		return null;
-	}
-	
 
 	public void moveUp() {
 		if (isMovePossible(getX(), getY() - 1)) {

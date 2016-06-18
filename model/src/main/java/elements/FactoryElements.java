@@ -13,6 +13,7 @@ import elements.motionless.EnergyBall;
 import elements.motionless.Kneecap;
 import elements.motionless.MotionlessElement;
 import elements.motionless.Purse;
+import model.LorannWorld;
 
 public abstract class FactoryElements {
 	public static final MotionlessElement BONEH = new BoneH();
@@ -37,13 +38,12 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
-	public static ILorann getfromNameLorann(final String name)
+	public static ILorann getfromNameLorann(final String name,LorannWorld lorannWorld)
 	{
-		ILorann lorann = new Lorann();
+		ILorann lorann = new Lorann(lorannWorld);
 		if(lorann.getName().equals(name)) {
 			return lorann;
 		}
 		return null;
 	}
-
 }

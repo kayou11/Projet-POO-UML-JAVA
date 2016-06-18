@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import contract.ILorann;
+import contract.IMotionlessElement;
+import elements.Elements;
 import elements.FactoryElements;
+import elements.motion.Lorann;
 
 import java.sql.CallableStatement;
 
@@ -44,14 +48,13 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
 			while (resultSet.next()) {
-				//System.out.println(resultSet.getString("NameSprite") +" : "+ resultSet.getInt("PositionX") +" : "+resultSet.getInt("PositionY"));
 				if(FactoryElements.getFromName(resultSet.getString("NameSprite")) != null) {
-					
+
 					lorannWorld.addElements(FactoryElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 				}
-				else if(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite")) != null) {
+				else if(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld) != null) {
 					
-					lorannWorld.addElements(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+					lorannWorld.addLorann(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 				}
 				
 			}

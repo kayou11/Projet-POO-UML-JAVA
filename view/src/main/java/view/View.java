@@ -18,8 +18,6 @@ public class View implements IView, Runnable {
 
 	/** The frame. */
 	private final ViewFrame viewFrame;
-
-	private IController controller;
 	/**
 	 * Instantiates a new view.
 	 *
@@ -27,7 +25,7 @@ public class View implements IView, Runnable {
 	 *          the model
 	 */
 	public View(final IModel model) {
-		this.viewFrame = new ViewFrame(model, this.controller);
+		this.viewFrame = new ViewFrame(model,"LorannWorld");
 		SwingUtilities.invokeLater(this);
 	}
 
@@ -40,14 +38,24 @@ public class View implements IView, Runnable {
 	 */
 	protected static ControllerOrder keyCodeToControllerOrder(final int keyCode) {
 		switch (keyCode) {
+			case KeyEvent.VK_Z: 
 			case KeyEvent.VK_UP:
-				return ControllerOrder.UP;
+			return ControllerOrder.UP;
+			
+			
+			case KeyEvent.VK_S:
 			case KeyEvent.VK_DOWN:
-				return ControllerOrder.DOWN;
+				return ControllerOrder.UP;
+			
+			
+			case KeyEvent.VK_Q:
 			case KeyEvent.VK_LEFT:
-				return ControllerOrder.LEFT;
+				return ControllerOrder.UP;
+			
+			
+			case KeyEvent.VK_D:
 			case KeyEvent.VK_RIGHT:
-				return ControllerOrder.RIGHT;
+				return ControllerOrder.UP;
 			default:
 				return ControllerOrder.STAY;
 		}
@@ -78,6 +86,9 @@ public class View implements IView, Runnable {
 	 *          the new controller
 	 */
 	public void setController(final IController controller) {
+		System.out.println("setController(controller)");
 		this.viewFrame.setController(controller);
 	}
+	
+	
 }
