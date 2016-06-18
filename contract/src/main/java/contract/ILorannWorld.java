@@ -20,8 +20,6 @@ public interface ILorannWorld {
 	
 	public void addLorann(ILorann lorann, int x, int y);
 	
-	public void addMonster(IMonster monster, int x, int y);
-
 	public IElement[][] getMotionlessElements();
 	
 	public ArrayList<IMotionElement> getMotionElements();

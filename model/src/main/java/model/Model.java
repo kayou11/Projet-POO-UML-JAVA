@@ -29,7 +29,7 @@ public class Model extends Observable implements IModel {
 	 */
 	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
-		this.lorannWorld = this.daoLorannWorld.find(1);
+		this.lorannWorld = this.daoLorannWorld.find(4);
 
 	}
 

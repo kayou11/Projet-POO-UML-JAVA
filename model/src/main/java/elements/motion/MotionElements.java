@@ -3,6 +3,7 @@ package elements.motion;
 import java.awt.Point;
 import java.util.logging.Level;
 
+import contract.Direction;
 import contract.ILorannWorld;
 import contract.IMotionElement;
 import contract.Permeability;
@@ -11,12 +12,17 @@ import elements.Sprite;
 
 public class MotionElements extends Elements implements IMotionElement{
 
-	private int x;
-	private int y;
-	protected static int sens;
+	protected int x;
+	protected int y;
+	private Direction direction;
+	private ILorannWorld lorannWorld;
+	protected int saveX;
+	protected int saveY;
 	
-	public MotionElements(String name, Sprite sprite) {
+	public MotionElements(String name, Sprite sprite,ILorannWorld lorannWorld) {
 		super(name, sprite, Permeability.BLOCKING);
+		this.lorannWorld = lorannWorld;
+		this.direction = Direction.NONE;
 	}
 
 	public int getX() {
@@ -41,68 +47,92 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.setY(y);
 	}
 	protected boolean isMovePossible(int x, int y) {
-		System.out.println(getLorannWorld().getMotionlessElements(getX(), getY()));
+		//System.out.println(getLorannWorld().getMotionlessElements(getX(), getY()));
 		return this.getLorannWorld().getMotionlessElements(x, y).getPermeability() != Permeability.BLOCKING;
+
 	}
 
-	public void moveUp() {
-		if (isMovePossible(getX(), getY() - 1)) {
-			setY(getY() - 1);
-		}
-		sens = 7;
+	public Direction getDirection() {
+		return direction;
 	}
 
-	public void moveLeft() {
-		if (isMovePossible(getX() - 1, getY())) {
-			setX(getX() - 1);
-		}
-		sens = 5;
+	public void setDirection(Direction direction) {
+		this.direction = direction;
 	}
 
-	public void moveDown() {
-		if (isMovePossible(getX(), getY() + 1)) {
-			setY(getY() + 1);
-		}
-		sens = 3;
+	public int getSaveX() {
+		return saveX;
 	}
 
-	public void moveRight() {
-		if (isMovePossible(getX() + 1, getY())) {
-			setX(getX() + 1);
-		}
-		sens = 1;
+	public void setSaveX(int saveX) {
+		this.saveX = saveX;
 	}
 
-	public void moveUpRight() {
-		if (isMovePossible(getX() + 1, getY() - 1)) {
-			setX(getX() + 1);
-			setY(getY() - 1);
-		}
-		sens = 8;
+	public int getSaveY() {
+		return saveY;
 	}
 
-	public void moveUpLeft() {
-		if (isMovePossible(getX() - 1, getY() - 1)) {
-			setX(getX() - 1);
-			setY(getY() - 1);
-		}
-		sens = 6;
+	public void setSaveY(int saveY) {
+		this.saveY = saveY;
+	}
+	
+	public boolean moveDown(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y++;
+		return this.isMovePossible(this.x, this.y);
 	}
 
-	public void moveDownRight() {
-		if (isMovePossible(getX() + 1, getY() + 1)) {
-			setX(getX() + 1);
-			setY(getY() + 1);
-		}
-		sens = 2;
+	public boolean moveLeft(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.x--;
+		return this.isMovePossible(this.x, this.y);
 	}
 
-	public void moveDownLeft() {
-		if (isMovePossible(getX() - 1, getY() + 1)) {
-			setX(getX() - 1);
-			setY(getY() + 1);
-		}
-		sens = 4;
+	public boolean moveLeftDown(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y++;
+		this.x--;
+		return this.isMovePossible(this.x, this.y);
+	}
+	public boolean moveLeftUp(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y--;
+		this.x--;
+		return this.isMovePossible(this.x, this.y);
 	}
 
+	public boolean moveRight(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.x++;
+		return this.isMovePossible(this.x, this.y);
+	}
+
+	public boolean moveRightDown(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y++;
+		this.x++;
+		return this.isMovePossible(this.x, this.y);
+	}
+
+	public boolean moveRightUp(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y--;
+		this.x++;
+		return this.isMovePossible(this.x, this.y);
+	}
+
+	public boolean moveUp(){
+		this.saveX = this.x;
+		this.saveY =this.y;
+		this.y--;
+		return this.isMovePossible(this.x, this.y);
+	}
+	
 }

@@ -1,16 +1,15 @@
 package elements.motion;
 
-public abstract class behaviorGetAnimate implements BehaviorAnimate{
+import contract.BehaviorAnimate;
 
-	private BehaviorAnimate behaviorAnimate;
-	
+public class behaviorGetAnimate {
+
+	BehaviorAnimate BehaviorAnimate;
 	public behaviorGetAnimate(BehaviorAnimate behaviorAnimate){
-		
+		this.BehaviorAnimate = behaviorAnimate;
 	}
 	
-	public void executeAnimate(){
+	public void ExecuteAnimate(){
 		
 	}
-	
-	
 }

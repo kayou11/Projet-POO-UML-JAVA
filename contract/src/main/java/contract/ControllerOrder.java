@@ -11,6 +11,10 @@ public enum ControllerOrder {
  DOWN,
  LEFT,
  RIGHT,
+ UPRIGHT,
+ UPLEFT,
+ DOWNRIGHT,
+ DOWNLEFT,
  STAY,
 	
 }

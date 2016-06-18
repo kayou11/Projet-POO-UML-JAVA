@@ -2,7 +2,9 @@ package elements.motion;
 
 import java.awt.event.KeyEvent;
 
+import contract.Direction;
 import contract.ILorann;
+import contract.IMotionElement;
 import elements.AnimatedSprite;
 import elements.Sprite;
 import model.LorannWorld;
@@ -28,15 +30,17 @@ public class Lorann extends MotionElements implements ILorann{
 	static String lorannDownRight = "lorann_br.png";
 	static String lorannDownLeft = "lorann_bl.png";*/
 	
-	private int keyCode;
 	public boolean win = false;
-
+	public boolean alive;
+	private boolean spell;
+	
 	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
 	
 	public Lorann(LorannWorld lorannWorld) {
-	super("LorannRight",lorannRight);
-	this.setLorannWorld(lorannWorld);
+		super("LorannRight",lorannRight, lorannWorld);
+        this.setSpell(true);
+        this.alive = true;
 	}
 
 	/*public Lorann(LorannWorld lorannWorld) {
@@ -53,77 +57,64 @@ public class Lorann extends MotionElements implements ILorann{
 		
 	}
 
-
-	public void moveUp() {
-		if (isMovePossible(getX(), getY() - 1)) {
-			setY(getY() - 1);
-		}
-		sens = 7;
-	}
-
-	public void moveLeft() {
-		if (isMovePossible(getX() - 1, getY())) {
-			setX(getX() - 1);
-		}
-		sens = 5;
-	}
-
-	public void moveDown() {
-		if (isMovePossible(getX(), getY() + 1)) {
-			setY(getY() + 1);
-		}
-		sens = 3;
-	}
-
-	public void moveRight() {
-		if (isMovePossible(getX() + 1, getY())) {
-			setX(getX() + 1);
-		}
-		sens = 1;
-	}
-
-	public void moveUpRight() {
-		if (isMovePossible(getX() + 1, getY() - 1)) {
-			setX(getX() + 1);
-			setY(getY() - 1);
-		}
-		sens = 8;
-	}
-
-	public void moveUpLeft() {
-		if (isMovePossible(getX() - 1, getY() - 1)) {
-			setX(getX() - 1);
-			setY(getY() - 1);
-		}
-		sens = 6;
-	}
-
-	public void moveDownRight() {
-		if (isMovePossible(getX() + 1, getY() + 1)) {
-			setX(getX() + 1);
-			setY(getY() + 1);
-		}
-		sens = 2;
-	}
-
-	public void moveDownLeft() {
-		if (isMovePossible(getX() - 1, getY() + 1)) {
-			setX(getX() - 1);
-			setY(getY() + 1);
-		}
-		sens = 4;
+	public boolean animate(Direction direction) {
+        if(isAlive())
+            return false;
+        switch (direction){
+            case UP:
+                moveUp();
+                break;
+            case DOWN:
+                moveDown();
+                break;
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+            case UPLEFT:
+                moveLeftUp();
+                break;
+            case UPRIGHT:
+                moveRightUp();
+                break;
+            case DOWNRIGHT:
+                moveRightDown();
+                break;
+            case DOWNLEFT:
+                moveLeftDown();
+                break;
+            default:
+                System.out.println("Invalid direction move");
+                break;
+        }
+        setDirection(direction);
+		return false;
 	}
 
 
-
-
-	public void setKeyCode(final int keyCode){
-		this.keyCode = keyCode;
+    /**
+     * Boolean if hero is alive or not
+     * @return alive
+     */
+	public boolean isAlive() {
+		return this.alive;
 	}
 
-	public void animate() {
-		if((this.keyCode == KeyEvent.VK_UP) || (this.keyCode == KeyEvent.VK_DOWN) || (this.keyCode == KeyEvent.VK_RIGHT) || (this.keyCode == KeyEvent.VK_LEFT)){
-
-		}		
+	/**
+	 * Set alive
+	 */
+	public void setAlive(boolean alive) {
+		this.alive = alive;
 	}
+
+	public boolean isSpell() {
+		return spell;
+	}
+
+	public void setSpell(boolean spell) {
+		this.spell = spell;
+	}
+		
 }

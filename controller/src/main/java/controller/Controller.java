@@ -1,6 +1,7 @@
 package controller;
 
 import contract.ControllerOrder;
+import contract.Direction;
 import contract.IController;
 import contract.IModel;
 import contract.IView;
@@ -67,16 +68,28 @@ public class Controller implements IController {
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		switch (controllerOrder) {
 			case UP:
-				this.model.getLorannWorld().getLorann().moveUp();
+				this.model.getLorannWorld().getLorann().animate(Direction.UP);
 				break;
 			case DOWN:
-				this.model.getLorannWorld().getLorann().moveDown();
+				this.model.getLorannWorld().getLorann().animate(Direction.DOWN);
 				break;
 			case LEFT:
-				this.model.getLorannWorld().getLorann().moveRight();
+				this.model.getLorannWorld().getLorann().animate(Direction.LEFT);
 				break;
 			case RIGHT:
-				this.model.getLorannWorld().getLorann().moveLeft();
+				this.model.getLorannWorld().getLorann().animate(Direction.RIGHT);
+				break;
+			case UPRIGHT:
+				this.model.getLorannWorld().getLorann().animate(Direction.UPRIGHT);
+				break;
+			case DOWNRIGHT:
+				this.model.getLorannWorld().getLorann().animate(Direction.DOWNRIGHT);
+				break;
+			case UPLEFT:
+				this.model.getLorannWorld().getLorann().animate(Direction.UPLEFT);
+				break;
+			case DOWNLEFT:
+				this.model.getLorannWorld().getLorann().animate(Direction.DOWNLEFT);
 				break;
 			case STAY:
 			default:

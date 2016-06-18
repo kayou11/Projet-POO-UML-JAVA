@@ -1,7 +1,9 @@
 package elements.motion;
 
+import contract.ILorannWorld;
 import elements.Position;
 import elements.Sprite;
+import model.LorannWorld;
 
 public class Spell extends MotionElements{
 
@@ -15,8 +17,8 @@ public class Spell extends MotionElements{
 	static Sprite spell [] = {spellGreen, spellBlue, spellPurple, spellRed, spellYellow};
 
 	
-	public Spell() {
-		super("SpellBlue",new Sprite("fireball_1"));
+	public Spell(ILorannWorld lorannWorld) {
+		super("SpellBlue",new Sprite("fireball_1"),lorannWorld);
 	}
 	
 	public static Sprite changeSprite(){

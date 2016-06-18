@@ -54,13 +54,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.addElements(lorann, x, y);
 	}
 
-	public void addMonster(IMonster monster, int x, int y) {
-		this.setMonster(monster);
-		this.addElements(monster, x, y);
-		
-	}
-
-
 	/*
 	 * (non-Javadoc)
 	 *
@@ -141,7 +134,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 
-	public IElement getMotionlessElements(int x, int y) {
+	public IMotionlessElement getMotionlessElements(int x, int y) {
 		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
 			return null;
 		}

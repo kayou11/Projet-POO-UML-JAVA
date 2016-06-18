@@ -2,14 +2,10 @@ package contract;
 
 public interface ILorann extends IMotionElement{
 
-	void animate();
+	boolean animate(Direction direction);
 
-	void moveUp();
+	boolean isAlive();
 
-	void moveDown();
-
-	void moveRight();
-
-	void moveLeft();
+	void setDirection(Direction direction);
 
 }
