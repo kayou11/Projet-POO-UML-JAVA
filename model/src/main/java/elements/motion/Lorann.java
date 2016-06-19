@@ -4,6 +4,8 @@ import java.awt.Point;
 
 import contract.Direction;
 import contract.ILorann;
+import contract.ISpell;
+import contract.Permeability;
 import elements.Sprite;
 import model.LorannWorld;
 
@@ -30,30 +32,30 @@ public class Lorann extends MotionElements implements ILorann{
 	
 	public boolean win = false;
 	public boolean alive;
-	private boolean spell;
 	private Point lastPosition;
+	private ISpell spell;
 	
 	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
 	
 	public Lorann(LorannWorld lorannWorld) {
 		super("LorannRight",lorannRight, lorannWorld);
-        this.setSpell(true);
         this.alive = true;
 		this.lastPosition = new Point();
 		this.lastPosition.setLocation(this.saveX, this.saveY);
+		spell = new Spell(lorannWorld);
 	}
 
 	/*public Lorann(LorannWorld lorannWorld) {
 	super("LorannRight", new AnimatedSprite("lorann_r.png", sprite));
 	this.setLorannWorld(lorannWorld);
 	}*/
-	private void saveLastPosition() {
-		if ((this.lastPosition.getX() != this.getPosition().getX()) || (this.lastPosition.getY() != this.getPosition().getY())) {
-			this.lastPosition.setLocation(this.getPosition().x, this.getPosition().y);
-		}
+	
+	public void addSpell(int x, int y, Direction direction ) {
+		this.getLorannWorld().addElements(getSpell(), x, y);
 	}
 
+	
 	public boolean animate(Direction direction) {
 		System.out.println("alive : "+isAlive());
         if(!isAlive())
@@ -90,54 +92,50 @@ public class Lorann extends MotionElements implements ILorann{
         setDirection(direction);
 		return false;
 	}
-
+	public boolean isSpellPossible(int x, int y) {
+		return super.isMovePossible(x, y);
+	}
+	
 	@Override
 	public void moveUp() {
-		this.saveLastPosition();
 		super.moveUp();
 	}
 
 	@Override
 	public void moveLeft() {
-		this.saveLastPosition();
 		super.moveLeft();
 	}
 
 	@Override
 	public void moveDown() {
-		this.saveLastPosition();
 		super.moveDown();
 	}
 
 	@Override
 	public void moveRight() {
-		this.saveLastPosition();
 		super.moveRight();
 	}
 	
 	@Override
 	public void moveLeftUp() {
-		this.saveLastPosition();
 		super.moveLeftUp();
 	}
 
 	@Override
 	public void moveLeftDown() {
-		this.saveLastPosition();
 		super.moveLeftDown();
 	}
 
 	@Override
 	public void moveRightDown() {
-		this.saveLastPosition();
 		super.moveRightDown();
 	}
 
 	@Override
 	public void moveRightUp() {
-		this.saveLastPosition();
 		super.moveRightUp();
 	}
+	
 	
     /**
      * Boolean if hero is alive or not
@@ -154,13 +152,6 @@ public class Lorann extends MotionElements implements ILorann{
 		this.alive = alive;
 	}
 
-	public boolean isSpell() {
-		return spell;
-	}
-
-	public void setSpell(boolean spell) {
-		this.spell = spell;
-	}
 	
 	public void setWin(boolean win) { 
 		this.win = win;
@@ -169,6 +160,14 @@ public class Lorann extends MotionElements implements ILorann{
 	public boolean getWin() {
 		return this.win;
 		
+	}
+
+	public ISpell getSpell() {
+		return spell;
+	}
+
+	public void setSpell(ISpell spell) {
+		this.spell = spell;
 	}
 		
 }

@@ -16,10 +16,11 @@ public interface ILorann extends IMotionElement{
 	void moveRightDown();
 	void moveLeftDown();
 	void moveLeftUp();
+	boolean isSpellPossible(int x, int y);
 
 	public Direction getDirection();
+	public void addSpell(int x, int y, Direction direction);
+	public ISpell getSpell();
 
-	boolean isSpell();
 
-	void setSpell(boolean spell);
 }

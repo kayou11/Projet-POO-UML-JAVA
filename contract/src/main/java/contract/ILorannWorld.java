@@ -19,9 +19,7 @@ public interface ILorannWorld {
 	public void addElements(IMotionlessElement elements, int x, int y);
 	
 	public void addLorann(ILorann lorann, int x, int y);
-	
-	public void addSpell(ISpell spell, int x, int y, Direction direction );
-	
+		
 	public IElement[][] getMotionlessElements();
 	
 	public ArrayList<IMotionElement> getMotionElements();
@@ -39,10 +37,8 @@ public interface ILorannWorld {
 	
 	public int getHeight();
 
-	public IElement getMotionlessElements(int x, int y);
+	public IMotionlessElement getMotionlessElements(int x, int y);
 	
 	public ILorann getLorann();
-	
-	public ISpell getSpell();
 	
 }

@@ -14,7 +14,7 @@ public class MotionElements extends Elements implements IMotionElement{
 
 	protected Point position;
 	private Direction direction;
-	private ILorannWorld lorannWorld;
+	protected ILorannWorld lorannWorld;
 	protected int saveX;
 	protected int saveY;
 	
@@ -57,7 +57,7 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.setY(y);
 	}
 	protected boolean isMovePossible(int x, int y) {
-		if (this.lorannWorld.getMotionlessElements(x, y) == null)
+		if (this.lorannWorld.getMotionlessElements(x,y) == null)
 		{
 			return true;
 		}
@@ -90,6 +90,17 @@ public class MotionElements extends Elements implements IMotionElement{
 	public void setSaveY(int saveY) {
 		this.saveY = saveY;
 	}
+    /**
+     * Move the entity to a specified position
+     * @param x
+     * The new X position
+     * @param y
+     * The new Y position
+     */
+    public void moveTo(int x, int y){
+        this.getPosition().setLocation(x+1,y+1);
+    }
+    
 	public void moveUp(){
 		System.out.println("moveispossible : " +this.isMovePossible(this.getX(), this.getY()-1));
 

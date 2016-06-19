@@ -4,6 +4,7 @@ import contract.Direction;
 import contract.ILorann;
 import contract.ILorannWorld;
 import contract.ISpell;
+import elements.FactoryElements;
 import elements.Position;
 import elements.Sprite;
 
@@ -19,47 +20,10 @@ public class Spell extends MotionElements implements ISpell {
 	static Sprite spell [] = {spellGreen, spellBlue, spellPurple, spellRed, spellYellow};
 
 	
-	public Spell(ILorannWorld lorannWorld, int x, int y, Direction direction) {
+	public Spell(ILorannWorld lorannWorld) {
 		super("SpellBlue",new Sprite("fireball_1.png"),lorannWorld);
-	}
+	}	
 
-
-	public void animate() {
-		
-        ILorann lorann = getLorannWorld().getLorann();
-        if(!lorann.isAlive()) {
-            return;
-        }
-        if(!lorann.isSpell()) {
-            return;
-        }
-        
-        int spellX = lorann.getX();
-        int spellY = lorann.getY();
-        
-        switch(lorann.getDirection()){
-            case UP:
-                spellY--;
-                break;
-            case DOWN:
-                spellY++;
-                break;
-            case LEFT:
-                spellX--;
-                break;
-            case RIGHT:
-                spellX++;
-                break;
-            default:
-                System.err.println("Not valid direction spell");
-                break;
-        }
-        if(isMovePossible(spellX, spellY)) {
-        	getLorannWorld().addSpell(this, spellX, spellY, lorann.getDirection());
-        lorann.setSpell(false);
-        }
-	}
-	
 	public void spellAttract(int spellX, int spellY, ILorann lorann) {
 		
 		int lorannX = lorann.getX();

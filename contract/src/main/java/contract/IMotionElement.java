@@ -15,5 +15,6 @@ public interface IMotionElement extends IElement {
 	void moveRightDown();
 	void moveLeftDown();
 	void moveLeftUp();
+	void moveTo(int x, int y);
 
 }

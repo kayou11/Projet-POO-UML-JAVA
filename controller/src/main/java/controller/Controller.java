@@ -31,6 +31,7 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
+		HeroAction.init(this.model);
 	}
 
 	/*
@@ -68,6 +69,8 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
+		HeroAction heroAction = HeroAction.getInstance();
+
 		switch (controllerOrder) {
 			case UP:
 				this.model.getLorannWorld().getLorann().animate(Direction.UP);
@@ -94,8 +97,7 @@ public class Controller implements IController {
 				this.model.getLorannWorld().getLorann().animate(Direction.DOWNLEFT);
 				break;
 			case SPELL:
-				System.out.println("spell : "+this.model.getLorannWorld().getSpell());
-				this.model.getLorannWorld().getSpell().animate();
+					heroAction.sendSpell();
 			case STAY:
 			default:
 				break;

@@ -18,31 +18,29 @@ import elements.motion.behaviorGetAnimate;
 
 public class LorannWorld extends Observable implements ILorannWorld{
 	
-	private final int width;
-	private final int height;
+	private final int width = 22;
+	private final int height = 16;
 	private Level map;
 	private ILorann lorann;
 	public ISpell spell;
 
 	private IMonster monster;
-	private IMotionlessElement element[][];
+	private IMotionlessElement[][] element;
+
+
 	public ArrayList<IMotionElement> motionElements;
 	
 	/**
 	 * Instantiates a new LorannWorld.
 	 */
-	public LorannWorld(final int width, final int height) {
-		this.element = new IMotionlessElement[width][height];
+	public LorannWorld() {
+		this.element = new IMotionlessElement[this.getWidth()][this.getHeight()];
 		this.motionElements = new ArrayList<IMotionElement>();
 		setMonster(monster);
-		this.width = width;
-		this.height = height;
 		setSpell(spell);
 	}
 	
-	public LorannWorld () {
-		this(22, 16);
-	}
+
 
 
 	public void addElements(IMotionElement motionElements, int x, int y) {
@@ -53,22 +51,16 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 	public void addElements(IMotionlessElement motionlessElements, int x, int y) {
-		this.element[x][y] = motionlessElements;
+		setMotionlessElements(motionlessElements, x, y);
 		if(motionlessElements != null){
 			motionlessElements.setLorannWorld(this);
 		}
 		this.setChanged();
 	}
 
-
 	public void addLorann(ILorann lorann, int x, int y) {
 		setLorann(lorann);
 		this.addElements(lorann, x, y);
-	}
-
-
-	public void addSpell(ISpell spell, int x, int y, Direction direction ) {
-		this.addElements(new Spell(this, x, y, direction), x, y);
 	}
 
 	/*
@@ -136,10 +128,13 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 	public IMotionlessElement getMotionlessElements(int x, int y) {
-		if ((x < 0) || (y < 0) || (x >= this.getWidth()) || (y >= this.getHeight())) {
-			return null;
-		}
+
+
 		return this.element[x][y];
+	}
+	
+	public void setMotionlessElements(IMotionlessElement element,int x,int y){
+		this.element[x][y] = element;
 	}
 
 	public int getWidth() {

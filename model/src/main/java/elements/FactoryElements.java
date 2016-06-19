@@ -1,5 +1,6 @@
 package elements;
 
+import contract.Direction;
 import contract.ILorann;
 import contract.ILorannWorld;
 import contract.IMotionElement;
@@ -61,7 +62,7 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
-	public static ISpell getfromNameSpell(final String name,LorannWorld lorannWorld)
+	public static ISpell getfromNameSpell(final String name,ILorannWorld lorannWorld)
 	{
 		ISpell spell = new Spell(lorannWorld);
 		if(spell.getName().equals(name)) {

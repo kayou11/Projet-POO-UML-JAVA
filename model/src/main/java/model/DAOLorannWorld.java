@@ -41,24 +41,28 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 	public LorannWorld find(int level){
 		
 		final LorannWorld lorannWorld = new LorannWorld();
+		
 		try {
 			final String sql = "{call findPositionElement(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setInt(1, level);
 			call.execute();
 			final ResultSet resultSet = call.getResultSet();
+
 			while (resultSet.next()) {
+				final int x = resultSet.getInt("PositionX");
+				final int y = resultSet.getInt("PositionY");
 				if(FactoryElements.getFromName(resultSet.getString("NameSprite")) != null) {
 
-					lorannWorld.addElements(FactoryElements.getFromName(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+					lorannWorld.addElements(FactoryElements.getFromName(resultSet.getString("NameSprite")), x,y);
 				}
 				else if(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld) != null) {
 					
-					lorannWorld.addLorann(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+					lorannWorld.addLorann(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld), x, y);
 				}
 			
 				else if(FactoryElements.getFromNameMotion(resultSet.getString("NameSprite")) != null) {
-					lorannWorld.addElements(FactoryElements.getFromNameMotion(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
+					lorannWorld.addElements(FactoryElements.getFromNameMotion(resultSet.getString("NameSprite")), x, y);
 				}
 			}
 			return lorannWorld;
