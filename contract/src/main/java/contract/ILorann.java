@@ -17,4 +17,9 @@ public interface ILorann extends IMotionElement{
 	void moveLeftDown();
 	void moveLeftUp();
 
+	public Direction getDirection();
+
+	boolean isSpell();
+
+	void setSpell(boolean spell);
 }

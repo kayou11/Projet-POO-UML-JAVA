@@ -67,6 +67,4 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 		}
 		return null;
 	}
-	
-
 }
