@@ -1,17 +1,9 @@
 package model;
 
-import java.sql.SQLException;
-import java.util.Observable;
 
-import javax.swing.text.Position;
 
 import contract.ILorannWorld;
 import contract.IModel;
-import elements.motion.IMonster;
-import elements.motion.Lorann;
-import elements.motion.Monster;
-import elements.motion.MotionElements;
-import elements.motionless.MotionlessElement;
 
 /**
  * The Class Model.
@@ -29,7 +21,7 @@ public class Model implements IModel {
 	 */
 	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
-		this.lorannWorld = this.daoLorannWorld.find(1);
+		this.lorannWorld = this.daoLorannWorld.find(2);
 
 	}
 

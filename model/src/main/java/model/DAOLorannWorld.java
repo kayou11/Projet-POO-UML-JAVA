@@ -56,6 +56,7 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 					
 					lorannWorld.addLorann(FactoryElements.getfromNameLorann(resultSet.getString("NameSprite"),lorannWorld), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 				}
+			
 				else if(FactoryElements.getFromNameMotion(resultSet.getString("NameSprite")) != null) {
 					lorannWorld.addElements(FactoryElements.getFromNameMotion(resultSet.getString("NameSprite")), resultSet.getInt("PositionX"), resultSet.getInt("PositionY"));
 				}

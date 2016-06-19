@@ -4,12 +4,14 @@ import contract.ILorann;
 import contract.ILorannWorld;
 import contract.IMotionElement;
 import contract.IMotionlessElement;
+import contract.ISpell;
 import elements.motion.Lorann;
 import elements.motion.Monster1;
 import elements.motion.Monster2;
 import elements.motion.Monster3;
 import elements.motion.Monster4;
 import elements.motion.MotionElements;
+import elements.motion.Spell;
 import elements.motionless.BoneH;
 import elements.motionless.BoneV;
 import elements.motionless.DeathFace;
@@ -22,6 +24,7 @@ import model.LorannWorld;
 
 public abstract class FactoryElements {
 	static ILorannWorld lorannWorld;
+	
 	public static final MotionlessElement BONEH = new BoneH();
 	public static final MotionlessElement BONEV = new BoneV();
 	public static final MotionlessElement DEATHFACE = new DeathFace();
@@ -58,6 +61,14 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
+	public static ISpell getfromNameSpell(final String name,LorannWorld lorannWorld)
+	{
+		ISpell spell = new Spell(lorannWorld);
+		if(spell.getName().equals(name)) {
+			return spell;
+		}
+		return null;
+	}
 	
 	
 	public static IMotionElement getFromNameMotion(final String name) {

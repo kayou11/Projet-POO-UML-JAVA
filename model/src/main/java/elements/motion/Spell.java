@@ -1,11 +1,10 @@
 package elements.motion;
 
 import contract.ILorannWorld;
-import elements.Position;
+import contract.ISpell;
 import elements.Sprite;
-import model.LorannWorld;
 
-public class Spell extends MotionElements{
+public class Spell extends MotionElements implements ISpell{
 
 	static Sprite spellGreen = new Sprite("fireball_1.png");
 	static Sprite spellBlue = new Sprite("fireball_2.png");
@@ -27,6 +26,11 @@ public class Spell extends MotionElements{
 			return spell[i];
 		}
 		return null;
+	}
+
+	public void animate() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

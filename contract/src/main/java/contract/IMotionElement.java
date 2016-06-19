@@ -7,4 +7,13 @@ public interface IMotionElement extends IElement {
 	public void setX(int x);
 	public void setY(int y);
 	public void setLorannWorld(final ILorannWorld lorannWorld, final int x, final int y);
+	void moveUp();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
+	void moveRightUp();
+	void moveRightDown();
+	void moveLeftDown();
+	void moveLeftUp();
+
 }

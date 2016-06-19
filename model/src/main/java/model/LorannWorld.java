@@ -9,6 +9,10 @@ import contract.ILorannWorld;
 import contract.IMonster;
 import contract.IMotionElement;
 import contract.IMotionlessElement;
+import contract.ISpell;
+import elements.motion.Monster;
+import elements.motion.Normal;
+import elements.motion.behaviorGetAnimate;
 
 public class LorannWorld extends Observable implements ILorannWorld{
 	
@@ -16,6 +20,10 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	private final int height;
 	private Level map;
 	private ILorann lorann;
+	public ISpell spell;
+
+
+	private IMonster monster;
 	private IMotionlessElement element[][];
 	public ArrayList<IMotionElement> motionElements;
 	
@@ -25,6 +33,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	public LorannWorld(final int width, final int height) {
 		this.element = new IMotionlessElement[width][height];
 		this.motionElements = new ArrayList<IMotionElement>();
+		setMonster(monster);
 		this.width = width;
 		this.height = height;
 	}
@@ -55,6 +64,14 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.addElements(lorann, x, y);
 	}
 
+
+	public void addSpell(ISpell spell, int x, int y) {
+		setSpell(spell);
+		this.addElements(spell, x, y);
+	}
+
+
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -84,10 +101,21 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.lorann = lorann;
 		this.setChanged();
 	}
+	
+	public ISpell getSpell() {
+		return this.spell;
+	}
 
-	public void setMonster(final IMonster monster){
+	public void setSpell(ISpell spell) {
+		this.spell = spell;
 		this.setChanged();
-
+	}
+	
+	public IMonster getMonster() {
+		return this.monster;
+	}
+	public void setMonster(final IMonster monster){
+		this.monster = monster;
 	}
 	
 	public void setMobileHasChanged() {
@@ -133,10 +161,10 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			} catch (final InterruptedException e) {
 				e.printStackTrace();
 			}
-			/*for(final IMobile mobile : this.motionElements)
-			{
-				mobile.getStrategy().animate(mobile, this);
-			}*/
+			
+			for(final IMotionElement motionElement : this.motionElements){
+
+			}
 		}
 
 	}

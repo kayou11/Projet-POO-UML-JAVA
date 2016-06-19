@@ -93,6 +93,8 @@ public class Controller implements IController {
 			case DOWNLEFT:
 				this.model.getLorannWorld().getLorann().animate(Direction.DOWNLEFT);
 				break;
+			case SPELL:
+				
 			case STAY:
 			default:
 				break;

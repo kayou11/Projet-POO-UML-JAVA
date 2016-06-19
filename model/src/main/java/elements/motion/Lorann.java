@@ -1,12 +1,9 @@
 package elements.motion;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 
 import contract.Direction;
 import contract.ILorann;
-import contract.IMotionElement;
-import elements.AnimatedSprite;
 import elements.Sprite;
 import model.LorannWorld;
 
