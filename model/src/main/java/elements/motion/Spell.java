@@ -4,9 +4,10 @@ import contract.Direction;
 import contract.ILorann;
 import contract.ILorannWorld;
 import contract.ISpell;
+import elements.Position;
 import elements.Sprite;
 
-public class Spell extends MotionElements implements ISpell{
+public class Spell extends MotionElements implements ISpell {
 
 	static Sprite spellGreen = new Sprite("fireball_1.png");
 	static Sprite spellBlue = new Sprite("fireball_2.png");
@@ -24,11 +25,15 @@ public class Spell extends MotionElements implements ISpell{
 
 
 	public void animate() {
+		
         ILorann lorann = getLorannWorld().getLorann();
-        if(!lorann.isAlive())
+        if(!lorann.isAlive()) {
             return;
-        if(!lorann.isSpell())
+        }
+        if(!lorann.isSpell()) {
             return;
+        }
+        
         int spellX = lorann.getX();
         int spellY = lorann.getY();
         
@@ -49,10 +54,75 @@ public class Spell extends MotionElements implements ISpell{
                 System.err.println("Not valid direction spell");
                 break;
         }
-        if(isMovePossible(spellX, spellY))
+        if(isMovePossible(spellX, spellY)) {
         	getLorannWorld().addSpell(this, spellX, spellY, lorann.getDirection());
         lorann.setSpell(false);
-    
+        }
+	}
+	
+	public void spellAttract(int spellX, int spellY, ILorann lorann) {
+		
+		int lorannX = lorann.getX();
+		int lorannY = lorann.getY();
+		int diffX = spellX - lorann.getX();
+		int diffY = spellY - lorann.getY();
+		
+		if(spellX == lorannX && spellY > lorannY) {
+			moveUp();
+		}
+		if(spellX == lorannX && spellY < lorannY) {
+			moveDown();
+		}
+		if(spellX > lorannX && spellY == lorannY) {
+			moveLeft();
+		}
+		if(spellX < lorannX && spellY == lorannY) {
+			moveRight();
+		}
+		if(spellX < lorannX && spellY < lorannY) {
+			if( Math.abs(diffX) < Math.abs(diffY) ) {
+				moveDown();
+			}
+			if( Math.abs(diffX) == Math.abs(diffY) ) {
+				moveRightDown();
+			}
+			if( Math.abs(diffX) > Math.abs(diffY) ) {
+				moveRight();
+			}
+		}
+		if(spellX > lorannX && spellY < lorannY) {
+			if( Math.abs(diffX) < Math.abs(diffY) ) {
+				moveDown();
+			}
+			if( Math.abs(diffX) == Math.abs(diffY) ) {
+				moveLeftDown();
+			}
+			if( Math.abs(diffX) > Math.abs(diffY) ) {
+				moveLeft();
+			}
+		}
+		if(spellX < lorannX && spellY > lorannY) {
+			if( Math.abs(diffX) < Math.abs(diffY) ) {
+				moveUp();
+			}
+			if( Math.abs(diffX) == Math.abs(diffY) ) {
+				moveRightUp();
+			}
+			if( Math.abs(diffX) > Math.abs(diffY) ) {
+				moveRight();
+			}
+		}
+		if(spellX > lorannX && spellY > lorannY) {
+			if( Math.abs(diffX) < Math.abs(diffY) ) {
+				moveUp();
+			}
+			if( Math.abs(diffX) == Math.abs(diffY) ) {
+				moveLeftUp();
+			}
+			if( Math.abs(diffX) > Math.abs(diffY) ) {
+				moveLeft();
+			}
+		}
 	}
 
 }
