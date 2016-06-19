@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import contract.Direction;
 import contract.IElement;
 import contract.ILorann;
 import contract.ILorannWorld;
@@ -12,6 +13,7 @@ import contract.IMotionlessElement;
 import contract.ISpell;
 import elements.motion.Monster;
 import elements.motion.Normal;
+import elements.motion.Spell;
 import elements.motion.behaviorGetAnimate;
 
 public class LorannWorld extends Observable implements ILorannWorld{
@@ -21,7 +23,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	private Level map;
 	private ILorann lorann;
 	public ISpell spell;
-
 
 	private IMonster monster;
 	private IMotionlessElement element[][];
@@ -36,6 +37,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		setMonster(monster);
 		this.width = width;
 		this.height = height;
+		setSpell(spell);
 	}
 	
 	public LorannWorld () {
@@ -65,12 +67,9 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 
-	public void addSpell(ISpell spell, int x, int y) {
-		setSpell(spell);
-		this.addElements(spell, x, y);
+	public void addSpell(ISpell spell, int x, int y, Direction direction ) {
+		this.addElements(new Spell(this, x, y, direction), x, y);
 	}
-
-
 
 	/*
 	 * (non-Javadoc)

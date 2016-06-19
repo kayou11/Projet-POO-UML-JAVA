@@ -94,7 +94,8 @@ public class Controller implements IController {
 				this.model.getLorannWorld().getLorann().animate(Direction.DOWNLEFT);
 				break;
 			case SPELL:
-				
+				System.out.println("spell : "+this.model.getLorannWorld().getSpell());
+				this.model.getLorannWorld().getSpell().animate();
 			case STAY:
 			default:
 				break;
