@@ -7,8 +7,6 @@ import elements.Sprite;
 
 public class EnergyBall extends MotionlessElement {
 
-	
-	
 	public EnergyBall(){
 		super("EnergyBall", new Sprite("crystal_ball.png"), Permeability.BLOCKING);
         this.behaviorElements = BehaviorElements.UNLOCK;

@@ -55,7 +55,7 @@ public abstract class FactoryElements {
 	
 	public static ILorann getfromNameLorann(final String name,LorannWorld lorannWorld)
 	{
-		ILorann lorann = new Lorann(lorannWorld);
+		ILorann lorann = new Lorann(lorannWorld,null);
 		if(lorann.getName().equals(name)) {
 			return lorann;
 		}
@@ -64,7 +64,7 @@ public abstract class FactoryElements {
 	
 	public static ISpell getfromNameSpell(final String name,ILorannWorld lorannWorld)
 	{
-		ISpell spell = new Spell(lorannWorld);
+		ISpell spell = new Spell(lorannWorld,null);
 		if(spell.getName().equals(name)) {
 			return spell;
 		}

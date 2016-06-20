@@ -35,7 +35,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
      */
     private boolean finished;
     
-	private IMonster monster;
 	private IMotionlessElement[][] element;
 
 	private ArrayList<IOtherElements> otherElements;
@@ -48,7 +47,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	public LorannWorld(int id) {
 		this.element = new IMotionlessElement[this.getWidth()][this.getHeight()];
 		this.motionElements = new ArrayList<IMotionElement>();
-		setMonster(monster);
 		setSpell(spell);
 		this.setId(id);
 		this.setFinished(true);
@@ -146,12 +144,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.setChanged();
 	}
 	
-	public IMonster getMonster() {
-		return this.monster;
-	}
-	public void setMonster(final IMonster monster){
-		this.monster = monster;
-	}
+
 	
 	public void setMobileHasChanged() {
 		this.setChanged();
@@ -201,7 +194,8 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			}
 			
 			for(final IMotionElement motionElement : this.motionElements){
-
+				if(motionElement.getBehaviorGetAnimate() != null)
+					motionElement.getBehaviorGetAnimate().animate(motionElement, this);
 			}
 		}
 

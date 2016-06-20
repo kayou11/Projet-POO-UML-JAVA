@@ -3,6 +3,7 @@ package elements.motion;
 import java.awt.Point;
 import java.util.logging.Level;
 
+import contract.BehaviorAnimate;
 import contract.Direction;
 import contract.ILorannWorld;
 import contract.IMotionElement;
@@ -17,14 +18,28 @@ public class MotionElements extends Elements implements IMotionElement{
 	protected ILorannWorld lorannWorld;
 	protected int saveX;
 	protected int saveY;
+	public BehaviorAnimate behaviorAnimate;
+	private Point lastPosition;
 	
-	public MotionElements(String name, Sprite sprite,ILorannWorld lorannWorld) {
+	public MotionElements(String name, Sprite sprite,ILorannWorld lorannWorld,BehaviorAnimate behaviorGetAnimate)  {
 		super(name, sprite, Permeability.BLOCKING);
 		this.lorannWorld = lorannWorld;
 		this.direction = Direction.NONE;
 		this.position = new Point();
+		this.lastPosition = new Point();
+		this.behaviorAnimate= behaviorGetAnimate;
+
 	}
 
+	public BehaviorAnimate getBehaviorGetAnimate() {
+		return behaviorAnimate;
+	}
+
+
+	public void setBehaviorGetAnimate(BehaviorAnimate behaviorAnimate) {
+		this.behaviorAnimate = behaviorAnimate;
+	}
+	
 	public int getX() {
 		return this.position.x;
 	}
@@ -56,13 +71,15 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.setX(x);
 		this.setY(y);
 	}
-	protected boolean isMovePossible(int x, int y) {
-		if (this.lorannWorld.getMotionlessElements(x,y) == null)
+	public boolean isMovePossible(int x, int y) {
+		if (getLorannWorld().getMotionlessElements(x,y) == null)
 		{
 			return true;
 		}
 		else
 		{
+			this.setX((int) lastPosition.getX());
+			this.setY((int) lastPosition.getY());
 			return false;
 		}
 	}
@@ -75,20 +92,10 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.direction = direction;
 	}
 
-	public int getSaveX() {
-		return saveX;
-	}
-
-	public void setSaveX(int saveX) {
-		this.saveX = saveX;
-	}
-
-	public int getSaveY() {
-		return saveY;
-	}
-
-	public void setSaveY(int saveY) {
-		this.saveY = saveY;
+	public void saveLastPosition() {
+		if ((this.lastPosition.getX() != this.getPosition().getX()) || (this.lastPosition.getY() != this.getPosition().getY())) {
+			this.lastPosition.setLocation(this.getPosition().x, this.getPosition().y);
+		}
 	}
     /**
      * Move the entity to a specified position

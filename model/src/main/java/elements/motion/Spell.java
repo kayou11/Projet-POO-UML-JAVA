@@ -1,5 +1,6 @@
 package elements.motion;
 
+import contract.BehaviorAnimate;
 import contract.Direction;
 import contract.ILorann;
 import contract.ILorannWorld;
@@ -20,8 +21,8 @@ public class Spell extends MotionElements implements ISpell {
 	static Sprite spell [] = {spellGreen, spellBlue, spellPurple, spellRed, spellYellow};
 
 	
-	public Spell(ILorannWorld lorannWorld) {
-		super("SpellBlue",new Sprite("fireball_1.png"),lorannWorld);
+	public Spell(ILorannWorld lorannWorld,BehaviorAnimate behaviorAnimate) {
+		super("SpellBlue",new Sprite("fireball_1.png"),lorannWorld,behaviorAnimate);
 	}	
 	
 	public void moveTo(int x,int y){

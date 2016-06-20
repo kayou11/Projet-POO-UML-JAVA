@@ -7,6 +7,6 @@ import elements.Sprite;
 public class Monster2 extends Monster{
 
 	public Monster2(ILorannWorld lorannWorld) {
-		super("Monster2",new Sprite("monster_2.png"),lorannWorld, new behaviorGetAnimate(new Normal()));
+		super("Monster2",new Sprite("monster_2.png"),lorannWorld,new Smart());
 	}	
 }

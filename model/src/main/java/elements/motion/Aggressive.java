@@ -7,6 +7,8 @@ import contract.IMotionElement;
 public class Aggressive implements BehaviorAnimate{
 
 	public void animate(IMotionElement motionElement, ILorannWorld lorannWorld) {
+		motionElement.saveLastPosition();
+
 		if (lorannWorld.getLorann().getX()<motionElement.getX()){
 			motionElement.moveLeft();
 		}

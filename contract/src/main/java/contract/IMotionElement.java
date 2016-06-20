@@ -16,5 +16,7 @@ public interface IMotionElement extends IElement {
 	void moveLeftDown();
 	void moveLeftUp();
 	void moveTo(int x, int y);
-
+	public BehaviorAnimate getBehaviorGetAnimate();
+	boolean isMovePossible(int x, int y);
+	public void saveLastPosition();
 }

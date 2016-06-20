@@ -10,7 +10,8 @@ public class Normal implements BehaviorAnimate{
 	 * @see model.Normal#animate()
 	 */
 	public void animate(IMotionElement motionElement,ILorannWorld lorannWorld) {
-		
+		motionElement.saveLastPosition();
+
 		if (lorannWorld.getLorann().getY()<motionElement.getY() && lorannWorld.getLorann().getX()<motionElement.getX() ){
 			motionElement.moveLeftUp();
 		}

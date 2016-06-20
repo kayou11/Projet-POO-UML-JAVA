@@ -2,6 +2,7 @@ package elements.motion;
 
 import java.awt.Point;
 
+import contract.BehaviorAnimate;
 import contract.Direction;
 import contract.ILorann;
 import contract.ISpell;
@@ -32,18 +33,15 @@ public class Lorann extends MotionElements implements ILorann{
 	
 	public boolean win = false;
 	public boolean alive;
-	private Point lastPosition;
 	private ISpell spell;
 	
 	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
 	
-	public Lorann(LorannWorld lorannWorld) {
-		super("LorannRight",lorannRight, lorannWorld);
+	public Lorann(LorannWorld lorannWorld,BehaviorAnimate behaviorAnimate) {
+		super("LorannRight",lorannRight, lorannWorld,behaviorAnimate);
         this.alive = true;
-		this.lastPosition = new Point();
-		this.lastPosition.setLocation(this.saveX, this.saveY);
-		spell = new Spell(lorannWorld);
+		spell = new Spell(lorannWorld,null);
 	}
 
 	/*public Lorann(LorannWorld lorannWorld) {
@@ -60,6 +58,7 @@ public class Lorann extends MotionElements implements ILorann{
 	
 	public boolean animate(Direction direction) {
 		System.out.println("alive : "+isAlive());
+		this.saveLastPosition();
         if(!isAlive())
             return false;
         switch (direction){

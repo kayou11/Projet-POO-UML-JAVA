@@ -10,7 +10,8 @@ public class Stupid implements BehaviorAnimate{
 	 * @see model.Normal#animate()
 	 */
 	public void animate(IMotionElement motionElement, ILorannWorld lorannWorld) {
-		
+		motionElement.saveLastPosition();
+
 		int diffX = motionElement.getX() - lorannWorld.getLorann().getX();
 		int diffY = motionElement.getY() - lorannWorld.getLorann().getY();
 		

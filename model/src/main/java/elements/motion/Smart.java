@@ -10,21 +10,32 @@ public class Smart implements BehaviorAnimate {
 	 * @see model.Normal#animate()
 	 */
 	public void animate(IMotionElement motionElement, ILorannWorld lorannWorld) {
-		if (lorannWorld.getLorann().getY() < motionElement.getY()) {
-			motionElement.moveUp();
-		}
-		if (lorannWorld.getLorann().getY() > motionElement.getY()) {
-			motionElement.moveDown();
-		}
-		if (lorannWorld.getLorann().getY() == motionElement.getY()) {
-			if (lorannWorld.getLorann().getX() < motionElement.getX()) {
-				motionElement.moveLeft();
-			}
-			if (lorannWorld.getLorann().getY() > motionElement.getY()) {
-				motionElement.moveRight();
+		motionElement.saveLastPosition();
+		if(lorannWorld.getLorann().getY()<motionElement.getY()){
+			motionElement.setY(motionElement.getY()-1);
+			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
 			}
 		}
 
+		if (lorannWorld.getLorann().getX()>motionElement.getX()){
+			motionElement.setX(motionElement.getX()+1);
+			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
+			}
+		}
+
+		if (lorannWorld.getLorann().getY()>motionElement.getY()){
+			motionElement.setY(motionElement.getY()+1);
+			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
+			}
+		}
+
+		if (lorannWorld.getLorann().getX()<motionElement.getX()){
+			motionElement.setX(motionElement.getX()-1);
+			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
+			}
+		}
+
+		motionElement.isMovePossible(motionElement.getX(), motionElement.getY());
 	}
 
 }
