@@ -2,7 +2,9 @@ package elements;
 
 import java.util.Observable;
 
+import contract.BehaviorElements;
 import contract.IElement;
+import contract.ILocation;
 import contract.ILorannWorld;
 import contract.ISprite;
 import contract.Permeability;
@@ -10,6 +12,10 @@ import contract.Permeability;
 public class Elements extends Observable implements IElement{
 	
 	private ILorannWorld lorannWorld;
+	 /** The behavior of the element */
+    protected BehaviorElements behaviorElements;
+    /** The location of the element */
+    protected ILocation location;
 	private ISprite sprite;
 	private Permeability permeability;
 	private int idElement;
@@ -22,7 +28,23 @@ public class Elements extends Observable implements IElement{
 		
 	}	
 
+	public ILocation getLocation() {
+		return location;
+	}
 
+	public void setLocation(ILocation location) {
+		this.location = location;
+	}
+
+	public BehaviorElements getBehaviorElements() {
+		return behaviorElements;
+	}
+
+
+	public void setBehaviorElements(BehaviorElements behaviorElements) {
+		this.behaviorElements = behaviorElements;
+	}
+	
 	public ISprite getSprite() {
 		return this.sprite;
 	}

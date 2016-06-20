@@ -2,6 +2,8 @@ package model;
 
 
 
+import java.util.ArrayList;
+
 import contract.ILorannWorld;
 import contract.IModel;
 
@@ -13,18 +15,29 @@ import contract.IModel;
 public class Model implements IModel {
 
 	final DAOLorannWorld daoLorannWorld;
-	private final ILorannWorld lorannWorld;
-
+	private ILorannWorld lorannWorld;
+	
+	/**
+	 * The IDs of the levels
+	 */
+	private ArrayList<Integer> levelsId;
 	/**
 	 * Instantiates a new model.
 	 * @throws Exception 
 	 */
 	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
-		this.lorannWorld = this.daoLorannWorld.find(2);
+		this.lorannWorld = this.daoLorannWorld.find(1);
 
 	}
-
+	public boolean loadNextLevel(){
+		int lastIndex = this.levelsId.indexOf(this.lorannWorld.getId());
+		if((lastIndex+1) < this.levelsId.size()) {
+			this.lorannWorld = this.daoLorannWorld.find(this.levelsId.get(lastIndex+1));
+			return true;
+		}
+		return false;
+	}
 	/*
 	 * 
 	 * (non-Javadoc)

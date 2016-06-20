@@ -10,4 +10,6 @@ import java.util.Observable;
 public interface IModel {
 
 	public ILorannWorld getLorannWorld();
+
+	public boolean loadNextLevel();
 }

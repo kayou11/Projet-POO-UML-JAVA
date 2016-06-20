@@ -5,6 +5,7 @@ import org.omg.CORBA.SystemException;
 import contract.ControllerOrder;
 import contract.Direction;
 import contract.IController;
+import contract.IElement;
 import contract.IModel;
 import contract.IView;
 
@@ -32,6 +33,7 @@ public class Controller implements IController {
 		this.setView(view);
 		this.setModel(model);
 		HeroAction.init(this.model);
+		ElementsInteractions.init(this.model);
 	}
 
 	/*
@@ -102,5 +104,17 @@ public class Controller implements IController {
 			default:
 				break;
 		}
+		performCollision(this.model.getLorannWorld().getLorann());
+	}
+	
+	/**
+	 * Perform the collision depending of the behavior
+	 */
+	private void performCollision(IElement element){
+		ElementsInteractions elementsInteractions = ElementsInteractions.getInstance();
+		IElement otherElement = elementsInteractions.hasCollision(element);
+		if(otherElement == null)
+			return;
+		elementsInteractions.performCrossedCollision(element,otherElement);
 	}
 }

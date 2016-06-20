@@ -40,5 +40,9 @@ public interface ILorannWorld {
 	public IMotionlessElement getMotionlessElements(int x, int y);
 	
 	public ILorann getLorann();
+	public ArrayList<IOtherElements> getOtherElements();
+	public int getId();
+	public boolean isFinished();
+	public void setFinished(boolean isFinished);
 	
 }

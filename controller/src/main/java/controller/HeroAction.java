@@ -35,30 +35,32 @@ public class HeroAction {
         
         int spellX = lorann.getX();        
         int spellY = lorann.getY();
+        
+	        switch(lorann.getDirection()){
+	            case UP:
+	                spellY--;
 
-        
-        switch(lorann.getDirection()){
-            case UP:
-                spellY--;
-                break;
-            case DOWN:
-                spellY++;
-                break;
-            case LEFT:
-                spellX--;
-                break;
-            case RIGHT:
-                spellX++;
-                break;
-            default:
-                System.err.println("Not valid direction spell");
-                break;
-        }
-        
-        if(lorann.isSpellPossible(spellX, spellY)) {
-        	
-        	lorann.addSpell(spellX, spellY, lorann.getDirection());
-        	lorann.getSpell().getX();
-        }
-    }    
+	                break;
+	            case DOWN:
+	                spellY++;
+
+	                break;
+	            case LEFT:
+	                spellX--;
+
+	                break;
+	            case RIGHT:
+	                spellX++;
+
+	                //lorann.getSpell().moveTo(spellX++, spellY);
+	                break;
+	            default:
+	                System.err.println("Not valid direction spell");
+	                break;
+	        }
+	        if(lorann.isSpellPossible(spellX, spellY)){
+	        	lorann.addSpell(spellX, spellY, lorann.getDirection());
+	
+	        }
+        } 
 }

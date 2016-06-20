@@ -10,6 +10,7 @@ import contract.ILorannWorld;
 import contract.IMonster;
 import contract.IMotionElement;
 import contract.IMotionlessElement;
+import contract.IOtherElements;
 import contract.ISpell;
 import elements.motion.Monster;
 import elements.motion.Normal;
@@ -23,26 +24,37 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	private Level map;
 	private ILorann lorann;
 	public ISpell spell;
-
+	
+    /**
+     * The database ID of the level
+     */
+    private int id;
+    
+    /**
+     * Indicate if the level is finished
+     */
+    private boolean finished;
+    
 	private IMonster monster;
 	private IMotionlessElement[][] element;
 
-
+	private ArrayList<IOtherElements> otherElements;
+	
 	public ArrayList<IMotionElement> motionElements;
 	
 	/**
 	 * Instantiates a new LorannWorld.
 	 */
-	public LorannWorld() {
+	public LorannWorld(int id) {
 		this.element = new IMotionlessElement[this.getWidth()][this.getHeight()];
 		this.motionElements = new ArrayList<IMotionElement>();
 		setMonster(monster);
 		setSpell(spell);
+		this.setId(id);
+		this.setFinished(true);
 	}
 	
-
-
-
+	
 	public void addElements(IMotionElement motionElements, int x, int y) {
 		this.motionElements.add(motionElements);
 		motionElements.setLorannWorld(this, x, y);
@@ -62,7 +74,39 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		setLorann(lorann);
 		this.addElements(lorann, x, y);
 	}
+	
+    /**
+     * Add the IOtherElements
+     * @param otherElements
+     */
+    public void addEntity(IOtherElements otherElements){
+        this.otherElements.add(otherElements);
+    }
 
+    /**
+     * Remove the IOtherElements
+     * @param otherElements
+     */
+    public void removeEntity(IOtherElements otherElements){
+        this.otherElements.remove(otherElements);
+    }
+    /**
+     * Get the otherElements of the lorannWorld
+     * @return
+     * The otherElements
+     */
+	public ArrayList<IOtherElements> getOtherElements() {
+        return otherElements;
+    }
+    
+    /**
+     * Set the otherElements of the lorannWorld
+     * @param entities
+     * The entity
+     */
+    public void setOtherElements(ArrayList<IOtherElements> otherElements) {
+        this.otherElements = otherElements;
+    }
 	/*
 	 * (non-Javadoc)
 	 *
@@ -161,6 +205,24 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			}
 		}
 
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public boolean isFinished() {
+		return finished;
+	}
+
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 }

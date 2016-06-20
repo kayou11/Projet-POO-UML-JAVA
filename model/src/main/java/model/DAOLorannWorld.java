@@ -36,13 +36,22 @@ public class DAOLorannWorld extends DAOEntity<LorannWorld>{
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	public ResultSet findLevel(int id) throws SQLException {
+		final String sql = "{call LevelByIDMap}";
+		final CallableStatement call = this.getConnection().prepareCall(sql);
+		call.setInt(1, id);
+		call.execute();
+		return call.getResultSet();
+	}
+	
 	@Override
 	public LorannWorld find(int level){
 		
-		final LorannWorld lorannWorld = new LorannWorld();
+		final LorannWorld lorannWorld = new LorannWorld(1);
 		
-		try {
+		try {			
+
+			
 			final String sql = "{call findPositionElement(?)}";
 			final CallableStatement call = this.getConnection().prepareCall(sql);
 			call.setInt(1, level);

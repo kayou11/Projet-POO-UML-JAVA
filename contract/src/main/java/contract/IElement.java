@@ -6,4 +6,8 @@ public interface IElement {
 	public Permeability getPermeability();
 	public String getName();
 
+	public BehaviorElements getBehaviorElements();
+
+	public ILocation getLocation();
+
 }

@@ -23,7 +23,11 @@ public class Spell extends MotionElements implements ISpell {
 	public Spell(ILorannWorld lorannWorld) {
 		super("SpellBlue",new Sprite("fireball_1.png"),lorannWorld);
 	}	
-
+	
+	public void moveTo(int x,int y){
+		
+			this.getPosition().setLocation(x, y);
+	}
 	public void spellAttract(int spellX, int spellY, ILorann lorann) {
 		
 		int lorannX = lorann.getX();

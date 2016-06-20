@@ -52,7 +52,9 @@ public class Lorann extends MotionElements implements ILorann{
 	}*/
 	
 	public void addSpell(int x, int y, Direction direction ) {
-		this.getLorannWorld().addElements(getSpell(), x, y);
+        if(isSpellPossible(x, y)) { 
+        	this.getLorannWorld().addElements(getSpell(), x, y);
+        }
 	}
 
 	
