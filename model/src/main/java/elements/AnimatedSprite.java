@@ -1,12 +1,15 @@
 package elements;
 
 import javax.imageio.ImageIO;
+
+import contract.IAnimatedSprites;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
 
-public class AnimatedSprite extends Sprite {
+public class AnimatedSprite extends Sprite implements IAnimatedSprites{
 	/**
 	 * make a list of sprite for an object that will appear on screen
 	 */
@@ -27,7 +30,7 @@ public class AnimatedSprite extends Sprite {
         this.images = new Image[images.length];
         for(int i = 0; i<images.length; i++){
     		try {
-    			this.images[i] = ImageIO.read(new File("sprites/" + images));
+    			this.images[i] = ImageIO.read(new File("sprites/" + images[i]));
     			
     		} catch (final IOException e) {
                 System.err.println("Can't load " + images[i]);

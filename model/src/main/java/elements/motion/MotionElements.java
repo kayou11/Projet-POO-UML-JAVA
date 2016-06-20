@@ -1,8 +1,6 @@
 package elements.motion;
 
 import java.awt.Point;
-import java.util.logging.Level;
-
 import contract.BehaviorAnimate;
 import contract.Direction;
 import contract.ILorannWorld;
@@ -16,8 +14,6 @@ public class MotionElements extends Elements implements IMotionElement{
 	protected Point position;
 	private Direction direction;
 	protected ILorannWorld lorannWorld;
-	protected int saveX;
-	protected int saveY;
 	private BehaviorAnimate behaviorAnimate;
 	private Point lastPosition;
 	
@@ -45,7 +41,7 @@ public class MotionElements extends Elements implements IMotionElement{
 	}
 
 	public void setX(int x) {
-		if ((x >= 0) && (x < this.getLorannWorld().getWidth())) {
+		if ((x >= 0) && (x < 22)) {
 			this.position.x = x;
 			this.getLorannWorld().setMobileHasChanged();
 		}
@@ -60,7 +56,7 @@ public class MotionElements extends Elements implements IMotionElement{
 	}
 
 	public void setY(int y) {
-		if ((y >= 0) && (y < this.getLorannWorld().getHeight())) {
+		if ((y >= 0) && (y < 16)) {
 			this.position.y = y;
 			this.getLorannWorld().setMobileHasChanged();
 		}
@@ -79,8 +75,6 @@ public class MotionElements extends Elements implements IMotionElement{
 			}
 			else
 			{
-				this.setX((int) lastPosition.getX());
-				this.setY((int) lastPosition.getY());
 				return false;
 			}
 		}

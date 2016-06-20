@@ -37,6 +37,7 @@ public abstract class FactoryElements {
 	public static final MotionElements MONSTER2 = new Monster2(lorannWorld);
 	public static final MotionElements MONSTER3 = new Monster3(lorannWorld);
 	public static final MotionElements MONSTER4 = new Monster4(lorannWorld);
+	public static final MotionElements SPELL = new Spell(lorannWorld);
 
 	public static MotionElements motionElements [] = {MONSTER1, MONSTER2, MONSTER3,MONSTER4};
 
@@ -59,9 +60,9 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
-	public static ISpell getfromNameSpell(final String name,ILorannWorld lorannWorld)
+	public static ISpell getfromNameSpell(final String name,LorannWorld lorannWorld)
 	{
-		ISpell spell = new Spell(lorannWorld,null);
+		ISpell spell = new Spell(lorannWorld);
 		if(spell.getName().equals(name)) {
 			return spell;
 		}

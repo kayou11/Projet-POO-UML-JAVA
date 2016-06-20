@@ -12,7 +12,7 @@ public interface ILorann extends IMotionElement{
 	 * @param direction the direction
 	 * @return true, if successful
 	 */
-	boolean animate(Direction direction);
+	boolean animate();
 
 	/**
 	 * Checks if is alive.
@@ -26,7 +26,7 @@ public interface ILorann extends IMotionElement{
 	 *
 	 * @param direction the new direction
 	 */
-	void setDirection(Direction direction);
+	void setDirection(ControllerOrder direction);
 
 	/* (non-Javadoc)
 	 * @see contract.IMotionElement#moveUp()
@@ -67,38 +67,13 @@ public interface ILorann extends IMotionElement{
 	 * @see contract.IMotionElement#moveLeftUp()
 	 */
 	void moveLeftUp();
-	
-	/**
-	 * Checks if is spell possible.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @return true, if is spell possible
-	 */
-	boolean isSpellPossible(int x, int y);
-
 	/**
 	 * Gets the direction.
 	 *
 	 * @return the direction
 	 */
-	public Direction getDirection();
+	public ControllerOrder getOrder();
 	
-	/**
-	 * Adds the spell.
-	 *
-	 * @param x the x
-	 * @param y the y
-	 * @param direction the direction
-	 */
-	public void addSpell(int x, int y, Direction direction);
-	
-	/**
-	 * Gets the spell.
-	 *
-	 * @return the spell
-	 */
-	public ISpell getSpell();
     
     /**
      * Gets the score.
@@ -108,6 +83,5 @@ public interface ILorann extends IMotionElement{
     public Integer getScore();
 
     public void setScore(Integer score);
-
 
 }

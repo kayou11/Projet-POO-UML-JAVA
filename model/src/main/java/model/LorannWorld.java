@@ -3,28 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
-import contract.Direction;
-import contract.IDoor;
+import contract.IAnimatedSprites;
 import contract.IElement;
 import contract.ILorann;
 import contract.ILorannWorld;
-import contract.IMonster;
 import contract.IMotionElement;
 import contract.IMotionlessElement;
 import contract.IOtherElements;
-import contract.ISpell;
-import contract.Permeability;
-import elements.motion.Monster;
-import elements.motion.Normal;
-import elements.motion.Spell;
-import elements.motion.behaviorGetAnimate;
+import elements.FactoryElements;
+
 
 public class LorannWorld extends Observable implements ILorannWorld{
 	
 	private final int width = 22;
 	private final int height = 16;
 	private ILorann lorann;
-	public ISpell spell;
+	private boolean spellLaunched;
+	private boolean attractSpell;
 	
     /**
      * The database ID of the level
@@ -49,7 +44,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.element = new IMotionlessElement[this.getWidth()][this.getHeight()];
 		this.motionElements = new ArrayList<IMotionElement>();
 		this.otherElements = new ArrayList<IOtherElements>();
-		setSpell(spell);
 		this.id = id;
 	}
 	
@@ -70,6 +64,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	}
 
 	public void addLorann(ILorann lorann, int x, int y) {
+		this.addElements(FactoryElements.getfromNameSpell("SpellGreen",this), x, y);
 		setLorann(lorann);
 		this.addElements(lorann, x, y);
 	}
@@ -155,23 +150,9 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.lorann = lorann;
 		this.setChanged();
 	}
-	
-	public ISpell getSpell() {
-		return this.spell;
-	}
 
-	public void setSpell(ISpell spell) {
-		this.spell = spell;
-		this.setChanged();
-	}
-	
 	
 	public void setMobileHasChanged() {
-		this.setChanged();
-		this.notifyObservers();
-	}
-	
-	public void setMapHasChanged() {
 		this.setChanged();
 		this.notifyObservers();
 	}
@@ -199,24 +180,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		return this.height;
 	}
 
-	public void play() {
-		for(;;)
-		{
-			this.setChanged();
-			this.notifyObservers();
-			try {
-				Thread.sleep(125);
-			} catch (final InterruptedException e) {
-				e.printStackTrace();
-			}
-			
-			for(final IMotionElement motionElement : this.motionElements){
-				if(motionElement.getBehaviorGetAnimate() != null)
-					motionElement.getBehaviorGetAnimate().animate(motionElement, this);
-			}
-		}
-
-	}
 
 	public int getId() {
 		return id;
@@ -234,6 +197,62 @@ public class LorannWorld extends Observable implements ILorannWorld{
 
 	public void setFinished(boolean finished) {
 		this.finished = finished;
+	}
+
+
+	public void play() {
+		for(;;)
+		{
+			this.setMobileHasChanged();
+			try {
+				Thread.sleep(125);
+			} catch (final InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			for(final IMotionElement motionElement : this.motionElements){
+				if(motionElement.getBehaviorGetAnimate() != null)
+					//motionElement.getBehaviorGetAnimate().animate(motionElement, this);
+				this.lorann.animate();
+			}
+			updateSprites();
+
+		}		
+	}
+	
+	/**
+	 * Update the sprites
+	 */
+	private void updateSprites(){
+		for(IOtherElements otherElements : this.getOtherElements()){
+			if(otherElements.getSprite() instanceof IAnimatedSprites){
+				((IAnimatedSprites) otherElements.getSprite()).nextStep();
+			}
+		}
+		
+		if(this.getLorann().getSprite() instanceof IAnimatedSprites){
+			((IAnimatedSprites) this.getLorann().getSprite()).nextStep();
+		}
+		
+	}
+
+	public boolean isSpellLaunched() {
+		return spellLaunched;
+	}
+
+
+	public void setSpellLaunched(boolean spellLaunched) {
+		this.spellLaunched = spellLaunched;
+	}
+
+
+	public boolean isAttractSpell() {
+		return attractSpell;
+	}
+
+
+	public void setAttractSpell(boolean attractSpell) {
+		this.attractSpell = attractSpell;
 	}
 
 }

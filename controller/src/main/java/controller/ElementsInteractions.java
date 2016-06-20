@@ -38,7 +38,6 @@ public class ElementsInteractions {
 	        int lorannX = lorann.getX();
 	        int lorannY = lorann.getY();
 	        for(IOtherElements otherElement: this.model.getLorannWorld().getOtherElements()){
-	    		//System.out.println("element : "+element);
 	            if(lorannX == otherElement.getLocation().getX() && lorannY == otherElement.getLocation().getY() && lorann != otherElement){
 
 	            	return otherElement;
@@ -103,6 +102,7 @@ public class ElementsInteractions {
 			                if (elementmap.getName().equals("ClosedDoor")) {
 			                   ((IDoor) elementmap).setUnlocked(true);
 			                   ((IDoor) elementmap).setPermeability(Permeability.PENETRABLE);
+			                   lorannWorld.destroyElement(element);
 			                }
 	                }
 	                

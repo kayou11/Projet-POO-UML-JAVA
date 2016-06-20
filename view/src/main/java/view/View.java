@@ -56,7 +56,6 @@ public class View implements IView, Runnable {
 				return ControllerOrder.RIGHT;
 				
 			case KeyEvent.VK_SPACE:
-		
 					return ControllerOrder.SPELL;
 				
 			default:

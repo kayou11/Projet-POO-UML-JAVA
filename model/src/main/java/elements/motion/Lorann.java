@@ -1,103 +1,106 @@
 package elements.motion;
 
-import java.awt.Point;
 
 import contract.BehaviorAnimate;
-import contract.Direction;
+import contract.ControllerOrder;
 import contract.ILorann;
-import contract.ISpell;
-import contract.Permeability;
-import elements.Sprite;
+import elements.AnimatedSprite;
 import model.LorannWorld;
 
 public class Lorann extends MotionElements implements ILorann{
 
-	static Sprite lorannUp = new Sprite("lorann_u.png");
+	/*static Sprite lorannUp = new Sprite("lorann_u.png");
 	static Sprite lorannDown = new Sprite("lorann_b.png");
 	static Sprite lorannRight= new Sprite("lorann_r.png");
 	static Sprite lorannLeft = new Sprite("lorann_l.png");
 	static Sprite lorannUpRight = new Sprite("lorann_ur.png");
 	static Sprite lorannUpLeft = new Sprite("lorann_ul.png");
 	static Sprite lorannDownRight = new Sprite("lorann_br.png");
-	static Sprite lorannDownLeft = new Sprite("lorann_bl.png");
+	static Sprite lorannDownLeft = new Sprite("lorann_bl.png");*/
 	
 
-	/*static String lorannUp ="lorann_u.png";
+	static String lorannUp ="lorann_u.png";
 	static String lorannDown = "lorann_b.png";
 	static String lorannRight= "lorann_r.png";
 	static String lorannLeft = "lorann_l.png";
 	static String lorannUpRight = "lorann_ur.png";
 	static String lorannUpLeft = "lorann_ul.png";
 	static String lorannDownRight = "lorann_br.png";
-	static String lorannDownLeft = "lorann_bl.png";*/
+	static String lorannDownLeft = "lorann_bl.png";
 	
+	private ControllerOrder direction = ControllerOrder.STAY;
     /** The score of the player */
 	private Integer score = 0;
 	public boolean alive;
-	private ISpell spell;
 	
-	static Sprite sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
+	static String sprite[] = {lorannRight, lorannDownRight, lorannDown, lorannDownLeft, lorannLeft, lorannUpLeft,
 			lorannUp, lorannUpRight };
 	
 	public Lorann(LorannWorld lorannWorld,BehaviorAnimate behaviorAnimate) {
-		super("LorannRight",lorannRight, lorannWorld,behaviorAnimate);
+		super("LorannRight",new AnimatedSprite("lorann_u.png", sprite), lorannWorld,behaviorAnimate);
         this.alive = true;
-		spell = new Spell(lorannWorld,null);
 	}
 
-	/*public Lorann(LorannWorld lorannWorld) {
-	super("LorannRight", new AnimatedSprite("lorann_r.png", sprite));
-	this.setLorannWorld(lorannWorld);
-	}*/
-	
-	public void addSpell(int x, int y, Direction direction ) {
-        if(isSpellPossible(x, y)) { 
-        	this.getLorannWorld().addElements(getSpell(), x, y);
-        }
+	public ControllerOrder getOrder() {
+		return this.direction;
 	}
 
-	
-	public boolean animate(Direction direction) {
-		System.out.println("alive : "+isAlive());
+	public void setDirection(ControllerOrder direction) {
+		this.direction = direction;
+	}
+
+
+	public boolean animate() {
 		this.saveLastPosition();
         if(!isAlive())
             return false;
         switch (direction){
             case UP:
                 moveUp();
+                System.out.println(direction);
+                this.direction = ControllerOrder.STAY;
                 break;
             case DOWN:
                 moveDown();
+                this.direction = ControllerOrder.STAY;
                 break;
             case LEFT:
                 moveLeft();
+                this.direction = ControllerOrder.STAY;
+
                 break;
             case RIGHT:
                 moveRight();
+                this.direction = ControllerOrder.STAY;
+
                 break;
             case UPLEFT:
                 moveLeftUp();
+               this.direction = ControllerOrder.STAY;
+
                 break;
             case UPRIGHT:
                 moveRightUp();
+                this.direction = ControllerOrder.STAY;
+
                 break;
             case DOWNRIGHT:
                 moveRightDown();
+                this.direction = ControllerOrder.STAY;
+
                 break;
             case DOWNLEFT:
                 moveLeftDown();
+                
+                this.direction = ControllerOrder.STAY;
                 break;
             default:
-                System.out.println("Invalid direction move");
+                this.direction = ControllerOrder.STAY;
                 break;
         }
         setDirection(direction);
 		return false;
 	}
-	public boolean isSpellPossible(int x, int y) {
-		return super.isMovePossible(x, y);
-	}
-	
 	@Override
 	public void moveUp() {
 		super.moveUp();
@@ -171,14 +174,7 @@ public class Lorann extends MotionElements implements ILorann{
     public void setScore(Integer score) {
         this.score = score;
     }
+
+
     
-	public ISpell getSpell() {
-		return spell;
-	}
-
-	public void setSpell(ISpell spell) {
-		this.spell = spell;
-	}
-
-		
 }

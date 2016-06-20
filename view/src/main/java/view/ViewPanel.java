@@ -102,7 +102,6 @@ class ViewPanel extends JPanel implements Observer {
 
 		
 		graphics.setColor(new Color(255,0,0));
-		System.out.println(this.viewFrame.getModel().getLorannWorld().getLorann().getScore());
 		graphics.drawString("Score : "+this.viewFrame.getModel().getLorannWorld().getLorann().getScore(), 22, 16);
 
 	}

@@ -68,11 +68,7 @@ public interface ILorannWorld {
 	 * Sets the mobile has changed.
 	 */
 	void setMobileHasChanged();
-	
-	/**
-	 * Sets the map has changed.
-	 */
-	public void setMapHasChanged();
+
 
 	/**
 	 * Gets the width.
@@ -133,5 +129,13 @@ public interface ILorannWorld {
 	public void setFinished(boolean isFinished);
 
 	public void destroyElement(IElement element);
+
+	public boolean isSpellLaunched();
+
+	public void setSpellLaunched(boolean b);
+
+	public void setAttractSpell(boolean b);
+
+	public boolean isAttractSpell();
 	
 }

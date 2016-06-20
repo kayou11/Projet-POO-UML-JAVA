@@ -1,9 +1,7 @@
 package controller;
 
-import org.omg.CORBA.SystemException;
 
 import contract.ControllerOrder;
-import contract.Direction;
 import contract.IController;
 import contract.IElement;
 import contract.ILorann;
@@ -33,7 +31,6 @@ public class Controller implements IController {
 	public Controller(final IView view, final IModel model) {
 		this.setView(view);
 		this.setModel(model);
-		HeroAction.init(this.model);
 		ElementsInteractions.init(this.model);
 	}
 
@@ -72,34 +69,43 @@ public class Controller implements IController {
 	 * @see contract.IController#orderPerform(contract.ControllerOrder)
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
-		HeroAction heroAction = HeroAction.getInstance();
 		switch (controllerOrder) {
 			case UP:
-				this.model.getLorannWorld().getLorann().animate(Direction.UP);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.UP);
 				break;
 			case DOWN:
-				this.model.getLorannWorld().getLorann().animate(Direction.DOWN);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.DOWN);
 				break;
 			case LEFT:
-				this.model.getLorannWorld().getLorann().animate(Direction.LEFT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.LEFT);
 				break;
 			case RIGHT:
-				this.model.getLorannWorld().getLorann().animate(Direction.RIGHT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.RIGHT);
 				break;
 			case UPRIGHT:
-				this.model.getLorannWorld().getLorann().animate(Direction.UPRIGHT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.UPRIGHT);
 				break;
 			case DOWNRIGHT:
-				this.model.getLorannWorld().getLorann().animate(Direction.DOWNRIGHT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.DOWNRIGHT);
 				break;
 			case UPLEFT:
-				this.model.getLorannWorld().getLorann().animate(Direction.UPLEFT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.UPLEFT);
 				break;
 			case DOWNLEFT:
-				this.model.getLorannWorld().getLorann().animate(Direction.DOWNLEFT);
+				this.model.getLorannWorld().getLorann().setDirection(ControllerOrder.DOWNLEFT);
 				break;
 			case SPELL:
-					heroAction.sendSpell();
+				if (!this.model.getLorannWorld().isSpellLaunched()){
+					this.model.getLorannWorld().setSpellLaunched(true);
+					System.out.println("launched : " +this.model.getLorannWorld().isSpellLaunched());
+
+				} else {
+
+					this.model.getLorannWorld().setAttractSpell(true);
+					System.out.println("attract : "+this.model.getLorannWorld().isAttractSpell());
+
+				}
+				break;
 			case STAY:
 			default:
 				break;
@@ -113,10 +119,9 @@ public class Controller implements IController {
 	private void performCollision(ILorann element){
 		ElementsInteractions elementsInteractions = ElementsInteractions.getInstance();
 		IElement otherElement = elementsInteractions.hasCollision(element);
-		System.out.println("other : "+elementsInteractions.hasCollision(element));
-
 		if(otherElement == null)
 			return;
 		elementsInteractions.performCrossedCollision(element,otherElement);
 	}
+	
 }

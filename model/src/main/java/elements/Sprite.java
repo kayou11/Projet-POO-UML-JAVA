@@ -3,13 +3,10 @@ package elements;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
 import contract.ISprite;
-import model.DAOElements;
-import model.DBConnection;
 
 public class Sprite implements ISprite {
 	private Image image;
