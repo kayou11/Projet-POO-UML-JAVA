@@ -27,10 +27,11 @@ public class Model implements IModel {
 	 */
 	public Model() throws Exception {
 		this.daoLorannWorld = new DAOLorannWorld(DBConnection.getInstance().getConnection());
-		this.lorannWorld = this.daoLorannWorld.find(2);
+		this.lorannWorld = this.daoLorannWorld.find(1);
 
 	}
 	public boolean loadNextLevel(){
+		System.out.println("id : "+this.lorannWorld.getId());
 		int lastIndex = this.levelsId.indexOf(this.lorannWorld.getId());
 		if((lastIndex+1) < this.levelsId.size()) {
 			this.lorannWorld = this.daoLorannWorld.find(this.levelsId.get(lastIndex+1));

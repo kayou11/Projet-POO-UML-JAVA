@@ -1,7 +1,6 @@
 package elements.motionless;
 
 import contract.Permeability;
-import elements.Position;
 import elements.Sprite;
 
 public class BoneV extends MotionlessElement {

@@ -6,7 +6,6 @@ import contract.ILorann;
 import contract.ILorannWorld;
 import contract.ISpell;
 import elements.FactoryElements;
-import elements.Position;
 import elements.Sprite;
 
 public class Spell extends MotionElements implements ISpell {

@@ -89,7 +89,6 @@ public class View implements IView, Runnable {
 	 *          the new controller
 	 */
 	public void setController(final IController controller) {
-		System.out.println("setController(controller)");
 		this.viewFrame.setController(controller);
 	}
 	

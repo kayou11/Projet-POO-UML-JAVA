@@ -1,5 +1,6 @@
 package contract;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Interface IView.
  *

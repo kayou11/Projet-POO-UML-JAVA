@@ -58,6 +58,7 @@ public class HeroAction {
 	                System.err.println("Not valid direction spell");
 	                break;
 	        }
+	        
 	        if(lorann.isSpellPossible(spellX, spellY)){
 	        	lorann.addSpell(spellX, spellY, lorann.getDirection());
 	

@@ -12,7 +12,7 @@ public class LorannWorldTest {
 	private static LorannWorld testLoran;
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		testLoran = new LorannWorld();
+		testLoran = new LorannWorld(1);
 	}
 
 	@AfterClass

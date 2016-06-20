@@ -18,7 +18,7 @@ public class MotionElements extends Elements implements IMotionElement{
 	protected ILorannWorld lorannWorld;
 	protected int saveX;
 	protected int saveY;
-	public BehaviorAnimate behaviorAnimate;
+	private BehaviorAnimate behaviorAnimate;
 	private Point lastPosition;
 	
 	public MotionElements(String name, Sprite sprite,ILorannWorld lorannWorld,BehaviorAnimate behaviorGetAnimate)  {
@@ -72,16 +72,19 @@ public class MotionElements extends Elements implements IMotionElement{
 		this.setY(y);
 	}
 	public boolean isMovePossible(int x, int y) {
-		if (getLorannWorld().getMotionlessElements(x,y) == null)
-		{
-			return true;
+		if(getLorannWorld().getMotionlessElements(x,y) != null){
+			if (getLorannWorld().getMotionlessElements(x,y).getPermeability() != Permeability.BLOCKING)
+			{
+				return true;
+			}
+			else
+			{
+				this.setX((int) lastPosition.getX());
+				this.setY((int) lastPosition.getY());
+				return false;
+			}
 		}
-		else
-		{
-			this.setX((int) lastPosition.getX());
-			this.setY((int) lastPosition.getY());
-			return false;
-		}
+		return true;
 	}
 
 	public Direction getDirection() {
@@ -109,7 +112,6 @@ public class MotionElements extends Elements implements IMotionElement{
     }
     
 	public void moveUp(){
-		System.out.println("moveispossible : " +this.isMovePossible(this.getX(), this.getY()-1));
 
 		if (this.isMovePossible(this.getX(), this.getY()-1)) {
 			this.setY(this.getY() - 1);

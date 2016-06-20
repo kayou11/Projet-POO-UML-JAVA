@@ -31,7 +31,8 @@ public class Lorann extends MotionElements implements ILorann{
 	static String lorannDownRight = "lorann_br.png";
 	static String lorannDownLeft = "lorann_bl.png";*/
 	
-	public boolean win = false;
+    /** The score of the player */
+	private Integer score = 0;
 	public boolean alive;
 	private ISpell spell;
 	
@@ -153,16 +154,24 @@ public class Lorann extends MotionElements implements ILorann{
 		this.alive = alive;
 	}
 
-	
-	public void setWin(boolean win) { 
-		this.win = win;
-	}
+    /**
+     * Get the score of hero
+     * @return
+     * The score
+     */
 
-	public boolean getWin() {
-		return this.win;
-		
-	}
-
+    public Integer getScore() {
+        return score;
+    }
+    /**
+     * Set The score of hero
+     * @param score
+     * The score
+     */
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+    
 	public ISpell getSpell() {
 		return spell;
 	}
@@ -170,5 +179,6 @@ public class Lorann extends MotionElements implements ILorann{
 	public void setSpell(ISpell spell) {
 		this.spell = spell;
 	}
+
 		
 }

@@ -6,6 +6,7 @@ import contract.ControllerOrder;
 import contract.Direction;
 import contract.IController;
 import contract.IElement;
+import contract.ILorann;
 import contract.IModel;
 import contract.IView;
 
@@ -72,7 +73,6 @@ public class Controller implements IController {
 	 */
 	public void orderPerform(final ControllerOrder controllerOrder) {
 		HeroAction heroAction = HeroAction.getInstance();
-
 		switch (controllerOrder) {
 			case UP:
 				this.model.getLorannWorld().getLorann().animate(Direction.UP);
@@ -110,9 +110,11 @@ public class Controller implements IController {
 	/**
 	 * Perform the collision depending of the behavior
 	 */
-	private void performCollision(IElement element){
+	private void performCollision(ILorann element){
 		ElementsInteractions elementsInteractions = ElementsInteractions.getInstance();
 		IElement otherElement = elementsInteractions.hasCollision(element);
+		System.out.println("other : "+elementsInteractions.hasCollision(element));
+
 		if(otherElement == null)
 			return;
 		elementsInteractions.performCrossedCollision(element,otherElement);

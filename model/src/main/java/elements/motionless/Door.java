@@ -1,22 +1,37 @@
 package elements.motionless;
 
-import contract.BehaviorElements;
-import contract.Permeability;
-import elements.Position;
 import elements.Sprite;
 
-public class Door extends MotionlessElement {
-	
-    protected boolean unlocked;
-    
+import java.awt.Image;
 
+import contract.BehaviorElements;
+import contract.IDoor;
+import contract.ISprite;
+import contract.Permeability;
+
+public class Door extends MotionlessElement implements IDoor{
+    protected boolean unlocked;
+    protected ISprite unlockedSprite;
+	
 
 	public Door(){
-		
-		super("OpenedDoor", new Sprite("gate_open.png"), Permeability.BLOCKING);
+		super("ClosedDoor", new Sprite("gate_closed.png"), Permeability.BLOCKING);
 		this.behaviorElements = BehaviorElements.DEATH;
+		this.unlocked = false;
+		this.unlockedSprite = new Sprite("gate_open.png");
+	}
+
+	
+	@Override
+	public ISprite getSprite(){
+		 if(this.unlocked) {
+	            return this.unlockedSprite;
+	        } else {
+	            return super.getSprite();
+	        }
 	}
 	
+    
 	public boolean isUnlocked() {
 		return unlocked;
 	}

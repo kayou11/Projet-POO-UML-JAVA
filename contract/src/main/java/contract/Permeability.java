@@ -1,5 +1,15 @@
 package contract;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum Permeability.
+ */
 public enum Permeability {
-	BLOCKING, PENETRABLE, MEETING
+	
+	/** The blocking. */
+	BLOCKING, 
+ /** The penetrable. */
+ PENETRABLE, 
+ /** The meeting. */
+ MEETING
 }

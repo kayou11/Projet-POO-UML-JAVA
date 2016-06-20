@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import elements.Elements;
-import elements.Position;
 import elements.Sprite;
 
 /**
@@ -72,18 +71,5 @@ public class DAOElements extends DAOEntity<Elements> {
 			}
 			return null;*/
 		}
-		
-	
-	
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int, int)
-	 */
-	
-	public Position find(int positionX ,int positionY) {
-		return null;
-
-	}
 
 }

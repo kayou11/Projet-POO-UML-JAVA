@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import contract.Direction;
+import contract.IDoor;
 import contract.IElement;
 import contract.ILorann;
 import contract.ILorannWorld;
@@ -12,6 +13,7 @@ import contract.IMotionElement;
 import contract.IMotionlessElement;
 import contract.IOtherElements;
 import contract.ISpell;
+import contract.Permeability;
 import elements.motion.Monster;
 import elements.motion.Normal;
 import elements.motion.Spell;
@@ -21,7 +23,6 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	
 	private final int width = 22;
 	private final int height = 16;
-	private Level map;
 	private ILorann lorann;
 	public ISpell spell;
 	
@@ -35,7 +36,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
      */
     private boolean finished;
     
-	private IMotionlessElement[][] element;
+	private IElement[][] element;
 
 	private ArrayList<IOtherElements> otherElements;
 	
@@ -47,9 +48,9 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	public LorannWorld(int id) {
 		this.element = new IMotionlessElement[this.getWidth()][this.getHeight()];
 		this.motionElements = new ArrayList<IMotionElement>();
+		this.otherElements = new ArrayList<IOtherElements>();
 		setSpell(spell);
-		this.setId(id);
-		this.setFinished(true);
+		this.id = id;
 	}
 	
 	
@@ -77,7 +78,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
      * Add the IOtherElements
      * @param otherElements
      */
-    public void addEntity(IOtherElements otherElements){
+    public void addOtherElements(IOtherElements otherElements){
         this.otherElements.add(otherElements);
     }
 
@@ -85,16 +86,18 @@ public class LorannWorld extends Observable implements ILorannWorld{
      * Remove the IOtherElements
      * @param otherElements
      */
-    public void removeEntity(IOtherElements otherElements){
+    public void removeOtherElements(IOtherElements otherElements){
         this.otherElements.remove(otherElements);
     }
+    
     /**
      * Get the otherElements of the lorannWorld
      * @return
      * The otherElements
      */
+	@SuppressWarnings("unchecked")
 	public ArrayList<IOtherElements> getOtherElements() {
-        return otherElements;
+        return ( ArrayList<IOtherElements>) otherElements.clone();
     }
     
     /**
@@ -105,12 +108,30 @@ public class LorannWorld extends Observable implements ILorannWorld{
     public void setOtherElements(ArrayList<IOtherElements> otherElements) {
         this.otherElements = otherElements;
     }
+    
+    /**
+     * Remove the element
+     * @param element
+     */
+    public void destroyElement(IElement element){
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {	                	
+            	IElement elementmap = getMotionlessElements(x, y);
+            	if(elementmap != null)
+                    if(element instanceof IElement){
+                        this.setMotionlessElements(null,lorann.getX(), lorann.getY());
+                    }
+            }
+            
+        }
+
+    }
+    
 	/*
 	 * (non-Javadoc)
 	 *
 	 * @see contract.IModel#getObservable()
 	 */
-	
 	public Observable getObservable() {
 		return this;
 	}
@@ -144,33 +165,29 @@ public class LorannWorld extends Observable implements ILorannWorld{
 		this.setChanged();
 	}
 	
-
 	
 	public void setMobileHasChanged() {
 		this.setChanged();
 		this.notifyObservers();
 	}
+	
+	public void setMapHasChanged() {
+		this.setChanged();
+		this.notifyObservers();
+	}
+	
 
 	@Override
 	public void notifyObservers() {
 		super.notifyObservers();
 	}
 
-	public Level getMap() {
-		return this.map;
-	}
-
-	public void setMap(Level map) {
-		this.map = map;
-	}
-
-	public IMotionlessElement getMotionlessElements(int x, int y) {
-
-
+	public IElement getMotionlessElements(int x, int y) {
 		return this.element[x][y];
 	}
 	
-	public void setMotionlessElements(IMotionlessElement element,int x,int y){
+	public void setMotionlessElements(IElement element,int x,int y){
+
 		this.element[x][y] = element;
 	}
 

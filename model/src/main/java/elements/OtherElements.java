@@ -8,9 +8,7 @@ import contract.Permeability;
 
 public abstract class OtherElements extends Elements implements IOtherElements {
 
-    public boolean moveTo(Integer x, Integer y){
-        return false;
-    }
+
     /**
      * Direction of the entity
      */

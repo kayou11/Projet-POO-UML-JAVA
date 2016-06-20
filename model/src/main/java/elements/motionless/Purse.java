@@ -1,13 +1,19 @@
 package elements.motionless;
 
+import contract.BehaviorElements;
+import contract.IValuable;
 import contract.Permeability;
-import elements.Position;
 import elements.Sprite;
 
-public class Purse extends MotionlessElement {
+public class Purse extends MotionlessElement implements IValuable{
 	
 	public Purse(){
 		
-		super("Purse", new Sprite("purse.png"), Permeability.BLOCKING);
+		super("Purse", new Sprite("purse.png"), Permeability.PENETRABLE);
+        this.behaviorElements = BehaviorElements.MOREPOINT;
 	}
+	
+    public int getValue() {
+        return 100;
+    }
 }

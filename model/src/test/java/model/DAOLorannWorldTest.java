@@ -18,7 +18,7 @@ public class DAOLorannWorldTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testDAO = new DAOLorannWorld(connection);
-		testLorann = new LorannWorld();
+		testLorann = new LorannWorld(1);
 	}
 
 	@AfterClass

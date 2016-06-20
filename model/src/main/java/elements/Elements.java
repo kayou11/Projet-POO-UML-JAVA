@@ -1,5 +1,6 @@
 package elements;
 
+import java.awt.Image;
 import java.util.Observable;
 
 import contract.BehaviorElements;
@@ -20,6 +21,7 @@ public class Elements extends Observable implements IElement{
 	private Permeability permeability;
 	private int idElement;
 	private String name;
+	
 
 	public Elements(String name, ISprite sprite, Permeability permeability) {
 		this.sprite = sprite;
@@ -28,6 +30,9 @@ public class Elements extends Observable implements IElement{
 		
 	}	
 
+	public Image getImage(){
+		return this.sprite.getImage();
+	}
 	public ILocation getLocation() {
 		return location;
 	}

@@ -9,6 +9,8 @@ import java.util.Observer;
 import javax.swing.JPanel;
 
 import contract.IElement;
+import contract.ILorann;
+import contract.IModel;
 import contract.IMotionElement;
 
 /**
@@ -92,9 +94,16 @@ class ViewPanel extends JPanel implements Observer {
 				}
 			}
 		}
-		for(final IMotionElement motionElement : this.motionElements)
-		{
+		
+		for(final IMotionElement motionElement : this.motionElements){
 			graphics.drawImage(motionElement.getSprite().getImage(), motionElement.getX()*32, motionElement.getY()*32, null);
 		}
+
+
+		
+		graphics.setColor(new Color(255,0,0));
+		System.out.println(this.viewFrame.getModel().getLorannWorld().getLorann().getScore());
+		graphics.drawString("Score : "+this.viewFrame.getModel().getLorannWorld().getLorann().getScore(), 22, 16);
+
 	}
 }
