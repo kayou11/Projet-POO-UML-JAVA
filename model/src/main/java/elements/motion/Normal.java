@@ -27,13 +27,13 @@ public class Normal implements BehaviorAnimate{
 			motionElement.moveLeft();
 		}
 		if (lorannWorld.getLorann().getY()==motionElement.getY() && lorannWorld.getLorann().getX()>motionElement.getX()){
-			motionElement.moveRightDown();
+			motionElement.moveRight();
 		}
 		if (lorannWorld.getLorann().getY()<motionElement.getY() && lorannWorld.getLorann().getX()==motionElement.getX()){
-			motionElement.moveRightDown();
+			motionElement.moveUp();
 		}
 		if (lorannWorld.getLorann().getY()>motionElement.getY() && lorannWorld.getLorann().getX()==motionElement.getX()){
-			motionElement.moveRightDown();
+			motionElement.moveDown();
 		}
 	}
 }
