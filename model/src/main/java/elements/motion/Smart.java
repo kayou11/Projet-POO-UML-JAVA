@@ -6,6 +6,9 @@ import contract.IMotionElement;
 
 public class Smart implements BehaviorAnimate {
 
+	/* (non-Javadoc)
+	 * @see model.Normal#animate()
+	 */
 	public void animate(IMotionElement motionElement, ILorannWorld lorannWorld) {
 		if (lorannWorld.getLorann().getY() < motionElement.getY()) {
 			motionElement.moveUp();
