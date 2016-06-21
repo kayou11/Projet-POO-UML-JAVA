@@ -4,6 +4,10 @@ import contract.BehaviorAnimate;
 import contract.ILorannWorld;
 import contract.IMotionElement;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Stupid.
+ */
 public class Stupid implements BehaviorAnimate{
 
 	/* (non-Javadoc)

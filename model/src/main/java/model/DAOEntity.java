@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Observable;
 
-import elements.Elements;
-import elements.Sprite;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class DAOEntity.
  *
@@ -71,10 +70,9 @@ abstract class DAOEntity<E extends Observable> {
 	/**
 	 * Find.
 	 *
-	 * @param id
-	 *          the id
+	 * @param idElement the id element
 	 * @return the e
-	 * @throws Exception 
+	 * @throws Exception the exception
 	 */
 	public abstract E find(int idElement) throws Exception;
 	

@@ -13,6 +13,7 @@ import contract.ILorann;
 import contract.IModel;
 import contract.IMotionElement;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ViewPanel.
  *
@@ -20,11 +21,21 @@ import contract.IMotionElement;
  */
 class ViewPanel extends JPanel implements Observer {
 
+	private IModel model;
+
 	/** The view frame. */
 	private ViewFrame					viewFrame;
+	
+	/** The motion elements. */
 	private final ArrayList<? extends 	IMotionElement> motionElements;
+	
+	/** The motionless elements. */
 	private final IElement 				motionlessElements[][];
+	
+	/** The width. */
 	private final int 					width;
+	
+	/** The height. */
 	private final int 					height;
 	
 	/** The Constant serialVersionUID. */
@@ -33,8 +44,11 @@ class ViewPanel extends JPanel implements Observer {
 	/**
 	 * Instantiates a new view panel.
 	 *
-	 * @param viewFrame
-	 *          the view frame
+	 * @param viewFrame          the view frame
+	 * @param motionElements the motion elements
+	 * @param motionlessElements the motionless elements
+	 * @param width the width
+	 * @param height the height
 	 */
 	public ViewPanel(final ViewFrame viewFrame, final ArrayList<? extends IMotionElement> motionElements, final IElement motionlessElements[][], final int width, final int height) {
 		this.setViewFrame(viewFrame);
@@ -99,7 +113,11 @@ class ViewPanel extends JPanel implements Observer {
 			graphics.drawImage(motionElement.getSprite().getImage(), motionElement.getX()*32, motionElement.getY()*32, null);
 		}
 
-
+		graphics.setColor(Color.YELLOW);
+		if(!viewFrame.getModel().getLorannWorld().getLorann().isAlive()) 
+		{
+			graphics.drawString("GAME OVER", 16, 22);
+		}
 		
 		graphics.setColor(new Color(255,0,0));
 		graphics.drawString("Score : "+this.viewFrame.getModel().getLorannWorld().getLorann().getScore(), 22, 16);

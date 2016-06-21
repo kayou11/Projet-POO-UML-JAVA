@@ -8,40 +8,57 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class LorannWorldTest.
+ */
 public class LorannWorldTest {
+	
+	/** The test loran. */
 	private static LorannWorld testLoran;
+	
+	/**
+	 * Sets the up before class.
+	 *
+	 * @throws Exception the exception
+	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testLoran = new LorannWorld(1);
 	}
 
+	/**
+	 * Tear down after class.
+	 *
+	 * @throws Exception the exception
+	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	/**
+	 * Sets the up.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 	}
 
+	/**
+	 * Tear down.
+	 *
+	 * @throws Exception the exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 	}
 
-	@SuppressWarnings("static-access")
-	@Test
-	public void testGetWidth() {
-		final int expected = 1;
-		assertEquals(expected, this.testLoran.getWidth());
-	}
-
-	@SuppressWarnings("static-access")
-	@Test
-	public void testGetHeight() {
-		final int expected = 10;
-		assertEquals(expected, this.testLoran.getHeight());
-	}
 
 
+	/**
+	 * Test get motionless elements.
+	 */
 	@SuppressWarnings("static-access")
 	@Test
 	public void testGetMotionlessElements() {
@@ -52,6 +69,9 @@ public class LorannWorldTest {
 		}
 	}
 
+	/**
+	 * Test get motion elements.
+	 */
 	@SuppressWarnings("static-access")
 	@Test
 	public void testGetMotionElements() {

@@ -4,38 +4,41 @@ import contract.BehaviorAnimate;
 import contract.ILorannWorld;
 import contract.IMotionElement;
 
-public class Smart implements BehaviorAnimate {
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Normal.
+ */
+public class Smart implements BehaviorAnimate{
 
 	/* (non-Javadoc)
 	 * @see model.Normal#animate()
 	 */
-	public void animate(IMotionElement motionElement, ILorannWorld lorannWorld) {
+	public void animate(IMotionElement motionElement,ILorannWorld lorannWorld) {
 		motionElement.saveLastPosition();
-		if(lorannWorld.getLorann().getY()<motionElement.getY()){
-			motionElement.setY(motionElement.getY()-1);
-			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
-			}
-		}
 
-		if (lorannWorld.getLorann().getX()>motionElement.getX()){
-			motionElement.setX(motionElement.getX()+1);
-			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
-			}
+		if (lorannWorld.getLorann().getY()<motionElement.getY() && lorannWorld.getLorann().getX()<motionElement.getX() ){
+			motionElement.moveLeftUp();
 		}
-
-		if (lorannWorld.getLorann().getY()>motionElement.getY()){
-			motionElement.setY(motionElement.getY()+1);
-			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
-			}
+		if (lorannWorld.getLorann().getY()<motionElement.getY() && lorannWorld.getLorann().getX()>motionElement.getX()){
+			motionElement.moveRightUp();
 		}
-
-		if (lorannWorld.getLorann().getX()<motionElement.getX()){
-			motionElement.setX(motionElement.getX()-1);
-			if(motionElement.isMovePossible(motionElement.getX(), motionElement.getY())) {
-			}
+		if (lorannWorld.getLorann().getY()>motionElement.getY() && lorannWorld.getLorann().getX()<motionElement.getX() ){
+			motionElement.moveLeftDown();
 		}
-
-		motionElement.isMovePossible(motionElement.getX(), motionElement.getY());
+		if (lorannWorld.getLorann().getY()>motionElement.getY() && lorannWorld.getLorann().getX()>motionElement.getX()){
+			motionElement.moveRightDown();
+		}
+		if (lorannWorld.getLorann().getY()==motionElement.getY() && lorannWorld.getLorann().getX()<motionElement.getX()){
+			motionElement.moveLeft();
+		}
+		if (lorannWorld.getLorann().getY()==motionElement.getY() && lorannWorld.getLorann().getX()>motionElement.getX()){
+			motionElement.moveRight();
+		}
+		if (lorannWorld.getLorann().getY()<motionElement.getY() && lorannWorld.getLorann().getX()==motionElement.getX()){
+			motionElement.moveUp();
+		}
+		if (lorannWorld.getLorann().getY()>motionElement.getY() && lorannWorld.getLorann().getX()==motionElement.getX()){
+			motionElement.moveDown();
+		}
 	}
-
 }

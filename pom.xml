@@ -17,6 +17,7 @@
 		<module>contract</module>
 		<module>model</module>
 	</modules>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -126,5 +127,6 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	
 	<url>-</url>
 </project>

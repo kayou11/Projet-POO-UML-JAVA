@@ -13,13 +13,36 @@ import org.junit.Test;
 
 import contract.IController;
 import contract.IModel;
+// TODO: Auto-generated Javadoc
+
+/**
+ * The Class ViewFrameTest.
+ */
 public class ViewFrameTest {
+	
+	/** The test view. */
 	private View testView;
+	
+	/** The test frame. */
 	private static ViewFrame testFrame;
+	
+	/** The e. */
 	private static KeyEvent e;
+	
+	/** The key. */
 	private static int key;
+	
+	/** The model. */
 	private IModel model;
+	
+	/** The test controller. */
 	private IController testController;
+	
+	/**
+	 * Sets the up before class.
+	 *
+	 * @throws Exception the exception
+	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		testFrame = new ViewFrame();
@@ -27,24 +50,45 @@ public class ViewFrameTest {
 		key = KeyEvent.VK_E;
 	}
 
+	/**
+	 * Tear down after class.
+	 *
+	 * @throws Exception the exception
+	 */
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
 
+	/**
+	 * Sets the up.
+	 *
+	 * @throws Exception the exception
+	 */
 	@Before
 	public void setUp() throws Exception {	
 	}
 
+	/**
+	 * Tear down.
+	 *
+	 * @throws Exception the exception
+	 */
 	@After
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test key typed.
+	 */
 	@Test
 	public void testKeyTyped() {
 		testFrame.keyTyped(e);
 		assertEquals(key, e.getKeyCode());
 	}
 
+	/**
+	 * Test key pressed.
+	 */
 	@Test
 	public void testKeyPressed() {
 		//testFrame.keyPressed(e);
@@ -52,6 +96,9 @@ public class ViewFrameTest {
 		
 	}
 
+	/**
+	 * Test key released.
+	 */
 	@Test
 	public void testKeyReleased() {
 		testFrame.keyReleased(e);

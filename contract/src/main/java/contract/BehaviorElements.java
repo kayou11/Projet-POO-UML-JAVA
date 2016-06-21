@@ -5,7 +5,10 @@ package contract;
  * The Enum BehaviorElements.
  */
 public enum BehaviorElements {
-    
+	
+	/** Live */
+	LIVE,
+	
     /** The death. */
     DEATH,
     

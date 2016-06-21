@@ -114,7 +114,9 @@ public class Controller implements IController {
 	}
 	
 	/**
-	 * Perform the collision depending of the behavior
+	 * Perform the collision depending of the behavior.
+	 *
+	 * @param element the element
 	 */
 	private void performCollision(ILorann element){
 		ElementsInteractions elementsInteractions = ElementsInteractions.getInstance();

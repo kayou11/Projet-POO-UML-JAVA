@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import contract.IController;
 import contract.IModel;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class ViewFrame.
  *
@@ -26,16 +27,21 @@ class ViewFrame extends JFrame implements KeyListener {
 	/** The Constant serialVersionUID. */
 	private static final long	serialVersionUID	= -697358409737458175L;
 
-	public ViewFrame() throws HeadlessException {
-
-	}
 	/**
 	 * Instantiates a new view frame.
 	 *
-	 * @param model
-	 *          the model
-	 * @throws HeadlessException
-	 *           the headless exception
+	 * @throws HeadlessException the headless exception
+	 */
+	public ViewFrame() throws HeadlessException {
+
+	}
+	
+	/**
+	 * Instantiates a new view frame.
+	 *
+	 * @param model          the model
+	 * @param controller the controller
+	 * @throws HeadlessException           the headless exception
 	 */
 	public ViewFrame(final IModel model,final IController controller) throws HeadlessException {
 		this.buildViewFrame(model);

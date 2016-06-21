@@ -9,7 +9,6 @@ public interface ILorann extends IMotionElement{
 	/**
 	 * Animate.
 	 *
-	 * @param direction the direction
 	 * @return true, if successful
 	 */
 	boolean animate();
@@ -20,9 +19,17 @@ public interface ILorann extends IMotionElement{
 	 * @return true, if is alive
 	 */
 	boolean isAlive();
-
+	
+	
 	/**
-	 * Sets the direction.
+	 * Sets the alive.
+	 *
+	 * @param alive the new alive
+	 */
+	void setAlive(boolean alive);
+	
+	/**
+	 * Set the direction.
 	 *
 	 * @param direction the new direction
 	 */
@@ -82,6 +89,10 @@ public interface ILorann extends IMotionElement{
      */
     public Integer getScore();
 
+    /**
+     * Sets the score.
+     *
+     * @param score the new score
+     */
     public void setScore(Integer score);
-
 }

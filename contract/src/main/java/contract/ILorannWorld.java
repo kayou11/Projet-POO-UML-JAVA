@@ -128,14 +128,39 @@ public interface ILorannWorld {
 	 */
 	public void setFinished(boolean isFinished);
 
+	/**
+	 * Destroy element.
+	 *
+	 * @param element the element
+	 */
 	public void destroyElement(IElement element);
 
+	/**
+	 * Checks if is spell launched.
+	 *
+	 * @return true, if is spell launched
+	 */
 	public boolean isSpellLaunched();
 
+	/**
+	 * Sets the spell launched.
+	 *
+	 * @param b the new spell launched
+	 */
 	public void setSpellLaunched(boolean b);
 
+	/**
+	 * Sets the attract spell.
+	 *
+	 * @param b the new attract spell
+	 */
 	public void setAttractSpell(boolean b);
 
+	/**
+	 * Checks if is attract spell.
+	 *
+	 * @return true, if is attract spell
+	 */
 	public boolean isAttractSpell();
 	
 }

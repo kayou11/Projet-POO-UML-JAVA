@@ -11,19 +11,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import elements.Elements;
-import elements.Sprite;
-
+// TODO: Auto-generated Javadoc
 /**
  * The Class ModelTest.
  *
  * @author Jean-Aymeric Diet
  */
 public class ModelTest {
+	
+	/** The model. */
 	private Model model;
+	
+	/** The dBconnection. */
 	private DBConnection dBConnection;
-	private Sprite sprite;
-	private Elements elements;
+	
 	/**
 	 * Sets the up before class.
 	 *
@@ -67,6 +68,17 @@ public class ModelTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * Test get lorannWorld.
+	 */
+	@Test
+	public void testGetLorannWorld() {
+		Assert.assertNotNull(this.model.getLorannWorld());
+	}
+	
+	/**
+	 * Test open database.
+	 */
 	@Test
 	public void testOpenDatabase(){
 		

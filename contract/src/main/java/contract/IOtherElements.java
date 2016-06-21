@@ -12,14 +12,7 @@ public interface IOtherElements extends IElement{
      * @return the location
      */
     ILocation getLocation();
-    
-    /**
-     * Gets the location.
-     *
-     * @param direction the direction
-     * @return the location
-     */
-    void getLocation(ILocation direction);
+   
     
     /**
      * Move to.

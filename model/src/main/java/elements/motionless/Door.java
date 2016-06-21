@@ -2,18 +2,28 @@ package elements.motionless;
 
 import elements.Sprite;
 
-import java.awt.Image;
 
 import contract.BehaviorElements;
 import contract.IDoor;
 import contract.ISprite;
 import contract.Permeability;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Door.
+ */
 public class Door extends MotionlessElement implements IDoor{
+    
+    /** The unlocked. */
     protected boolean unlocked;
+    
+    /** The unlocked sprite. */
     protected ISprite unlockedSprite;
 	
 
+	/**
+	 * Instantiates a new door.
+	 */
 	public Door(){
 		super("ClosedDoor", new Sprite("gate_closed.png"), Permeability.BLOCKING);
 		this.behaviorElements = BehaviorElements.DEATH;
@@ -22,6 +32,9 @@ public class Door extends MotionlessElement implements IDoor{
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see elements.Elements#getSprite()
+	 */
 	@Override
 	public ISprite getSprite(){
 		 if(this.unlocked) {
@@ -32,14 +45,23 @@ public class Door extends MotionlessElement implements IDoor{
 	}
 	
     
+	/* (non-Javadoc)
+	 * @see contract.IDoor#isUnlocked()
+	 */
 	public boolean isUnlocked() {
 		return unlocked;
 	}
 
+	/* (non-Javadoc)
+	 * @see contract.IDoor#setUnlocked(boolean)
+	 */
 	public void setUnlocked(boolean unlocked) {
 		this.unlocked = unlocked;
 	}
 	
+    /* (non-Javadoc)
+     * @see elements.Elements#getBehaviorElements()
+     */
     @Override
     public BehaviorElements getBehaviorElements() {
         if(this.unlocked)

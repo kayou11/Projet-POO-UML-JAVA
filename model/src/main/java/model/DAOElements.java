@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import elements.Elements;
 import elements.Sprite;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class DAOHelloWorld.
  *
@@ -27,49 +28,34 @@ public class DAOElements extends DAOEntity<Elements> {
 		super(connection);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.DAOEntity#create(java.util.Observable)
+	 */
 	@Override
 	public boolean create(Elements entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.DAOEntity#delete(java.util.Observable)
+	 */
 	@Override
 	public boolean delete(Elements entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.DAOEntity#update(java.util.Observable)
+	 */
 	@Override
 	public boolean update(Elements entity) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	/*
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see model.DAOEntity#find(int)
-	 */
-	@Override
-	public Elements find(final int idElement) {
+	
+	public Elements find(int idElement) {
 		return null;
-
-		/*Elements elements = new Elements();
-
-			try {
-				final String sql = "{call SpriteLinkByIdElements(?)}";
-				final CallableStatement call = this.getConnection().prepareCall(sql);
-				call.setInt(1, idElement);
-				call.execute();
-				final ResultSet resultSet = call.getResultSet();
-				if (resultSet.first()) {
-					elements = new Elements(idElement,resultSet.getString("NameSprite"), resultSet.getString("SpriteLink"));
-				}
-				return elements;
-			} catch (final SQLException e) {
-				e.printStackTrace();
-			}
-			return null;*/
-		}
-
+	}
 }

@@ -9,21 +9,25 @@ import java.io.File;
 import java.io.IOException;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AnimatedSprite.
+ */
 public class AnimatedSprite extends Sprite implements IAnimatedSprites{
-	/**
-	 * make a list of sprite for an object that will appear on screen
-	 */
+	
+	/** make a list of sprite for an object that will appear on screen. */
     private Image images[];
 
     
-    /**
-     * define the the current animation status
-     */
+    /** define the the current animation status. */
     private int step;
     
     
     /**
-     * the constructor of this class
+     * the constructor of this class.
+     *
+     * @param defaultImage the default image
+     * @param images the images
      */
     public AnimatedSprite(String defaultImage, String[] images) {
         super(defaultImage);
@@ -41,7 +45,7 @@ public class AnimatedSprite extends Sprite implements IAnimatedSprites{
     }
 
     /**
-     * initiate the next step of the animation sequence
+     * initiate the next step of the animation sequence.
      */
     public void nextStep()
     {
@@ -51,6 +55,9 @@ public class AnimatedSprite extends Sprite implements IAnimatedSprites{
         }
     }
 
+    /* (non-Javadoc)
+     * @see elements.Sprite#getImage()
+     */
     @Override
     public Image getImage() {
         return this.images[this.step];

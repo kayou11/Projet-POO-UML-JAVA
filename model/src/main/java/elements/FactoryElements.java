@@ -21,26 +21,60 @@ import elements.motionless.MotionlessElement;
 import elements.motionless.Purse;
 import model.LorannWorld;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FactoryElements.
+ */
 public abstract class FactoryElements {
+	
+	/** The lorann world. */
 	static ILorannWorld lorannWorld;
 	
+	/** The Constant BONEH. */
 	public static final MotionlessElement BONEH = new BoneH();
+	
+	/** The Constant BONEV. */
 	public static final MotionlessElement BONEV = new BoneV();
+	
+	/** The Constant DOORCLOSED. */
 	public static final MotionlessElement DOORCLOSED = new Door();
+	
+	/** The Constant ENERGYBALL. */
 	public static final MotionlessElement ENERGYBALL = new EnergyBall();
+	
+	/** The Constant KNEECAP. */
 	public static final MotionlessElement KNEECAP = new Kneecap();
+	
+	/** The Constant PURSE. */
 	public static final MotionlessElement PURSE = new Purse();
 	
+	/** The motionless elements. */
 	public static MotionlessElement motionlessElements [] = {BONEH, BONEV, DOORCLOSED,ENERGYBALL,KNEECAP,PURSE};
 	
+	/** The Constant MONSTER1. */
 	public static final MotionElements MONSTER1 = new Monster1(lorannWorld);
+	
+	/** The Constant MONSTER2. */
 	public static final MotionElements MONSTER2 = new Monster2(lorannWorld);
+	
+	/** The Constant MONSTER3. */
 	public static final MotionElements MONSTER3 = new Monster3(lorannWorld);
+	
+	/** The Constant MONSTER4. */
 	public static final MotionElements MONSTER4 = new Monster4(lorannWorld);
+	
+	/** The Constant SPELL. */
 	public static final MotionElements SPELL = new Spell(lorannWorld);
 
+	/** The motion elements. */
 	public static MotionElements motionElements [] = {MONSTER1, MONSTER2, MONSTER3,MONSTER4};
 
+	/**
+	 * Gets the from name.
+	 *
+	 * @param name the name
+	 * @return the from name
+	 */
 	public static IMotionlessElement getFromName(final String name) {
 		for (MotionlessElement motionlessElement : motionlessElements) {
 			if (motionlessElement.getName().equals(name)) {
@@ -51,6 +85,13 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
+	/**
+	 * Gets the from name lorann.
+	 *
+	 * @param name the name
+	 * @param lorannWorld the lorann world
+	 * @return the from name lorann
+	 */
 	public static ILorann getfromNameLorann(final String name,LorannWorld lorannWorld)
 	{
 		ILorann lorann = new Lorann(lorannWorld,null);
@@ -60,6 +101,13 @@ public abstract class FactoryElements {
 		return null;
 	}
 	
+	/**
+	 * Gets the from name spell.
+	 *
+	 * @param name the name
+	 * @param lorannWorld the lorann world
+	 * @return the from name spell
+	 */
 	public static ISpell getfromNameSpell(final String name,LorannWorld lorannWorld)
 	{
 		ISpell spell = new Spell(lorannWorld);
@@ -70,6 +118,12 @@ public abstract class FactoryElements {
 	}
 	
 	
+	/**
+	 * Gets the from name motion.
+	 *
+	 * @param name the name
+	 * @return the from name motion
+	 */
 	public static IMotionElement getFromNameMotion(final String name) {
 		for (MotionElements motionElement : motionElements) {
 			if (motionElement.getName().equals(name)) {

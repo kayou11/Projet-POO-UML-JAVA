@@ -41,6 +41,11 @@ public interface IElement {
 	 */
 	public BehaviorElements getBehaviorElements();
 	
+	/**
+	 * Gets the location.
+	 *
+	 * @return the location
+	 */
 	public ILocation getLocation();
 
 }
