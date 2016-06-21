@@ -27,7 +27,7 @@ public class MotionlessElementTest {
 	 */
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		testmotionlessElement = new MotionlessElement("",null, Permeability.BLOCKING);
+		testmotionlessElement = new MotionlessElement("Purse",null, Permeability.BLOCKING);
 	}
 
 	/**
@@ -63,6 +63,13 @@ public class MotionlessElementTest {
 	@Test
 	public void testGetPermeability() {
 		assertEquals(Permeability.BLOCKING, testmotionlessElement.getPermeability());
+	}
+	/**
+	 * Test get permeability.
+	 */
+	@Test
+	public void testGetName() {
+		assertEquals("Purse", testmotionlessElement.getName());
 	}
 
 }
