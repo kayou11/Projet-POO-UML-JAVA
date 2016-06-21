@@ -6,4 +6,6 @@ package contract;
  */
 public interface IMonster extends IMotionElement{
 
+	public int getValue();
+
 }

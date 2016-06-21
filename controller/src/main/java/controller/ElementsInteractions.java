@@ -2,9 +2,12 @@ package controller;
 
 import contract.IDoor;
 import contract.IElement;
+import contract.IEnergyBall;
 import contract.ILorann;
 import contract.ILorannWorld;
 import contract.IModel;
+import contract.IMonster;
+import contract.IMotionElement;
 import contract.IOtherElements;
 import contract.IValuable;
 import contract.Permeability;
@@ -91,8 +94,10 @@ public class ElementsInteractions {
 	                performUnlock(element,other);
 	                break;
 	            case SPELL:
-	               // performSpell(element,other);
+	                performSpell(element,other);
 	                break;
+	                
+	            case LIVE:
 	            default:
 	                System.err.println("Not implemented behavior "+element.getBehaviorElements().toString());
 	                break;
@@ -107,10 +112,10 @@ public class ElementsInteractions {
     	 * @param other the other
     	 */
 	    void performDeath(IElement element, IElement other){
-	        if(other instanceof ILorann){
+            System.out.println("element : "+(IMonster) element);
+	        if(other instanceof ILorann && element instanceof IMotionElement) {
 	            ((ILorann) other).setAlive(false);
-	        	System.out.println("alive : "+this.model.getLorannWorld().getLorann().isAlive());
-	            //this.model.getLorannWorld().destroyElement(other);
+	            this.model.getLorannWorld().destroyElement(element);
 	        }
 	    }
 	    
@@ -128,6 +133,23 @@ public class ElementsInteractions {
 	        }
 	    }
 	    
+        /**
+         * The spell destroy the monster
+         * @param element
+         * Spell which destroy the element
+         * @param other
+         * Spell which destroy other
+         */
+        private void performSpell(IElement element, IElement other){
+            if(other instanceof ILorann){
+                this.model.getLorannWorld().destroyElement(element);
+            } else if(other instanceof IMonster){
+            	this.model.getLorannWorld().destroyElement(other);
+                ILorann lorann = this.model.getLorannWorld().getLorann();
+                lorann.setScore(lorann.getScore() + ((IMonster) other).getValue());
+            }
+        }
+        
 	    /**
     	 * Perform crossed collision.
     	 *
@@ -157,11 +179,15 @@ public class ElementsInteractions {
 			                if (elementmap.getName().equals("ClosedDoor")) {
 			                   ((IDoor) elementmap).setUnlocked(true);
 			                   ((IDoor) elementmap).setPermeability(Permeability.PENETRABLE);
-			                   lorannWorld.destroyElement(element);
+			                   this.model.getLorannWorld().destroyElement(elementmap);
 			                }
+			                
 	                	}
 	                }
-	                
+	                if(element instanceof IValuable) {
+	                    ILorann lorann = this.model.getLorannWorld().getLorann();
+	                    lorann.setScore(lorann.getScore()+((IValuable) element).getValue());
+	                }
 	            }
 	        }
 	    }
@@ -176,8 +202,8 @@ public class ElementsInteractions {
 	        if(other instanceof ILorann){
 	            if(!this.model.getLorannWorld().isFinished()) {
 	                this.model.getLorannWorld().setFinished(true);
-	                //Lorann lorann = this.model.getLevel().getHero();
-	                //lorann.setScore(lorann.getScore() + this.model.getLevel().getValue());
+	                ILorann lorann = this.model.getLorannWorld().getLorann();
+	                lorann.setScore(lorann.getScore() + this.model.getLorannWorld().getValue());
 	            } else {
 	                this.model.loadNextLevel();
 	            }

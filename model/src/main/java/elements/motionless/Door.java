@@ -66,8 +66,6 @@ public class Door extends MotionlessElement implements IDoor{
     public BehaviorElements getBehaviorElements() {
         if(this.unlocked)
             this.behaviorElements = BehaviorElements.END;
-        else
-            this.behaviorElements = BehaviorElements.DEATH;
         return this.behaviorElements;
     }
 }

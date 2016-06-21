@@ -1,5 +1,6 @@
 package elements.motion;
 
+import contract.BehaviorElements;
 import contract.ILorannWorld;
 import contract.ISpell;
 import elements.AnimatedSprite;
@@ -37,6 +38,7 @@ public class Spell extends MotionElements implements ISpell {
 	 */
 	public Spell(ILorannWorld lorannWorld) {
 		super("SpellGreen",new AnimatedSprite("fireball_1.png",spell),lorannWorld,new BehaviorSpell());
+        this.behaviorElements = BehaviorElements.SPELL;
 	}	
 	
 }

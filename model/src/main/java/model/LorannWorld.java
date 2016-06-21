@@ -12,6 +12,7 @@ import contract.ILorannWorld;
 import contract.IMotionElement;
 import contract.IMotionlessElement;
 import contract.IOtherElements;
+import contract.IValuable;
 import contract.Permeability;
 import elements.FactoryElements;
 
@@ -141,10 +142,14 @@ public class LorannWorld extends Observable implements ILorannWorld{
         for (int y = 0; y < getHeight(); y++) {
             for (int x = 0; x < getWidth(); x++) {	                	
             	IElement elementmap = getMotionlessElements(x, y);
-            	if(elementmap != null)
-                    if(element instanceof IElement){
+            	if(elementmap != null){
+                    if(element instanceof IMotionlessElement){
                         this.setMotionlessElements(null,lorann.getX(), lorann.getY());
-                }
+                    }
+                    else{
+                    	this.motionElements.remove(element);
+                    }
+            	}
             }
             
         }
@@ -296,7 +301,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			
 			for(final IMotionElement motionElement : this.motionElements){
 				if(motionElement.getBehaviorGetAnimate() != null)
-					motionElement.getBehaviorGetAnimate().animate(motionElement, this);
+					//motionElement.getBehaviorGetAnimate().animate(motionElement, this);
 				this.lorann.animate();
 			}
 
@@ -307,7 +312,7 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	                	IElement elementmap = this.getMotionlessElements(x, y);
 	                	if(elementmap != null){
 			                if (elementmap.getName().equals("EnergyBall")) {
-			                   ((IEnergyBall) this.getMotionlessElements(x, y)).setPermeability(Permeability.PENETRABLE);
+			                   //((IValuable) this.getMotionlessElements(x, y)).setPermeability(Permeability.PENETRABLE);
 			                }
 	                	}
 	                }
@@ -365,4 +370,14 @@ public class LorannWorld extends Observable implements ILorannWorld{
 	public void setAttractSpell(boolean attractSpell) {
 		this.attractSpell = attractSpell;
 	}
+	
+    /**
+     * Get the value of the level
+     * @return
+     * The value
+     */
+
+    public int getValue() {
+        return 1000;
+    }
 }

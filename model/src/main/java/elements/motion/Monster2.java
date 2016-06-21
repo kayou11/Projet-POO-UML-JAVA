@@ -10,6 +10,9 @@ import elements.Sprite;
  */
 public class Monster2 extends Monster{
 
+	 /** The number of points won by the player when he kills this monster */
+    private int value;
+    
 	/**
 	 * Instantiates a new monster 2.
 	 *
@@ -17,5 +20,10 @@ public class Monster2 extends Monster{
 	 */
 	public Monster2(ILorannWorld lorannWorld) {
 		super("Monster2",new Sprite("monster_2.png"),lorannWorld,new Smart());
+		this.value = 300;
 	}	
+
+    public int getValue(){
+        return this.value;
+    }
 }

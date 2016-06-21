@@ -1,0 +1,24 @@
+-classpath
+'/Users/PierreKayou/git/Projet-POO-UML-JAVA/contract/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/view/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/model/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/controller/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/main/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/controller/target/classes:/Users/PierreKayou/.m2/repository/mysql/mysql-connector-java/5.1.39/mysql-connector-java-5.1.39.jar:/Users/PierreKayou/git/Projet-POO-UML-JAVA/view/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/model/target/classes:/Users/PierreKayou/git/Projet-POO-UML-JAVA/contract/target/classes'
+-encoding
+'UTF-8'
+-private
+-sourcepath
+'/Users/PierreKayou/git/Projet-POO-UML-JAVA/contract/src/main/java:/Users/PierreKayou/git/Projet-POO-UML-JAVA/view/src/main/java:/Users/PierreKayou/git/Projet-POO-UML-JAVA/model/src/main/java:/Users/PierreKayou/git/Projet-POO-UML-JAVA/controller/src/main/java:/Users/PierreKayou/git/Projet-POO-UML-JAVA/main/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2016. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/PierreKayou/git/Projet-POO-UML-JAVA/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Master POM 0.0.1-SNAPSHOT API'
+-linkoffline
+'http://docs.oracle.com/javase/8/docs/api' '/Users/PierreKayou/git/Projet-POO-UML-JAVA/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Master POM 0.0.1-SNAPSHOT API'

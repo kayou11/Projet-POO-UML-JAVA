@@ -47,5 +47,4 @@ public interface IElement {
 	 * @return the location
 	 */
 	public ILocation getLocation();
-
 }

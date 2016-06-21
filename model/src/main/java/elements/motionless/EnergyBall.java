@@ -2,6 +2,7 @@ package elements.motionless;
 
 import contract.BehaviorElements;
 import contract.IEnergyBall;
+import contract.IValuable;
 import contract.Permeability;
 import elements.Sprite;
 
@@ -9,13 +10,17 @@ import elements.Sprite;
 /**
  * The Class EnergyBall.
  */
-public class EnergyBall extends MotionlessElement implements IEnergyBall {
+public class EnergyBall extends MotionlessElement implements IValuable {
 
 	/**
 	 * Instantiates a new energy ball.
 	 */
 	public EnergyBall(){
-		super("EnergyBall", new Sprite("crystal_ball.png"), Permeability.BLOCKING);
+		super("EnergyBall", new Sprite("crystal_ball.png"), Permeability.PENETRABLE);
         this.behaviorElements = BehaviorElements.UNLOCK;
 	}
+	
+    public int getValue() {
+        return 150;
+    }
 }

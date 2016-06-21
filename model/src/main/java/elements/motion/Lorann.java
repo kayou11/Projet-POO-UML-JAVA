@@ -70,7 +70,6 @@ public class Lorann extends MotionElements implements ILorann{
 	public Lorann(LorannWorld lorannWorld,BehaviorAnimate behaviorAnimate) {
 		super("LorannRight",new AnimatedSprite("lorann_u.png", sprite), lorannWorld,behaviorAnimate);
         this.alive = true;
-        this.behaviorElements = BehaviorElements.LIVE;
 	}
 
 	/* (non-Javadoc)
@@ -142,20 +141,7 @@ public class Lorann extends MotionElements implements ILorann{
         setDirection(direction);
 		return false;
 	}
-    /* (non-Javadoc)
-     * @see elements.Elements#getBehaviorElements()
-     */
-    @Override
-    public BehaviorElements getBehaviorElements() {
-        if(!this.isAlive()){
-        	System.out.println("alive : "+isAlive());
-            this.behaviorElements = BehaviorElements.DEATH;
-        }
-        else{
-            this.behaviorElements = BehaviorElements.LIVE;
-        }
-        return this.behaviorElements;
-    }
+
 	/* (non-Javadoc)
 	 * @see elements.motion.MotionElements#moveUp()
 	 */

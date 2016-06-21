@@ -162,5 +162,9 @@ public interface ILorannWorld {
 	 * @return true, if is attract spell
 	 */
 	public boolean isAttractSpell();
+
+	public void setId(int level);
+
+	public int getValue();
 	
 }
