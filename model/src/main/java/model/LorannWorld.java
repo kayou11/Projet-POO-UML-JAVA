@@ -301,18 +301,18 @@ public class LorannWorld extends Observable implements ILorannWorld{
 			
 			for(final IMotionElement motionElement : this.motionElements){
 				if(motionElement.getBehaviorGetAnimate() != null)
-					//motionElement.getBehaviorGetAnimate().animate(motionElement, this);
+					motionElement.getBehaviorGetAnimate().animate(motionElement, this);
 				this.lorann.animate();
 			}
 
 			updateSprites();
-			if(time == 100){
+			if(time == 50){
 	            for (int y = 0; y < this.getHeight(); y++) {
 	                for (int x = 0; x < this.getWidth(); x++) {	                	
 	                	IElement elementmap = this.getMotionlessElements(x, y);
 	                	if(elementmap != null){
 			                if (elementmap.getName().equals("EnergyBall")) {
-			                   //((IValuable) this.getMotionlessElements(x, y)).setPermeability(Permeability.PENETRABLE);
+			                   ((IEnergyBall) this.getMotionlessElements(x, y)).setPermeability(Permeability.PENETRABLE);
 			                }
 	                	}
 	                }
